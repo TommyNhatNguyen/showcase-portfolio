@@ -1,21 +1,74 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { ROUTES, SOCIAL_LINKS } from "./constants/links";
 import Button from "./components/Button/Button";
 import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
+import gsap from "gsap";
+import { SplitText } from "gsap/all";
 
 export default function Home() {
+  const homeRef = useRef<HTMLDivElement>(null);
+  useGSAP(
+    () => {
+      // --------------------------------
+      // HERO
+      // --------------------------------
+      // 1. Scramble text on scroll
+      if (!homeRef.current) return;
+      const heroSection = homeRef.current.querySelector(
+        "#schero"
+      ) as HTMLElement;
+      const heroTitle = heroSection.querySelector(".schero__title-text");
+      const heroDesc = heroSection.querySelector(".schero__desc-text");
+      const heroDescLine = heroSection.querySelector(".schero__desc-line");
+      const heroTitleSplit = SplitText.create(heroTitle);
+      const tl = gsap.timeline({});
+      tl.from([heroDesc, heroTitle], {
+        opacity: 0,
+        y: 40,
+        duration: 1.2,
+        ease: "power3.out",
+        stagger: 0.3,
+      });
+      tl.from(
+        heroDescLine,
+        {
+          width: 0,
+          duration: 1.2,
+          ease: "power3.out",
+        },
+        "<+0.6"
+      );
+      tl.to(heroTitleSplit.chars, {
+        scrollTrigger: {
+          trigger: heroSection,
+          start: "top top",
+          end: "+=300",
+          scrub: true,
+        },
+        color: `var(--neutral-100)`,
+        stagger: 0.3,
+        duration: 0.3,
+        // Give natural feel-smooth but not distracting
+        ease: "power1.out",
+      });
+    },
+    {
+      scope: homeRef,
+    }
+  );
   return (
-    <main className="home" id="home">
+    <main className="home" id="home" ref={homeRef}>
       <section className="schero --ptb" id="schero">
         <div className="container">
           <div className="schero__title">
-            <h1 className="schero__title-text">
+            <h1 className="schero__title-text --gray">
               <strong> I'm a visual designer with passion to create </strong>
               <br />
-              <span className="schero__title-gray --gray">
-                a great experiences
-              </span>
+              <span className="schero__title-gray">a great experiences</span>
             </h1>
           </div>
 

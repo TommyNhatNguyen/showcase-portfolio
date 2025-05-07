@@ -4,13 +4,20 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import Navigation from "../components/Navigation";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrambleTextPlugin, ScrollTrigger, SplitText } from "gsap/all";
 
 type Props = {
   children: React.ReactNode;
 };
 
 const MainLayout = ({ children }: Props) => {
-  const [isHamburgerActive, setIsHamburgerActive] = useState(true);
+  gsap.registerPlugin(useGSAP);
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrambleTextPlugin);
+  gsap.registerPlugin(SplitText);
+  const [isHamburgerActive, setIsHamburgerActive] = useState(false);
 
   const handleToggleHamburger = () => {
     setIsHamburgerActive((prev) => !prev);

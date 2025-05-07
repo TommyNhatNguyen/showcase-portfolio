@@ -20,11 +20,11 @@ const Navigation = ({ isHamburgerActive }: Props) => {
                 Home <span className="link__text-position">(01)</span>
               </div>
               <Button
-                href={ROUTES.HOME}
                 variant="icon"
                 size="md"
                 className="link__btn"
                 icon={FiArrowRight}
+                type="button"
               />
             </Link>
           </li>
@@ -34,11 +34,11 @@ const Navigation = ({ isHamburgerActive }: Props) => {
                 About Me <span className="link__text-position">(02)</span>
               </div>
               <Button
-                href={ROUTES.ABOUT}
                 variant="icon"
                 size="md"
                 className="link__btn"
                 icon={FiArrowRight}
+                type="button"
               />
             </Link>
           </li>
@@ -48,11 +48,11 @@ const Navigation = ({ isHamburgerActive }: Props) => {
                 Works <span className="link__text-position">(03)</span>
               </div>
               <Button
-                href={ROUTES.WORK}
                 variant="icon"
                 size="md"
                 className="link__btn"
                 icon={FiArrowRight}
+                type="button"
               />
             </Link>
           </li>
@@ -62,11 +62,11 @@ const Navigation = ({ isHamburgerActive }: Props) => {
                 Blog <span className="link__text-position">(04)</span>
               </div>
               <Button
-                href={ROUTES.BLOG}
                 variant="icon"
                 size="md"
                 className="link__btn"
                 icon={FiArrowRight}
+                type="button"
               />
             </Link>
           </li>

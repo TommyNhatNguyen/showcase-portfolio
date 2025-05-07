@@ -13,6 +13,7 @@ interface ButtonProps {
   icon?: IconType;
   iconPosition?: "left" | "right";
   black?: boolean;
+  as?: "button" | "a" | "div";
 }
 
 const Button: React.FC<ButtonProps> = ({

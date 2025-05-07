@@ -157,3 +157,9 @@ input {
   border: none;
   outline: none;
 }
+
+p,
+span,
+div {
+  word-break: break-word;
+}
