@@ -1,0 +1,128 @@
+.about {
+  .schero {
+    &__title {
+      &-text {
+        text-align: center;
+      }
+    }
+    &__desc {
+      margin-top: 24px;
+      text-align: center;
+    }
+    &__content {
+      margin-top: 56px;
+      &-thumbnail {
+        aspect-ratio: 1056 / 545;
+        max-height: 545px;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 20px;
+        img {
+          object-fit: cover;
+          object-position: top;
+        }
+      }
+      &-info {
+        margin-top: 56px;
+        .desc {
+          margin-top: 32px;
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: var(--gap);
+          &__para {
+            flex: 1;
+          }
+        }
+      }
+    }
+  }
+  .scexperience {
+    &__list {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--gap);
+      &-item {
+        flex: 1;
+        .year {
+          color: var(--neutral-40);
+        }
+        .content {
+          margin-top: 24px;
+          &__title {
+          }
+          &__desc {
+            margin-top: 8px;
+            color: var(--neutral-50);
+          }
+        }
+      }
+    }
+  }
+  .scclients {
+    &__title {
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--neutral-20);
+    }
+    &__list {
+      margin-top: 40px;
+      &-item {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: var(--gap);
+        padding-bottom: 24px;
+        padding-top: 24px;
+        border-bottom: 1px solid var(--neutral-20);
+        .content {
+          &__title {
+            font-family: var(--ff-semibold);
+            font-size: var(--fs-body-md);
+            color: var(--neutral-100);
+          }
+          &__time {
+            margin-top: 8px;
+            color: var(--neutral-70);
+          }
+        }
+        .client-logo {
+        }
+      }
+    }
+  }
+  .sccta {
+    background-color: var(--neutral-20);
+    &__links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      color: var(--neutral-100);
+      &-item {
+        position: relative;
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          bottom: -2px;
+          width: 100%;
+          height: 1px;
+          background-color: var(--neutral-100);
+          border-radius: 999999px;
+        }
+      }
+    }
+    &__title {
+      text-align: center;
+      margin-top: 56px;
+      color: var(--neutral-100);
+    }
+    .btn-talk {
+      margin-top: 56px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

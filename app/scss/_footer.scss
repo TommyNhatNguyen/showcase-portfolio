@@ -1,0 +1,92 @@
+.footer {
+  background-color: var(--neutral-100);
+  color: var(--neutral-0);
+  &__cta {
+    padding-top: 104px;
+    padding-bottom: 104px;
+    border-bottom: 1px solid var(--neutral-80);
+    &-title {
+      .para {
+        font-size: var(--fs-body-md);
+        font-family: var(--ff-medium);
+      }
+      .email {
+        color: var(--neutral-0);
+        padding: 0;
+        height: initial;
+        &__text {
+          font-size: var(--fs-h1);
+          font-family: var(--ff-bold);
+          text-wrap: wrap;
+          word-break: break-all;
+        }
+        .btn-arrow {
+          height: 72px;
+          width: 72px;
+          border-radius: 100%;
+          aspect-ratio: 1 /1;
+          background-color: var(--neutral-80);
+          flex-shrink: 0;
+          padding: 0;
+          svg {
+            stroke: var(--neutral-0);
+            height: 40px;
+            width: 40px;
+            path {
+              stroke: var(--neutral-0);
+            }
+          }
+        }
+      }
+    }
+  }
+  &__socials {
+    &-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--gap);
+      .sitemap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 341px;
+        gap: var(--gap);
+        &__item {
+          position: relative;
+          &-link {
+          }
+          &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -2px;
+            width: 100%;
+            height: 1px;
+            background-color: var(--neutral-0);
+            border-radius: 999999px;
+          }
+        }
+      }
+      .socials {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 176px;
+        gap: var(--gap);
+      }
+    }
+    &-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--gap);
+      margin-top: var(--pd-section);
+      .form {
+      }
+      .copyright {
+        color: var(--neutral-60);
+      }
+    }
+  }
+}

@@ -1,95 +1,417 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import { ROUTES, SOCIAL_LINKS } from "./constants/links";
+import Button from "./components/Button/Button";
+import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className="home" id="home">
+      <section className="schero --ptb" id="schero">
+        <div className="container">
+          <div className="schero__title">
+            <h1 className="schero__title-text">
+              <strong> I'm a visual designer with passion to create </strong>
+              <br />
+              <span className="schero__title-gray --gray">
+                a great experiences
+              </span>
+            </h1>
+          </div>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+          <div className="schero__desc">
+            <div className="schero__desc-line line"></div>
+
+            <div className="schero__desc-text">
+              <p className="para">
+                I'm Ivan, a Visual Designer living in Munich, and I focus on
+                making digital experiences that are easy to use, enjoyable, and
+                get the job done.
+              </p>
+            </div>
+          </div>
+
+          <div className="schero__cta">
+            <ul className="schero__cta-socials">
+              <li className="social">
+                <Link href={SOCIAL_LINKS.INSTAGRAM} className="social__link">
+                  <span className="social__link-text">Instagram</span>
+                  <div className="social__link-icon">
+                    <FiArrowUpRight />
+                  </div>
+                </Link>
+              </li>
+              <li className="social">
+                <Link href={SOCIAL_LINKS.BEHANCE} className="social__link">
+                  <span className="social__link-text">Behance</span>
+                  <div className="social__link-icon">
+                    <FiArrowUpRight />
+                  </div>
+                </Link>
+              </li>
+              <li className="social">
+                <Link href={SOCIAL_LINKS.DRIBBLE} className="social__link">
+                  <span className="social__link-text">Dribble</span>
+                  <div className="social__link-icon">
+                    <FiArrowUpRight />
+                  </div>
+                </Link>
+              </li>
+            </ul>
+
+            <Button
+              href="#"
+              variant="talk"
+              size="lg"
+              className="schero__cta-button"
+              icon={FiArrowRight}
+              iconPosition="right"
+            >
+              Let's Talk
+            </Button>
+          </div>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      <section className="scabout --ptb" id="scabout">
+        <div className="container">
+          <div className="scabout-wrapper">
+            <div className="scabout__thumbnail">
+              <Image
+                src="/images/thumbnail.jpg"
+                alt="My thumbnail"
+                width={500}
+                height={300}
+              />
+            </div>
+
+            <div className="scabout__content">
+              <div className="scabout__content-wrapper">
+                <h2 className="scabout__content-title">
+                  Design that sparks engagement and inspires action
+                </h2>
+                <p className="scabout__content-desc para">
+                  Concentrate on your primary objective which is expanding your
+                  business, and leave it to me to ensure that your business is
+                  efficiently portrayed in the digital realm and distinguishes
+                  itself from the rivals.
+                </p>
+              </div>
+              <Button
+                href={ROUTES.ABOUT}
+                variant="link"
+                className="scabout__content-link"
+                icon={FiArrowRight}
+                iconPosition="right"
+              >
+                About Me
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="scwork --ptb" id="scwork">
+        <div className="container">
+          <div className="scwork-wrapper">
+            <h2 className="scwork__title">
+              <strong>Discover my latest works</strong>
+            </h2>
+
+            <ul className="scwork__list">
+              <li className="scwork__list-item cardwork">
+                <Link href="#" className="cardwork__thumbnail">
+                  <Image
+                    src="/images/project-1.jpg"
+                    alt="project 1"
+                    width={400}
+                    height={300}
+                  />
+                </Link>
+
+                <div className="cardwork__content">
+                  <div className="cardwork__content-desc">
+                    <Link href="#" className="title">
+                      Sportly
+                    </Link>
+                    <p className="desc">Mobile App Design</p>
+                  </div>
+
+                  <Button
+                    href="#"
+                    variant="icon"
+                    size="md"
+                    className="cardwork__content-btn"
+                    icon={FiArrowRight}
+                  />
+                </div>
+              </li>
+              <li className="scwork__list-item cardwork">
+                <Link href="#" className="cardwork__thumbnail">
+                  <Image
+                    src="/images/project-2.jpg"
+                    alt="project 2"
+                    width={400}
+                    height={300}
+                  />
+                </Link>
+
+                <div className="cardwork__content">
+                  <div className="cardwork__content-desc">
+                    <Link href="#" className="title">
+                      Payrole
+                    </Link>
+                    <p className="desc">Mobile App Design</p>
+                  </div>
+
+                  <Button
+                    href="#"
+                    variant="icon"
+                    size="md"
+                    className="cardwork__content-btn"
+                    icon={FiArrowRight}
+                  />
+                </div>
+              </li>
+              <li className="scwork__list-item cardwork">
+                <Link href="#" className="cardwork__thumbnail">
+                  <Image
+                    src="/images/project-3.jpg"
+                    alt="project 3"
+                    width={400}
+                    height={300}
+                  />
+                </Link>
+
+                <div className="cardwork__content">
+                  <div className="cardwork__content-desc">
+                    <Link href="#" className="title">
+                      Wepay
+                    </Link>
+                    <p className="desc">Mobile App Design</p>
+                  </div>
+
+                  <Button
+                    href="#"
+                    variant="icon"
+                    size="md"
+                    className="cardwork__content-btn"
+                    icon={FiArrowRight}
+                  />
+                </div>
+              </li>
+              <li className="scwork__list-item cardwork">
+                <Link href="#" className="cardwork__thumbnail">
+                  <Image
+                    src="/images/project-4.jpg"
+                    alt="project 4"
+                    width={400}
+                    height={300}
+                  />
+                </Link>
+
+                <div className="cardwork__content">
+                  <div className="cardwork__content-desc">
+                    <Link href="#" className="title">
+                      Estatery
+                    </Link>
+                    <p className="desc">Mobile App Design</p>
+                  </div>
+
+                  <Button
+                    href="#"
+                    variant="icon"
+                    size="md"
+                    className="cardwork__content-btn"
+                    icon={FiArrowRight}
+                  />
+                </div>
+              </li>
+              <li className="scwork__list-item cardwork">
+                <Link href="#" className="cardwork__thumbnail">
+                  <Image
+                    src="/images/project-5.jpg"
+                    alt="project 5"
+                    width={400}
+                    height={300}
+                  />
+                </Link>
+
+                <div className="cardwork__content">
+                  <div className="cardwork__content-desc">
+                    <Link href="#" className="title">
+                      Sportly
+                    </Link>
+                    <p className="desc">Mobile App Design</p>
+                  </div>
+
+                  <Button
+                    href="#"
+                    variant="icon"
+                    size="md"
+                    className="cardwork__content-btn"
+                    icon={FiArrowRight}
+                  />
+                </div>
+              </li>
+            </ul>
+
+            <Button
+              href={ROUTES.WORK}
+              variant="link"
+              className="scwork__btnviewall"
+              icon={FiArrowRight}
+              black
+            >
+              View All Works
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="scclient --ptb" id="scclient">
+        <div className="container">
+          <div className="scclient-wrapper">
+            <h2 className="scclient__title">
+              A visual partner for brands, companies, and agencies
+            </h2>
+
+            <ul className="scclient__list">
+              <li className="scclient__list-item">
+                <div className="logo">
+                  <Image
+                    src="/images/logo-1.png"
+                    alt="client 1"
+                    width={100}
+                    height={50}
+                  />
+                </div>
+
+                <div className="content">
+                  <span className="content__title --block">
+                    UIUX & Branding
+                  </span>
+
+                  <span className="content__year --block">2022</span>
+                </div>
+              </li>
+              <li className="scclient__list-item">
+                <div className="logo">
+                  <Image
+                    src="/images/logo-1.png"
+                    alt="client 1"
+                    width={100}
+                    height={50}
+                  />
+                </div>
+
+                <div className="content">
+                  <span className="content__title --block">
+                    UIUX & Branding
+                  </span>
+
+                  <span className="content__year --block">2022</span>
+                </div>
+              </li>
+              <li className="scclient__list-item">
+                <div className="logo">
+                  <Image
+                    src="/images/logo-1.png"
+                    alt="client 1"
+                    width={100}
+                    height={50}
+                  />
+                </div>
+
+                <div className="content">
+                  <span className="content__title --block">
+                    UIUX & Branding
+                  </span>
+
+                  <span className="content__year --block">2022</span>
+                </div>
+              </li>
+              <li className="scclient__list-item">
+                <div className="logo">
+                  <Image
+                    src="/images/logo-1.png"
+                    alt="client 1"
+                    width={100}
+                    height={50}
+                  />
+                </div>
+
+                <div className="content">
+                  <span className="content__title --block">
+                    UIUX & Branding
+                  </span>
+
+                  <span className="content__year --block">2022</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="scblog --ptb" id="scblog">
+        <div className="container">
+          <div className="scblog-wrapper">
+            <div className="titlegroup scblog__title">
+              <h5 className="titlegroup__title">Latest Insights</h5>
+
+              <Button
+                href={ROUTES.BLOG}
+                variant="link"
+                className="btn --btn-link titlegroup__btn scblog__btn"
+                icon={FiArrowRight}
+              >
+                View All Insights
+              </Button>
+            </div>
+
+            <ul className="scblog__list">
+              <li className="scblog__list-card card --horizontal">
+                <div className="card__thumbnail">
+                  <Image
+                    src="/images/blog-1.jpg"
+                    alt="blog thumbnail 1"
+                    width={300}
+                    height={200}
+                  />
+                </div>
+                <div className="card__content">
+                  <p className="card__content-title">
+                    Mastering the Art of Color Theory: A Visual Designer's Guide
+                  </p>
+                  <span className="card__content-time --block">
+                    May 5, 2023
+                  </span>
+                </div>
+              </li>
+              <li className="scblog__list-card card --horizontal">
+                <div className="card__thumbnail">
+                  <Image
+                    src="/images/blog-1.jpg"
+                    alt="blog thumbnail 1"
+                    width={300}
+                    height={200}
+                  />
+                </div>
+                <div className="card__content">
+                  <p className="card__content-title">
+                    Designing for User Experience: Creating Intuitive and
+                    Engaging Interfaces
+                  </p>
+                  <span className="card__content-time --block">
+                    May 5, 2023
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

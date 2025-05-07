@@ -1,14 +1,53 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Inter_Tight, DM_Mono } from "next/font/google";
+import "./scss/index.scss";
+import MainLayout from "./layout/MainLayout";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter_tight_light = Inter_Tight({
+  variable: "--ff-light",
+  weight: "300",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter_tight_regular = Inter_Tight({
+  variable: "--ff-regular",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const inter_tight_medium = Inter_Tight({
+  variable: "--ff-medium",
+  weight: "500",
+  subsets: ["latin"],
+});
+
+const inter_tight_semibold = Inter_Tight({
+  variable: "--ff-semibold",
+  weight: "600",
+  subsets: ["latin"],
+});
+
+const inter_tight_bold = Inter_Tight({
+  variable: "--ff-bold",
+  weight: "700",
+  subsets: ["latin"],
+});
+
+const dm_mono_light = DM_Mono({
+  variable: "--ff-mono-light",
+  weight: "300",
+  subsets: ["latin"],
+});
+
+const dm_mono_regular = DM_Mono({
+  variable: "--ff-mono-regular",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const dm_mono_medium = DM_Mono({
+  variable: "--ff-mono-medium",
+  weight: "500",
   subsets: ["latin"],
 });
 
@@ -24,8 +63,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+      </head>
+      <body
+        className={`${inter_tight_light.variable} ${inter_tight_regular.variable} ${inter_tight_medium.variable} ${inter_tight_semibold.variable} ${inter_tight_bold.variable} ${dm_mono_light.variable} ${dm_mono_regular.variable} ${dm_mono_medium.variable}`}
+      >
+        <MainLayout>{children}</MainLayout>
       </body>
     </html>
   );
