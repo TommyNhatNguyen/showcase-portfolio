@@ -12,7 +12,10 @@ type HeaderProps = {
 
 const Header = ({ handleToggleHamburger, isHamburgerActive }: HeaderProps) => {
   return (
-    <header className="header" id="header">
+    <header
+      className={clsx("header", isHamburgerActive && "--active")}
+      id="header"
+    >
       <div className="container">
         <div className="header-wrapper">
           {/* Left logo */}
@@ -29,6 +32,7 @@ const Header = ({ handleToggleHamburger, isHamburgerActive }: HeaderProps) => {
               variant="talk"
               icon={FiArrowRight}
               iconPosition="right"
+              className="header__cta-btntalk"
             >
               Let's Talk
             </Button>

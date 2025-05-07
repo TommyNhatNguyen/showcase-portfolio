@@ -22,6 +22,7 @@
     color: var(--neutral-0);
     border-color: transparent;
     .btn__icon {
+      line-height: 0;
       stroke: var(--neutral-0);
       color: var(--neutral-0);
       svg {
@@ -237,4 +238,8 @@ input {
     font-family: var(--ff-regular);
     color: var(--neutral-60);
   }
+}
+
+.btn__icon {
+  line-height: 0;
 }

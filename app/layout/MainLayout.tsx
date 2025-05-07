@@ -3,13 +3,14 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import Navigation from "../components/Navigation";
 
 type Props = {
   children: React.ReactNode;
 };
 
 const MainLayout = ({ children }: Props) => {
-  const [isHamburgerActive, setIsHamburgerActive] = useState(false);
+  const [isHamburgerActive, setIsHamburgerActive] = useState(true);
 
   const handleToggleHamburger = () => {
     setIsHamburgerActive((prev) => !prev);
@@ -18,7 +19,11 @@ const MainLayout = ({ children }: Props) => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
-      if (isHamburgerActive && !target.closest(".btn-hamburger")) {
+      if (
+        isHamburgerActive &&
+        !target.closest(".btn-hamburger") &&
+        !target.closest(".nav__list")
+      ) {
         setIsHamburgerActive(false);
       }
     };
@@ -37,6 +42,7 @@ const MainLayout = ({ children }: Props) => {
       />
       {children}
       <Footer />
+      <Navigation isHamburgerActive={isHamburgerActive} />
     </>
   );
 };
