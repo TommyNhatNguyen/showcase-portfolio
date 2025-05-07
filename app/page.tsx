@@ -16,7 +16,6 @@ export default function Home() {
       // --------------------------------
       // HERO
       // --------------------------------
-      // 1. Scramble text on scroll
       if (!homeRef.current) return;
       const heroSection = homeRef.current.querySelector(
         "#schero"
@@ -64,6 +63,47 @@ export default function Home() {
         duration: 0.3,
         // Give natural feel-smooth but not distracting
         ease: "power1.out",
+      });
+      // --------------------------------
+      // ABOUT
+      // --------------------------------
+      const aboutSection = homeRef.current.querySelector(
+        "#scabout"
+      ) as HTMLElement;
+      const aboutTitle = aboutSection.querySelector(".scabout__content-title");
+      const aboutDesc = aboutSection.querySelector(".scabout__content-desc");
+      const aboutButton = aboutSection.querySelector(".scabout__content-link");
+      const aboutThumbnail = aboutSection.querySelector(".scabout__thumbnail");
+      gsap.set([aboutTitle, aboutDesc, aboutButton], {
+        opacity: 0,
+      });
+      gsap.to([aboutTitle, aboutDesc], {
+        scrollTrigger: {
+          trigger: aboutSection,
+          start: "top +=50%",
+          end: "bottom +=50%",
+          markers: true,
+        },
+        scrambleText: {
+          chars: "upperAndLowerCase",
+          text: "{original}",
+        },
+        duration: 0.6,
+        ease: "none",
+        stagger: 0.3,
+        onStart: () => {
+          gsap.set([aboutTitle, aboutDesc], {
+            opacity: 1,
+          });
+        },
+        onComplete: () => {
+          gsap.to(aboutButton, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power3.out",
+          });
+        },
       });
     },
     {
