@@ -13,6 +13,8 @@ interface ButtonProps {
   icon?: IconType;
   iconPosition?: "left" | "right";
   black?: boolean;
+  isAnimated?: boolean;
+  isRounded?: boolean;
   as?: "button" | "a" | "div";
 }
 
@@ -27,6 +29,8 @@ const Button: React.FC<ButtonProps> = ({
   icon: Icon,
   iconPosition = "right",
   black = false,
+  isAnimated = true,
+  isRounded = true,
   ...props
 }) => {
   const baseClasses = "btn";
@@ -50,9 +54,8 @@ const Button: React.FC<ButtonProps> = ({
     sizeClasses[size],
     black ? "--black" : "",
     className,
-  ]
-    .filter(Boolean)
-    .join(" ");
+    isRounded ? "--rounded" : "",
+  ].join(" ");
 
   const content = (
     <>
@@ -73,14 +76,28 @@ const Button: React.FC<ButtonProps> = ({
   if (href) {
     return (
       <Link href={href} className={buttonClasses} {...props}>
-        {content}
+        {isAnimated ? (
+          <>
+            <div className="content-top">{content}</div>
+            <div className="content-bottom">{content}</div>
+          </>
+        ) : (
+          content
+        )}
       </Link>
     );
   }
 
   return (
     <button type={type} className={buttonClasses} onClick={onClick} {...props}>
-      {content}
+      {isAnimated ? (
+        <>
+          <div className="content-top">{content}</div>
+          <div className="content-bottom">{content}</div>
+        </>
+      ) : (
+        content
+      )}
     </button>
   );
 };

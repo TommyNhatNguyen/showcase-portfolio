@@ -27,7 +27,7 @@ const Header = ({ handleToggleHamburger, isHamburgerActive }: HeaderProps) => {
           {/* Right cta */}
           <div className="header__cta">
             {/* Lets talk button */}
-            <Button
+            {/* <Button
               href="#"
               variant="talk"
               icon={FiArrowRight}
@@ -35,11 +35,11 @@ const Header = ({ handleToggleHamburger, isHamburgerActive }: HeaderProps) => {
               className="header__cta-btntalk"
             >
               Let's Talk
-            </Button>
+            </Button> */}
             {/* Hamburger */}
             <button
               className={clsx(
-                "btn-hamburger btn",
+                "btn-hamburger btn --rounded",
                 isHamburgerActive && "--active"
               )}
               onClick={handleToggleHamburger}

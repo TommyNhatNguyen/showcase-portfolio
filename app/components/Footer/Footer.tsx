@@ -19,6 +19,7 @@ const Footer = () => {
                 className="email"
                 icon={FiArrowUpRight}
                 iconPosition="right"
+                isRounded={false}
               >
                 <p className="email__text">
                   <span className="--gray">nguyenanhnhat123456</span>@gmail.com

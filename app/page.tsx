@@ -24,6 +24,7 @@ export default function Home() {
       const heroTitle = heroSection.querySelector(".schero__title-text");
       const heroDesc = heroSection.querySelector(".schero__desc-text");
       const heroDescLine = heroSection.querySelector(".schero__desc-line");
+      const heroCta = heroSection.querySelector(".schero__cta-button");
       const heroTitleSplit = SplitText.create(heroTitle);
       const tl = gsap.timeline({});
       tl.from([heroDesc, heroTitle], {
@@ -42,11 +43,20 @@ export default function Home() {
         },
         "<+0.6"
       );
+      tl.from(
+        heroCta,
+        {
+          opacity: 0,
+          y: 40,
+          duration: 0.3,
+        },
+        "<+0.6"
+      );
       tl.to(heroTitleSplit.chars, {
         scrollTrigger: {
           trigger: heroSection,
-          start: "top top",
-          end: "+=300",
+          start: "-=96 top",
+          end: "+=120",
           scrub: true,
         },
         color: `var(--neutral-100)`,
@@ -85,7 +95,7 @@ export default function Home() {
           </div>
 
           <div className="schero__cta">
-            <ul className="schero__cta-socials">
+            {/* <ul className="schero__cta-socials">
               <li className="social">
                 <Link href={SOCIAL_LINKS.INSTAGRAM} className="social__link">
                   <span className="social__link-text">Instagram</span>
@@ -110,7 +120,7 @@ export default function Home() {
                   </div>
                 </Link>
               </li>
-            </ul>
+            </ul> */}
 
             <Button
               href="#"
