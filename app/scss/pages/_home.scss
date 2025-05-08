@@ -10,6 +10,8 @@
       &-gray {
       }
     }
+    height: 100vh;
+    max-height: 900px;
     // Description
     &__desc {
       display: flex;
@@ -63,16 +65,18 @@
   .scabout {
     .scabout-wrapper {
       display: flex;
+      align-items: center;
       justify-content: space-between;
       gap: 56px;
     }
     &__thumbnail {
       width: 100%;
       height: 100%;
-      aspect-ratio: 385 / 385;
+      aspect-ratio: 395 / 385;
       max-width: 395px;
       border-radius: 20px;
       overflow: hidden;
+      position: relative;
       img {
         object-fit: cover;
         transition-duration: 0.3s;
@@ -89,6 +93,7 @@
       justify-content: space-between;
       gap: var(--gap);
       flex-direction: column;
+      width: 100%;
       &-desc {
         margin-top: 24px;
       }

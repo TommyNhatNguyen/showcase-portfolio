@@ -8,6 +8,7 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
+import AnimatedThumbnail from "./components/AnimatedThumbnail/AnimatedThumbnail";
 
 export default function Home() {
   const homeRef = useRef<HTMLDivElement>(null);
@@ -51,19 +52,16 @@ export default function Home() {
         },
         "<+0.6"
       );
-      tl.to(heroTitleSplit.chars, {
-        scrollTrigger: {
-          trigger: heroSection,
-          start: "-=96 top",
-          end: "+=120",
-          scrub: true,
+      tl.to(
+        heroTitleSplit.lines,
+        {
+          color: `var(--neutral-100)`,
+          stagger: 0.2,
+          // Give natural feel-smooth but not distracting
+          ease: "power1.inOut",
         },
-        color: `var(--neutral-100)`,
-        stagger: 0.3,
-        duration: 0.3,
-        // Give natural feel-smooth but not distracting
-        ease: "power1.out",
-      });
+        "<-0.3"
+      );
       // --------------------------------
       // ABOUT
       // --------------------------------
@@ -71,40 +69,66 @@ export default function Home() {
         "#scabout"
       ) as HTMLElement;
       const aboutTitle = aboutSection.querySelector(".scabout__content-title");
+      const aboutTitleSplit = SplitText.create(aboutTitle);
       const aboutDesc = aboutSection.querySelector(".scabout__content-desc");
+      const aboutDescSplit = SplitText.create(aboutDesc);
       const aboutButton = aboutSection.querySelector(".scabout__content-link");
-      const aboutThumbnail = aboutSection.querySelector(".scabout__thumbnail");
-      gsap.set([aboutTitle, aboutDesc, aboutButton], {
-        opacity: 0,
-      });
-      gsap.to([aboutTitle, aboutDesc], {
+
+      const aboutTl = gsap.timeline({
         scrollTrigger: {
           trigger: aboutSection,
-          start: "top +=50%",
-          end: "bottom +=50%",
-          markers: true,
-        },
-        scrambleText: {
-          chars: "upperAndLowerCase",
-          text: "{original}",
-        },
-        duration: 0.6,
-        ease: "none",
-        stagger: 0.3,
-        onStart: () => {
-          gsap.set([aboutTitle, aboutDesc], {
-            opacity: 1,
-          });
-        },
-        onComplete: () => {
-          gsap.to(aboutButton, {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            ease: "power3.out",
-          });
+          start: "top +=90%",
+          end: "bottom bottom",
         },
       });
+
+      let aboutTextDuration = 0.3;
+      gsap.set([aboutTitle, aboutDesc, aboutButton], {
+        opacity: 0,
+        y: 40,
+      });
+      aboutTl
+        .to(
+          [aboutTitle],
+          {
+            opacity: 1,
+            y: 0,
+            duration: aboutTextDuration,
+          },
+          "<+0.3"
+        )
+        .to(
+          aboutDesc,
+          {
+            opacity: 1,
+            y: 0,
+            duration: aboutTextDuration * 2,
+          },
+          "<"
+        )
+        .to(
+          aboutButton,
+          {
+            opacity: 1,
+            y: 0,
+            duration: aboutTextDuration * 2.5,
+          },
+          "<"
+        )
+        .to(
+          [aboutTitleSplit.lines, aboutDescSplit.lines],
+          {
+            scrambleText: {
+              text: "{original}",
+              chars: "//ai",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: "none",
+          },
+          "<-50%"
+        );
     },
     {
       scope: homeRef,
@@ -179,14 +203,13 @@ export default function Home() {
       <section className="scabout --ptb" id="scabout">
         <div className="container">
           <div className="scabout-wrapper">
-            <div className="scabout__thumbnail">
-              <Image
-                src="/images/thumbnail.jpg"
-                alt="My thumbnail"
-                width={500}
-                height={300}
-              />
-            </div>
+            <AnimatedThumbnail
+              src="/images/thumbnail.jpg"
+              alt="My thumbnail"
+              width={500}
+              height={300}
+              className="scabout__thumbnail"
+            />
 
             <div className="scabout__content">
               <div className="scabout__content-wrapper">
@@ -224,7 +247,7 @@ export default function Home() {
             <ul className="scwork__list">
               <li className="scwork__list-item cardwork">
                 <Link href="#" className="cardwork__thumbnail">
-                  <Image
+                  <AnimatedThumbnail
                     src="/images/project-1.jpg"
                     alt="project 1"
                     width={400}
@@ -251,7 +274,7 @@ export default function Home() {
               </li>
               <li className="scwork__list-item cardwork">
                 <Link href="#" className="cardwork__thumbnail">
-                  <Image
+                  <AnimatedThumbnail
                     src="/images/project-2.jpg"
                     alt="project 2"
                     width={400}
@@ -278,7 +301,7 @@ export default function Home() {
               </li>
               <li className="scwork__list-item cardwork">
                 <Link href="#" className="cardwork__thumbnail">
-                  <Image
+                  <AnimatedThumbnail
                     src="/images/project-3.jpg"
                     alt="project 3"
                     width={400}
@@ -305,7 +328,7 @@ export default function Home() {
               </li>
               <li className="scwork__list-item cardwork">
                 <Link href="#" className="cardwork__thumbnail">
-                  <Image
+                  <AnimatedThumbnail
                     src="/images/project-4.jpg"
                     alt="project 4"
                     width={400}
@@ -332,7 +355,7 @@ export default function Home() {
               </li>
               <li className="scwork__list-item cardwork">
                 <Link href="#" className="cardwork__thumbnail">
-                  <Image
+                  <AnimatedThumbnail
                     src="/images/project-5.jpg"
                     alt="project 5"
                     width={400}
