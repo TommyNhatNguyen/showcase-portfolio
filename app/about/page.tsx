@@ -259,6 +259,10 @@ export default function About() {
       ) as HTMLElement;
       const ctaTitle = ctaSection.querySelector(".sccta__title-text");
       const ctaTitleSplit = SplitText.create(ctaTitle);
+      const ctaLinks = gsap.utils.toArray(
+        ".sccta__links-item"
+      ) as HTMLElement[];
+      const ctaButton = ctaSection.querySelector(".btn-talk") as HTMLElement;
       const ctaTl = gsap.timeline({
         scrollTrigger: {
           trigger: ctaSection,
@@ -266,16 +270,26 @@ export default function About() {
           end: "top bottom",
         },
       });
-      gsap.set(ctaTitle, {
+      gsap.set([ctaTitle, ctaLinks, ctaButton], {
         opacity: 0,
         y: 40,
       });
-      ctaTl.to(ctaTitle, {
+      ctaTl.to(ctaLinks, {
         opacity: 1,
         y: 0,
-        duration: 0.8,
-        ease: "power3.out",
+        duration: 0.6,
+        stagger: 0.15,
       });
+      ctaTl.to(
+        ctaTitle,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+        },
+        "<+0.3"
+      );
       ctaTl.to(
         ctaTitleSplit.lines,
         {
@@ -295,6 +309,15 @@ export default function About() {
           stagger: 0.2,
           duration: 0.3,
           ease: "power1.inOut",
+        },
+        "<+0.3"
+      );
+      ctaTl.to(
+        ctaButton,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
         },
         "<+0.3"
       );

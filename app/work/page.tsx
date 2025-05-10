@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ROUTES } from "../constants/links";
 
 export default function Work() {
   return (
