@@ -2,27 +2,40 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
+import clsx from "clsx";
 
 export default function Work() {
   const workRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const toggleActive = (index: number) => {
+    setActiveIndex((prev) => (prev === index ? null : index));
+  };
+
   useGSAP(
     () => {
       if (!workRef.current) return;
       const heroSection = workRef.current.querySelector(
         "#schero"
       ) as HTMLElement;
+      const workSection = workRef.current.querySelector(
+        "#scwork"
+      ) as HTMLElement;
       const heroTitle = heroSection.querySelector(".schero__title-text");
       const heroTitleSplit = SplitText.create(heroTitle);
       const skillsItems = gsap.utils.toArray(
         ".schero__skills-item"
       ) as HTMLElement[];
+      const workItems = gsap.utils.toArray(
+        ".scwork__list-item"
+      ) as HTMLElement[];
 
       const tl = gsap.timeline({});
 
-      gsap.set([heroTitle, skillsItems], {
+      gsap.set([heroTitle, skillsItems, workItems], {
         opacity: 0,
         y: 40,
       });
@@ -70,6 +83,24 @@ export default function Work() {
         },
         "<+0.1"
       );
+
+      // Animate work items
+      tl.to(
+        workItems,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: workSection,
+            start: "top bottom",
+            end: "top center",
+          },
+        },
+        "<+0.3"
+      );
     },
     {
       scope: workRef,
@@ -111,276 +142,70 @@ export default function Work() {
         <div className="container">
           <div className="scwork-wrapper">
             <ul className="scwork__list">
-              <li className="scwork__list-item --active">
-                {/* Content */}
-                <div className="content">
-                  <div className="content__info">
-                    <span className="content__info-title --block">Sportly</span>
-                    <span className="content__info-time --block">
-                      May 5, 2023
-                    </span>
+              {[1, 2, 3, 4, 5].map((item, index) => (
+                <li
+                  key={index}
+                  className={clsx("scwork__list-item", {
+                    "--active": activeIndex === index,
+                  })}
+                  onClick={() => toggleActive(index)}
+                >
+                  {/* Content */}
+                  <div className="content">
+                    <div className="content__info">
+                      <span className="content__info-title --block">
+                        Sportly
+                      </span>
+                      <span className="content__info-time --block">
+                        May 5, 2023
+                      </span>
+                    </div>
+                    <div className="content__desc">
+                      <p className="content__desc-text">
+                        Website Redesign: Improving user experience and
+                        modernizing design.
+                      </p>
+                      <ul className="content__desc-tags">
+                        <li>UIUX</li>
+                        <li>Branding</li>
+                      </ul>
+                    </div>
                   </div>
-                  <div className="content__desc">
-                    <p className="content__desc-text">
-                      Website Redesign: Improving user experience and
-                      modernizing design.
-                    </p>
-                    <ul className="content__desc-tags">
-                      <li>UIUX</li>
-                      <li>Branding</li>
-                    </ul>
-                  </div>
-                </div>
-                {/* Thumbnail */}
-                <Link href="#" className="thumbnail">
-                  <Image
-                    src="/images/project-1.jpg"
-                    alt="Sportly"
-                    width={400}
-                    height={300}
-                  />
-                  <div className="thumbnail__btn btn --md --btn-icon">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.125 10H16.875"
-                        stroke="#030712"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M11.25 4.375L16.875 10L11.25 15.625"
-                        stroke="#030712"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </Link>
-              </li>
-              <li className="scwork__list-item">
-                {/* Content */}
-                <div className="content">
-                  <div className="content__info">
-                    <span className="content__info-title --block">Sportly</span>
-                    <span className="content__info-time --block">
-                      May 5, 2023
-                    </span>
-                  </div>
-                  <div className="content__desc">
-                    <p className="content__desc-text">
-                      Website Redesign: Improving user experience and
-                      modernizing design.
-                    </p>
-                    <ul className="content__desc-tags">
-                      <li>UIUX</li>
-                      <li>Branding</li>
-                    </ul>
-                  </div>
-                </div>
-                {/* Thumbnail */}
-                <Link href="#" className="thumbnail">
-                  <Image
-                    src="/images/project-1.jpg"
-                    alt="Sportly"
-                    width={400}
-                    height={300}
-                  />
-                  <div className="thumbnail__btn btn --md --btn-icon">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.125 10H16.875"
-                        stroke="#030712"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M11.25 4.375L16.875 10L11.25 15.625"
-                        stroke="#030712"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </Link>
-              </li>
-              <li className="scwork__list-item">
-                {/* Content */}
-                <div className="content">
-                  <div className="content__info">
-                    <span className="content__info-title --block">Sportly</span>
-                    <span className="content__info-time --block">
-                      May 5, 2023
-                    </span>
-                  </div>
-                  <div className="content__desc">
-                    <p className="content__desc-text">
-                      Website Redesign: Improving user experience and
-                      modernizing design.
-                    </p>
-                    <ul className="content__desc-tags">
-                      <li>UIUX</li>
-                      <li>Branding</li>
-                    </ul>
-                  </div>
-                </div>
-                {/* Thumbnail */}
-                <Link href="#" className="thumbnail">
-                  <Image
-                    src="/images/project-1.jpg"
-                    alt="Sportly"
-                    width={400}
-                    height={300}
-                  />
-                  <div className="thumbnail__btn btn --md --btn-icon">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.125 10H16.875"
-                        stroke="#030712"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M11.25 4.375L16.875 10L11.25 15.625"
-                        stroke="#030712"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </Link>
-              </li>
-              <li className="scwork__list-item">
-                {/* Content */}
-                <div className="content">
-                  <div className="content__info">
-                    <span className="content__info-title --block">Sportly</span>
-                    <span className="content__info-time --block">
-                      May 5, 2023
-                    </span>
-                  </div>
-                  <div className="content__desc">
-                    <p className="content__desc-text">
-                      Website Redesign: Improving user experience and
-                      modernizing design.
-                    </p>
-                    <ul className="content__desc-tags">
-                      <li>UIUX</li>
-                      <li>Branding</li>
-                    </ul>
-                  </div>
-                </div>
-                {/* Thumbnail */}
-                <Link href="#" className="thumbnail">
-                  <Image
-                    src="/images/project-1.jpg"
-                    alt="Sportly"
-                    width={400}
-                    height={300}
-                  />
-                  <div className="thumbnail__btn btn --md --btn-icon">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.125 10H16.875"
-                        stroke="#030712"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M11.25 4.375L16.875 10L11.25 15.625"
-                        stroke="#030712"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </Link>
-              </li>
-              <li className="scwork__list-item">
-                {/* Content */}
-                <div className="content">
-                  <div className="content__info">
-                    <span className="content__info-title --block">Sportly</span>
-                    <span className="content__info-time --block">
-                      May 5, 2023
-                    </span>
-                  </div>
-                  <div className="content__desc">
-                    <p className="content__desc-text">
-                      Website Redesign: Improving user experience and
-                      modernizing design.
-                    </p>
-                    <ul className="content__desc-tags">
-                      <li>UIUX</li>
-                      <li>Branding</li>
-                    </ul>
-                  </div>
-                </div>
-                {/* Thumbnail */}
-                <Link href="#" className="thumbnail">
-                  <Image
-                    src="/images/project-1.jpg"
-                    alt="Sportly"
-                    width={400}
-                    height={300}
-                  />
-                  <div className="thumbnail__btn btn --md --btn-icon">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.125 10H16.875"
-                        stroke="#030712"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M11.25 4.375L16.875 10L11.25 15.625"
-                        stroke="#030712"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </Link>
-              </li>
+                  {/* Thumbnail */}
+                  <Link href="#" className="thumbnail">
+                    <Image
+                      src="/images/project-1.jpg"
+                      alt="Sportly"
+                      width={400}
+                      height={300}
+                    />
+                    <div className="thumbnail__btn btn --md --btn-icon">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3.125 10H16.875"
+                          stroke="#030712"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M11.25 4.375L16.875 10L11.25 15.625"
+                          stroke="#030712"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
