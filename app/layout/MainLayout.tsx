@@ -6,7 +6,12 @@ import Footer from "../components/Footer/Footer";
 import Navigation from "../components/Navigation";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrambleTextPlugin, ScrollTrigger, SplitText } from "gsap/all";
+import {
+  ScrambleTextPlugin,
+  ScrollTrigger,
+  SplitText,
+  TextPlugin,
+} from "gsap/all";
 import { usePathname } from "next/navigation";
 
 type Props = {
@@ -18,6 +23,7 @@ const MainLayout = ({ children }: Props) => {
   gsap.registerPlugin(ScrollTrigger);
   gsap.registerPlugin(ScrambleTextPlugin);
   gsap.registerPlugin(SplitText);
+  gsap.registerPlugin(TextPlugin);
   const [isHamburgerActive, setIsHamburgerActive] = useState(false);
   const path = usePathname();
   const handleToggleHamburger = () => {
@@ -28,10 +34,10 @@ const MainLayout = ({ children }: Props) => {
   const handleHideHamburger = () => {
     setIsHamburgerActive(false);
     document.body.classList.remove("--disable-scroll");
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    // window.scrollTo({
+    //   top: 0,
+    //   behavior: "smooth",
+    // });
   };
 
   useEffect(() => {

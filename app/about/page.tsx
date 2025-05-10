@@ -7,6 +7,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import AnimatedThumbnail from "../components/AnimatedThumbnail/AnimatedThumbnail";
+import { extractNumber } from "../utils/extractNumber";
 
 export default function About() {
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -33,6 +34,13 @@ export default function About() {
       ) as HTMLElement[];
       const heroInfoHeadLineSplit = SplitText.create(heroInfoHeadline);
       const tl = gsap.timeline({});
+      const heroInfoTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroInfo,
+          start: "top bottom",
+          end: "top bottom",
+        },
+      });
       gsap.set(
         [heroDesc, heroTitle, heroContent, heroInfoHeadline, heroInfoDescItems],
         {
@@ -79,15 +87,6 @@ export default function About() {
         },
         "<"
       );
-
-      const heroInfoTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: heroInfo,
-          start: "top bottom",
-          end: "top bottom",
-          markers: true,
-        },
-      });
       heroInfoTl
         .to(heroInfoHeadline, {
           opacity: 1,
@@ -131,6 +130,81 @@ export default function About() {
             "<-50%"
           );
       });
+      // --------------------------------
+      // EXPERIENCE
+      // --------------------------------
+      const experienceSection = aboutRef.current.querySelector(
+        "#scexperience"
+      ) as HTMLElement;
+      const experienceList = gsap.utils.toArray(
+        ".scexperience__list-item"
+      ) as HTMLElement[];
+      const experienceListTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: experienceSection,
+          start: "top bottom",
+          end: "top bottom",
+          markers: true,
+        },
+      });
+      gsap.set(experienceList, {
+        opacity: 0,
+        y: 40,
+      });
+      experienceListTl.to(experienceList, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.3,
+      });
+      experienceList.forEach((item, index) => {
+        const title = item.querySelector(".content__title") as HTMLElement;
+        const year = item.querySelector(".year") as HTMLElement;
+        const desc = item.querySelector(".content__desc") as HTMLElement;
+        experienceListTl.to(
+          title,
+          {
+            scrambleText: {
+              text: "{original}",
+              chars: "//ai",
+            },
+            duration: 0.9 * (index + 1),
+            ease: "none",
+          },
+          `<-${10 * (index + 1)}%`
+        );
+        experienceListTl.to(
+          year,
+          {
+            scrambleText: {
+              text: "{original}",
+              chars: "//ai",
+            },
+            duration: 0.9,
+            ease: "none",
+          },
+          "<-10%"
+        );
+        experienceListTl.to(
+          desc,
+          {
+            scrambleText: {
+              text: "{original}",
+              chars: "//ai",
+            },
+            duration: 0.9,
+            ease: "none",
+          },
+          "<-10%"
+        );
+      });
+      // --------------------------------
+      // CLIENTS
+      // --------------------------------
+
+      // --------------------------------
+      // CTA
+      // --------------------------------
     },
     {
       scope: aboutRef,
