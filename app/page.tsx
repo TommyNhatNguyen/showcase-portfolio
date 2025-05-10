@@ -10,6 +10,7 @@ import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import AnimatedThumbnail from "./components/AnimatedThumbnail/AnimatedThumbnail";
 import HideTextWrapper from "./components/HideTextWrapper/HideTextWrapper";
+import AnimatedTextHover from "./components/AnimatedTextHover";
 
 export default function Home() {
   const homeRef = useRef<HTMLDivElement>(null);
@@ -547,9 +548,11 @@ export default function Home() {
                 <HideTextWrapper>
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
-                      <Link href="#" className="title">
-                        Sportly
-                      </Link>
+                      <AnimatedTextHover>
+                        <Link href="#" className="title">
+                          Sportly
+                        </Link>
+                      </AnimatedTextHover>
                       <p className="desc">Mobile App Design</p>
                     </div>
 
