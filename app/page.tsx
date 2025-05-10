@@ -9,6 +9,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import AnimatedThumbnail from "./components/AnimatedThumbnail/AnimatedThumbnail";
+import HideTextWrapper from "./components/HideTextWrapper/HideTextWrapper";
 
 export default function Home() {
   const homeRef = useRef<HTMLDivElement>(null);
@@ -81,12 +82,7 @@ export default function Home() {
           end: "bottom bottom",
         },
       });
-
       let aboutTextDuration = 0.3;
-      gsap.set([aboutTitle, aboutDesc, aboutButton], {
-        opacity: 0,
-        y: 40,
-      });
       aboutTl
         .to(
           [aboutTitle],
@@ -213,25 +209,31 @@ export default function Home() {
 
             <div className="scabout__content">
               <div className="scabout__content-wrapper">
-                <h2 className="scabout__content-title">
-                  Design that sparks engagement and inspires action
-                </h2>
-                <p className="scabout__content-desc para">
-                  Concentrate on your primary objective which is expanding your
-                  business, and leave it to me to ensure that your business is
-                  efficiently portrayed in the digital realm and distinguishes
-                  itself from the rivals.
-                </p>
+                <HideTextWrapper>
+                  <h2 className="scabout__content-title">
+                    Design that sparks engagement and inspires action
+                  </h2>
+                </HideTextWrapper>
+                <HideTextWrapper>
+                  <p className="scabout__content-desc para">
+                    Concentrate on your primary objective which is expanding
+                    your business, and leave it to me to ensure that your
+                    business is efficiently portrayed in the digital realm and
+                    distinguishes itself from the rivals.
+                  </p>
+                </HideTextWrapper>
               </div>
-              <Button
-                href={ROUTES.ABOUT}
-                variant="link"
-                className="scabout__content-link"
-                icon={FiArrowRight}
-                iconPosition="right"
-              >
-                About Me
-              </Button>
+              <HideTextWrapper>
+                <Button
+                  href={ROUTES.ABOUT}
+                  variant="link"
+                  className="scabout__content-link"
+                  icon={FiArrowRight}
+                  iconPosition="right"
+                >
+                  About Me
+                </Button>
+              </HideTextWrapper>
             </div>
           </div>
         </div>
