@@ -125,6 +125,152 @@ export default function Home() {
           },
           "<-50%"
         );
+      // --------------------------------
+      // WORKS
+      // --------------------------------
+      const worksSection = homeRef.current.querySelector(
+        "#scwork"
+      ) as HTMLElement;
+      const worksTitle = worksSection.querySelector(".scwork__title");
+      const worksTitleSplit = SplitText.create(worksTitle);
+      const workListItems = gsap.utils.toArray(
+        ".scwork__list-item"
+      ) as HTMLElement[];
+      const workTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: worksSection,
+          start: "top +=90%",
+          end: "bottom bottom",
+        },
+      });
+      workTl
+        .to(worksTitle, {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+        })
+        .to(
+          worksTitleSplit.lines,
+          {
+            scrambleText: {
+              text: "{original}",
+              chars: "//ai",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: "none",
+          },
+          "<-50%"
+        );
+      const workListFirstGroup = workListItems.slice(0, 3);
+      const workListMidGroup = workListItems.slice(3, 4);
+      const workListLastGroup = workListItems.slice(4);
+      workListFirstGroup.forEach((item) => {
+        const content = item.querySelector(".cardwork__content");
+        const contentTitle = content?.querySelector(
+          ".cardwork__content-desc .title"
+        );
+        const contentDesc = content?.querySelector(
+          ".cardwork__content-desc .desc"
+        );
+        gsap.to(content, {
+          scrollTrigger: {
+            trigger: item,
+            start: "top +=70%",
+            end: "bottom bottom",
+            markers: true,
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+        });
+        gsap.to([contentTitle, contentDesc], {
+          scrollTrigger: {
+            trigger: item,
+            start: "top +=70%",
+            end: "bottom bottom",
+            markers: true,
+          },
+          scrambleText: {
+            text: "{original}",
+            chars: "//ai",
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+        });
+      });
+      workListMidGroup.forEach((item) => {
+        const content = item.querySelector(".cardwork__content");
+        const contentTitle = content?.querySelector(
+          ".cardwork__content-desc .title"
+        );
+        const contentDesc = content?.querySelector(
+          ".cardwork__content-desc .desc"
+        );
+        gsap.to(content, {
+          scrollTrigger: {
+            trigger: item,
+            start: "top +=70%",
+            end: "bottom bottom",
+            markers: true,
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+        });
+        gsap.to([contentTitle, contentDesc], {
+          scrollTrigger: {
+            trigger: item,
+            start: "top +=70%",
+            end: "bottom bottom",
+            markers: true,
+          },
+          scrambleText: {
+            text: "{original}",
+            chars: "//ai",
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+        });
+      });
+      workListLastGroup.forEach((item) => {
+        const content = item.querySelector(".cardwork__content");
+        const contentTitle = content?.querySelector(
+          ".cardwork__content-desc .title"
+        );
+        const contentDesc = content?.querySelector(
+          ".cardwork__content-desc .desc"
+        );
+        gsap.to(content, {
+          scrollTrigger: {
+            trigger: item,
+            start: "top +=70%",
+            end: "bottom bottom",
+            markers: true,
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+        });
+        gsap.to([contentTitle, contentDesc], {
+          scrollTrigger: {
+            trigger: item,
+            start: "top +=70%",
+            end: "bottom bottom",
+            markers: true,
+          },
+          scrambleText: {
+            text: "{original}",
+            chars: "//ai",
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+        });
+      });
     },
     {
       scope: homeRef,
@@ -242,9 +388,11 @@ export default function Home() {
       <section className="scwork --ptb" id="scwork">
         <div className="container">
           <div className="scwork-wrapper">
-            <h2 className="scwork__title">
-              <strong>Discover my latest works</strong>
-            </h2>
+            <HideTextWrapper>
+              <h2 className="scwork__title">
+                <strong>Discover my latest works</strong>
+              </h2>
+            </HideTextWrapper>
 
             <ul className="scwork__list">
               <li className="scwork__list-item cardwork">
@@ -257,22 +405,24 @@ export default function Home() {
                   />
                 </Link>
 
-                <div className="cardwork__content">
-                  <div className="cardwork__content-desc">
-                    <Link href="#" className="title">
-                      Sportly
-                    </Link>
-                    <p className="desc">Mobile App Design</p>
-                  </div>
+                <HideTextWrapper>
+                  <div className="cardwork__content">
+                    <div className="cardwork__content-desc">
+                      <Link href="#" className="title">
+                        Sportly
+                      </Link>
+                      <p className="desc">Mobile App Design</p>
+                    </div>
 
-                  <Button
-                    href="#"
-                    variant="icon"
-                    size="md"
-                    className="cardwork__content-btn"
-                    icon={FiArrowRight}
-                  />
-                </div>
+                    <Button
+                      href="#"
+                      variant="icon"
+                      size="md"
+                      className="cardwork__content-btn"
+                      icon={FiArrowRight}
+                    />
+                  </div>
+                </HideTextWrapper>
               </li>
               <li className="scwork__list-item cardwork">
                 <Link href="#" className="cardwork__thumbnail">
@@ -283,23 +433,24 @@ export default function Home() {
                     height={300}
                   />
                 </Link>
+                <HideTextWrapper>
+                  <div className="cardwork__content">
+                    <div className="cardwork__content-desc">
+                      <Link href="#" className="title">
+                        Payrole
+                      </Link>
+                      <p className="desc">Mobile App Design</p>
+                    </div>
 
-                <div className="cardwork__content">
-                  <div className="cardwork__content-desc">
-                    <Link href="#" className="title">
-                      Payrole
-                    </Link>
-                    <p className="desc">Mobile App Design</p>
+                    <Button
+                      href="#"
+                      variant="icon"
+                      size="md"
+                      className="cardwork__content-btn"
+                      icon={FiArrowRight}
+                    />
                   </div>
-
-                  <Button
-                    href="#"
-                    variant="icon"
-                    size="md"
-                    className="cardwork__content-btn"
-                    icon={FiArrowRight}
-                  />
-                </div>
+                </HideTextWrapper>
               </li>
               <li className="scwork__list-item cardwork">
                 <Link href="#" className="cardwork__thumbnail">
