@@ -1,16 +1,91 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { ROUTES } from "../constants/links";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
+import gsap from "gsap";
+import { SplitText } from "gsap/all";
 
 export default function About() {
+  const aboutRef = useRef<HTMLDivElement>(null);
+  useGSAP(
+    () => {
+      // --------------------------------
+      // HERO
+      // --------------------------------
+      if (!aboutRef.current) return;
+      const heroSection = aboutRef.current.querySelector(
+        "#schero"
+      ) as HTMLElement;
+      const heroTitle = heroSection.querySelector(".schero__title-text");
+      const heroDesc = heroSection.querySelector(".schero__desc");
+      const heroContent = heroSection.querySelector(".schero__content");
+      const heroTitleSplit = SplitText.create(heroTitle);
+      const heroDescSplit = SplitText.create(heroDesc);
+
+      const tl = gsap.timeline({});
+      gsap.set([heroDesc, heroTitle, heroContent], {
+        opacity: 0,
+        y: 40,
+      });
+
+      tl.to([heroDesc, heroTitle], {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.2,
+      });
+
+      tl.to(
+        [heroDescSplit.lines, heroTitleSplit.lines],
+        {
+          scrambleText: {
+            text: "{original}",
+            chars: "//ai",
+          },
+          duration: 0.9,
+          ease: "none",
+        },
+        "<-10%"
+      );
+
+      tl.to(
+        heroTitleSplit.lines,
+        {
+          color: `var(--neutral-100)`,
+          stagger: 0.2,
+          duration: 0.3,
+          ease: "power1.inOut",
+        },
+        "<+0.3"
+      );
+
+      tl.to(
+        heroContent,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          delay: 0.2,
+        },
+        "<"
+      );
+    },
+    {
+      scope: aboutRef,
+    }
+  );
+
   return (
-    <main className="about" id="main">
+    <main className="about" id="main" ref={aboutRef}>
       {/* Hero */}
       <section className="schero --ptb" id="schero">
         <div className="container">
           {/* Title */}
           <div className="schero__title">
-            <h1 className="schero__title-text">
+            <h1 className="schero__title-text --gray">
               <strong>
                 <span className="--gray">About me,</span> a Visual Designer
                 living in Munich
