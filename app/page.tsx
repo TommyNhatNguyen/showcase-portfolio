@@ -578,9 +578,11 @@ export default function Home() {
                 <HideTextWrapper>
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
-                      <Link href="#" className="title">
-                        Payrole
-                      </Link>
+                      <AnimatedTextHover>
+                        <Link href="#" className="title">
+                          Payrole
+                        </Link>
+                      </AnimatedTextHover>
                       <p className="desc">Mobile App Design</p>
                     </div>
 
@@ -606,9 +608,11 @@ export default function Home() {
 
                 <div className="cardwork__content">
                   <div className="cardwork__content-desc">
-                    <Link href="#" className="title">
-                      Wepay
-                    </Link>
+                    <AnimatedTextHover>
+                      <Link href="#" className="title">
+                        Wepay
+                      </Link>
+                    </AnimatedTextHover>
                     <p className="desc">Mobile App Design</p>
                   </div>
 
@@ -633,9 +637,11 @@ export default function Home() {
 
                 <div className="cardwork__content">
                   <div className="cardwork__content-desc">
-                    <Link href="#" className="title">
-                      Estatery
-                    </Link>
+                    <AnimatedTextHover>
+                      <Link href="#" className="title">
+                        Estatery
+                      </Link>
+                    </AnimatedTextHover>
                     <p className="desc">Mobile App Design</p>
                   </div>
 
@@ -660,9 +666,11 @@ export default function Home() {
 
                 <div className="cardwork__content">
                   <div className="cardwork__content-desc">
-                    <Link href="#" className="title">
-                      Sportly
-                    </Link>
+                    <AnimatedTextHover>
+                      <Link href="#" className="title">
+                        Sportly
+                      </Link>
+                    </AnimatedTextHover>
                     <p className="desc">Mobile App Design</p>
                   </div>
 
@@ -810,9 +818,12 @@ export default function Home() {
                   />
                 </Link>
                 <div className="card__content">
-                  <Link href={"#"} className="card__content-title">
-                    Mastering the Art of Color Theory: A Visual Designer's Guide
-                  </Link>
+                  <AnimatedTextHover>
+                    <Link href={"#"} className="card__content-title">
+                      Mastering the Art of Color Theory: A Visual Designer's
+                      Guide
+                    </Link>
+                  </AnimatedTextHover>
                   <span className="card__content-time --block">
                     May 5, 2023
                   </span>
@@ -828,10 +839,12 @@ export default function Home() {
                   />
                 </Link>
                 <div className="card__content">
-                  <Link href={"#"} className="card__content-title">
-                    Designing for User Experience: Creating Intuitive and
-                    Engaging Interfaces
-                  </Link>
+                  <AnimatedTextHover>
+                    <Link href={"#"} className="card__content-title">
+                      Designing for User Experience: Creating Intuitive and
+                      Engaging Interfaces
+                    </Link>
+                  </AnimatedTextHover>
                   <span className="card__content-time --block">
                     May 5, 2023
                   </span>
