@@ -27,42 +27,61 @@ export default function Home() {
       const heroDescLine = heroSection.querySelector(".schero__desc-line");
       const heroCta = heroSection.querySelector(".schero__cta-button");
       const heroTitleSplit = SplitText.create(heroTitle);
+      const heroDescSplit = SplitText.create(heroDesc);
       const tl = gsap.timeline({});
-      tl.from([heroDesc, heroTitle], {
+      gsap.set([heroDesc, heroTitle, heroCta], {
         opacity: 0,
         y: 40,
-        duration: 1.2,
-        ease: "power3.out",
-        stagger: 0.3,
       });
-      tl.from(
-        heroDescLine,
+      tl.to([heroDesc, heroTitle], {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.2,
+      });
+      tl.to(
+        [heroDescSplit.lines, heroTitleSplit.lines],
         {
-          width: 0,
-          duration: 1.2,
-          ease: "power3.out",
+          scrambleText: {
+            text: "{original}",
+            chars: "//ai",
+          },
+          duration: 0.9,
+          ease: "none",
         },
-        "<+0.6"
-      );
-      tl.from(
-        heroCta,
-        {
-          opacity: 0,
-          y: 40,
-          duration: 0.3,
-        },
-        "<+0.6"
+        "<-10%"
       );
       tl.to(
         heroTitleSplit.lines,
         {
           color: `var(--neutral-100)`,
           stagger: 0.2,
-          // Give natural feel-smooth but not distracting
+          duration: 0.3,
           ease: "power1.inOut",
         },
-        "<-0.3"
+        "<+0.3"
       );
+      tl.to(
+        heroCta,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          delay: 0.2,
+        },
+        "<"
+      );
+      tl.from(
+        heroDescLine,
+        {
+          width: 0,
+          duration: 0.3,
+          ease: "power3.inOut",
+        },
+        "<"
+      );
+
       // --------------------------------
       // ABOUT
       // --------------------------------
@@ -322,8 +341,71 @@ export default function Home() {
         {
           opacity: 1,
           y: 0,
-          duration: 0.3,
-          stagger: 0.15,
+          duration: 0.9,
+          stagger: 0.3,
+        },
+        "<"
+      );
+      // --------------------------------
+      // BLOG
+      // --------------------------------
+      const blogSection = homeRef.current.querySelector(
+        "#scblog"
+      ) as HTMLElement;
+      const blogTitle = blogSection.querySelector(
+        ".scblog__title .titlegroup__title"
+      );
+      const blogTitleSplit = SplitText.create(blogTitle);
+      const blogBtn = blogSection.querySelector(".scblog__btn");
+      const blogListItems = gsap.utils.toArray(
+        ".scblog__list-card"
+      ) as HTMLElement[];
+      const blogTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: blogSection,
+          start: "top +=90%",
+          end: "bottom bottom",
+        },
+      });
+      gsap.to([blogBtn, blogListItems], {
+        opacity: 0,
+        y: 40,
+        duration: 0,
+      });
+      blogTl.to(blogTitle, {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+      });
+      blogTl.to(
+        blogTitleSplit.lines,
+        {
+          scrambleText: {
+            text: "{original}",
+            chars: "//ai",
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+        },
+        "<-50%"
+      );
+      blogTl.to(
+        blogBtn,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+        },
+        "<"
+      );
+      blogTl.to(
+        blogListItems,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          stagger: 0.3,
         },
         "<"
       );
@@ -432,6 +514,7 @@ export default function Home() {
                   className="scabout__content-link"
                   icon={FiArrowRight}
                   iconPosition="right"
+                  isRounded={false}
                 >
                   About Me
                 </Button>
@@ -597,7 +680,8 @@ export default function Home() {
                 variant="link"
                 className="scwork__btnviewall"
                 icon={FiArrowRight}
-                black
+                black={true}
+                isRounded={false}
               >
                 View All Works
               </Button>
@@ -697,13 +781,16 @@ export default function Home() {
         <div className="container">
           <div className="scblog-wrapper">
             <div className="titlegroup scblog__title">
-              <h5 className="titlegroup__title">Latest Insights</h5>
+              <HideTextWrapper>
+                <h5 className="titlegroup__title">Latest Insights</h5>
+              </HideTextWrapper>
 
               <Button
                 href={ROUTES.BLOG}
                 variant="link"
                 className="btn --btn-link titlegroup__btn scblog__btn"
                 icon={FiArrowRight}
+                isRounded={false}
               >
                 View All Insights
               </Button>
@@ -711,37 +798,37 @@ export default function Home() {
 
             <ul className="scblog__list">
               <li className="scblog__list-card card --horizontal">
-                <div className="card__thumbnail">
+                <Link href={"#"} className="card__thumbnail">
                   <Image
                     src="/images/blog-1.jpg"
                     alt="blog thumbnail 1"
                     width={300}
                     height={200}
                   />
-                </div>
+                </Link>
                 <div className="card__content">
-                  <p className="card__content-title">
+                  <Link href={"#"} className="card__content-title">
                     Mastering the Art of Color Theory: A Visual Designer's Guide
-                  </p>
+                  </Link>
                   <span className="card__content-time --block">
                     May 5, 2023
                   </span>
                 </div>
               </li>
               <li className="scblog__list-card card --horizontal">
-                <div className="card__thumbnail">
+                <Link href={"#"} className="card__thumbnail">
                   <Image
                     src="/images/blog-1.jpg"
                     alt="blog thumbnail 1"
                     width={300}
                     height={200}
                   />
-                </div>
+                </Link>
                 <div className="card__content">
-                  <p className="card__content-title">
+                  <Link href={"#"} className="card__content-title">
                     Designing for User Experience: Creating Intuitive and
                     Engaging Interfaces
-                  </p>
+                  </Link>
                   <span className="card__content-time --block">
                     May 5, 2023
                   </span>

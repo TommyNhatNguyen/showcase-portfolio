@@ -21,11 +21,13 @@
       margin-top: 40px;
       &-line {
         margin-top: 23px;
+        max-width: 50%;
       }
       &-text {
         font-size: var(--fs-body-md);
         color: var(--neutral-70);
         max-width: 548px;
+        min-width: 548px;
       }
     }
     // CTA
@@ -176,6 +178,9 @@
     &__title {
       padding-bottom: 32px;
       border-bottom: 1px solid var(--neutral-20);
+    }
+    &__btn {
+      flex-shrink: 0;
     }
     &__list {
       margin-top: 40px;
