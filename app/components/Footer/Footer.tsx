@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ROUTES, SOCIAL_LINKS } from "../../constants/links";
 import Button from "../Button/Button";
 import { FiArrowUpRight } from "react-icons/fi";
+import AnimatedTextHover from "../AnimatedTextHover";
 
 const Footer = () => {
   return (
@@ -38,22 +39,22 @@ const Footer = () => {
             <ul className="sitemap">
               <li className="sitemap__item">
                 <Link href={ROUTES.HOME} className="sitemap__item-link">
-                  Home
+                  <AnimatedTextHover>Home</AnimatedTextHover>
                 </Link>
               </li>
               <li className="sitemap__item">
                 <Link href={ROUTES.ABOUT} className="sitemap__item-link">
-                  About me
+                  <AnimatedTextHover>About me</AnimatedTextHover>
                 </Link>
               </li>
               <li className="sitemap__item">
                 <Link href={ROUTES.WORK} className="sitemap__item-link">
-                  Works
+                  <AnimatedTextHover>Works</AnimatedTextHover>
                 </Link>
               </li>
               <li className="sitemap__item">
                 <Link href={ROUTES.BLOG} className="sitemap__item-link">
-                  Insights
+                  <AnimatedTextHover>Insights</AnimatedTextHover>
                 </Link>
               </li>
             </ul>
@@ -64,12 +65,14 @@ const Footer = () => {
                   href={SOCIAL_LINKS.TWITTER}
                   className="socials__item-link"
                 >
-                  <Image
-                    src="/images/twitter-icon.png"
-                    alt="twitter icon"
-                    width={24}
-                    height={24}
-                  />
+                  <AnimatedTextHover>
+                    <Image
+                      src="/images/twitter-icon.png"
+                      alt="twitter icon"
+                      width={24}
+                      height={24}
+                    />
+                  </AnimatedTextHover>
                 </Link>
               </li>
               <li className="socials__item">
@@ -77,22 +80,26 @@ const Footer = () => {
                   href={SOCIAL_LINKS.YOUTUBE}
                   className="socials__item-link"
                 >
-                  <Image
-                    src="/images/youtube-icon.png"
-                    alt="youtube icon"
-                    width={24}
-                    height={24}
-                  />
+                  <AnimatedTextHover>
+                    <Image
+                      src="/images/youtube-icon.png"
+                      alt="youtube icon"
+                      width={24}
+                      height={24}
+                    />
+                  </AnimatedTextHover>
                 </Link>
               </li>
               <li className="socials__item">
                 <Link href={SOCIAL_LINKS.TIKTOK} className="socials__item-link">
-                  <Image
-                    src="/images/tiktok-icon.png"
-                    alt="tiktok icon"
-                    width={24}
-                    height={24}
-                  />
+                  <AnimatedTextHover>
+                    <Image
+                      src="/images/tiktok-icon.png"
+                      alt="tiktok icon"
+                      width={24}
+                      height={24}
+                    />
+                  </AnimatedTextHover>
                 </Link>
               </li>
               <li className="socials__item">
@@ -100,12 +107,14 @@ const Footer = () => {
                   href={SOCIAL_LINKS.INSTAGRAM}
                   className="socials__item-link"
                 >
-                  <Image
-                    src="/images/instagram-icon.png"
-                    alt="instagram icon"
-                    width={24}
-                    height={24}
-                  />
+                  <AnimatedTextHover>
+                    <Image
+                      src="/images/instagram-icon.png"
+                      alt="instagram icon"
+                      width={24}
+                      height={24}
+                    />
+                  </AnimatedTextHover>
                 </Link>
               </li>
             </ul>
@@ -129,6 +138,8 @@ const Footer = () => {
                     variant="icon"
                     className="formgroup__inputgroup-icon"
                     icon={FiArrowUpRight}
+                    isRounded={false}
+                    isAnimated={false}
                   />
                 </div>
                 <p className="formgroup__error error">

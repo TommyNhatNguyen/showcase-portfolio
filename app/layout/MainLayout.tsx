@@ -7,6 +7,7 @@ import Navigation from "../components/Navigation";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrambleTextPlugin, ScrollTrigger, SplitText } from "gsap/all";
+import { usePathname } from "next/navigation";
 
 type Props = {
   children: React.ReactNode;
@@ -18,10 +19,20 @@ const MainLayout = ({ children }: Props) => {
   gsap.registerPlugin(ScrambleTextPlugin);
   gsap.registerPlugin(SplitText);
   const [isHamburgerActive, setIsHamburgerActive] = useState(false);
-
+  const [prevPath, setPrevPath] = useState(window.location.pathname);
+  const path = usePathname();
   const handleToggleHamburger = () => {
     setIsHamburgerActive((prev) => !prev);
     document.body.classList.toggle("--disable-scroll");
+  };
+
+  const handleHideHamburger = () => {
+    setIsHamburgerActive(false);
+    document.body.classList.remove("--disable-scroll");
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   useEffect(() => {
@@ -43,6 +54,10 @@ const MainLayout = ({ children }: Props) => {
     };
   }, [isHamburgerActive]);
 
+  useEffect(() => {
+    handleHideHamburger();
+  }, [path]);
+
   return (
     <>
       <Header
@@ -51,7 +66,10 @@ const MainLayout = ({ children }: Props) => {
       />
       {children}
       <Footer />
-      <Navigation isHamburgerActive={isHamburgerActive} />
+      <Navigation
+        isHamburgerActive={isHamburgerActive}
+        handleHideHamburger={handleHideHamburger}
+      />
     </>
   );
 };
