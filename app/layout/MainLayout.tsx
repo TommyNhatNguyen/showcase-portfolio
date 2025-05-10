@@ -21,6 +21,7 @@ const MainLayout = ({ children }: Props) => {
 
   const handleToggleHamburger = () => {
     setIsHamburgerActive((prev) => !prev);
+    document.body.classList.toggle("--disable-scroll");
   };
 
   useEffect(() => {
@@ -32,6 +33,7 @@ const MainLayout = ({ children }: Props) => {
         !target.closest(".nav__list")
       ) {
         setIsHamburgerActive(false);
+        document.body.classList.remove("--disable-scroll");
       }
     };
 

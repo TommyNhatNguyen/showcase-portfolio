@@ -4,6 +4,7 @@ import { ROUTES } from "../../constants/links";
 import Button from "../Button/Button";
 import { FiArrowRight } from "react-icons/fi";
 import clsx from "clsx";
+import AnimatedTextHover from "../AnimatedTextHover";
 
 type HeaderProps = {
   handleToggleHamburger: () => void;
@@ -20,22 +21,14 @@ const Header = ({ handleToggleHamburger, isHamburgerActive }: HeaderProps) => {
         <div className="header-wrapper">
           {/* Left logo */}
           <div className="header__logo">
-            <Link href={ROUTES.HOME} className="header__logo-name">
-              Tommy Nguyen
-            </Link>
+            <AnimatedTextHover>
+              <Link href={ROUTES.HOME} className="header__logo-name">
+                Tommy Nguyen
+              </Link>
+            </AnimatedTextHover>
           </div>
           {/* Right cta */}
           <div className="header__cta">
-            {/* Lets talk button */}
-            {/* <Button
-              href="#"
-              variant="talk"
-              icon={FiArrowRight}
-              iconPosition="right"
-              className="header__cta-btntalk"
-            >
-              Let's Talk
-            </Button> */}
             {/* Hamburger */}
             <button
               className={clsx(
