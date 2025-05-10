@@ -133,6 +133,7 @@ export default function Home() {
       ) as HTMLElement;
       const worksTitle = worksSection.querySelector(".scwork__title");
       const worksTitleSplit = SplitText.create(worksTitle);
+      const worksBtn = worksSection.querySelector(".scwork__btnviewall");
       const workListItems = gsap.utils.toArray(
         ".scwork__list-item"
       ) as HTMLElement[];
@@ -179,7 +180,6 @@ export default function Home() {
             trigger: item,
             start: "top +=70%",
             end: "bottom bottom",
-            markers: true,
           },
           opacity: 1,
           y: 0,
@@ -190,7 +190,6 @@ export default function Home() {
             trigger: item,
             start: "top +=70%",
             end: "bottom bottom",
-            markers: true,
           },
           scrambleText: {
             text: "{original}",
@@ -214,7 +213,6 @@ export default function Home() {
             trigger: item,
             start: "top +=70%",
             end: "bottom bottom",
-            markers: true,
           },
           opacity: 1,
           y: 0,
@@ -225,7 +223,6 @@ export default function Home() {
             trigger: item,
             start: "top +=70%",
             end: "bottom bottom",
-            markers: true,
           },
           scrambleText: {
             text: "{original}",
@@ -249,7 +246,6 @@ export default function Home() {
             trigger: item,
             start: "top +=70%",
             end: "bottom bottom",
-            markers: true,
           },
           opacity: 1,
           y: 0,
@@ -260,7 +256,6 @@ export default function Home() {
             trigger: item,
             start: "top +=70%",
             end: "bottom bottom",
-            markers: true,
           },
           scrambleText: {
             text: "{original}",
@@ -271,6 +266,67 @@ export default function Home() {
           duration: 0.9,
         });
       });
+      gsap.to(worksBtn, {
+        scrollTrigger: {
+          trigger: worksBtn,
+          start: "top bottom",
+          end: "bottom bottom",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+      });
+
+      // --------------------------------
+      // CLIENTS
+      // --------------------------------
+      const clientsSection = homeRef.current.querySelector(
+        "#scclient"
+      ) as HTMLElement;
+      const clientsTitle = clientsSection.querySelector(".scclient__title");
+      const clientsTitleSplit = SplitText.create(clientsTitle);
+      const clientListItems = gsap.utils.toArray(
+        ".scclient__list-item"
+      ) as HTMLElement[];
+      const clientTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: clientsSection,
+          start: "top +=90%",
+          end: "bottom bottom",
+        },
+      });
+      gsap.set(clientListItems, {
+        opacity: 0,
+        y: 40,
+      });
+      clientTl.to(clientsTitle, {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+      });
+      clientTl.to(
+        clientsTitleSplit.lines,
+        {
+          scrambleText: {
+            text: "{original}",
+            chars: "//ai",
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+        },
+        "<-50%"
+      );
+      clientTl.to(
+        clientListItems,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          stagger: 0.15,
+        },
+        "<"
+      );
     },
     {
       scope: homeRef,
@@ -535,15 +591,17 @@ export default function Home() {
               </li>
             </ul>
 
-            <Button
-              href={ROUTES.WORK}
-              variant="link"
-              className="scwork__btnviewall"
-              icon={FiArrowRight}
-              black
-            >
-              View All Works
-            </Button>
+            <HideTextWrapper>
+              <Button
+                href={ROUTES.WORK}
+                variant="link"
+                className="scwork__btnviewall"
+                icon={FiArrowRight}
+                black
+              >
+                View All Works
+              </Button>
+            </HideTextWrapper>
           </div>
         </div>
       </section>
@@ -551,9 +609,11 @@ export default function Home() {
       <section className="scclient --ptb" id="scclient">
         <div className="container">
           <div className="scclient-wrapper">
-            <h2 className="scclient__title">
-              A visual partner for brands, companies, and agencies
-            </h2>
+            <HideTextWrapper>
+              <h2 className="scclient__title">
+                A visual partner for brands, companies, and agencies
+              </h2>
+            </HideTextWrapper>
 
             <ul className="scclient__list">
               <li className="scclient__list-item">
