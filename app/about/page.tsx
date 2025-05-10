@@ -8,6 +8,9 @@ import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import AnimatedThumbnail from "../components/AnimatedThumbnail/AnimatedThumbnail";
 import { extractNumber } from "../utils/extractNumber";
+import AnimatedTextHover from "../components/AnimatedTextHover";
+import Button from "../components/Button/Button";
+import { FiArrowRight } from "react-icons/fi";
 
 export default function About() {
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -201,10 +204,100 @@ export default function About() {
       // --------------------------------
       // CLIENTS
       // --------------------------------
-
+      const clientsSection = aboutRef.current.querySelector(
+        "#scclients"
+      ) as HTMLElement;
+      const clientsTitle = clientsSection.querySelector(".scclients__title");
+      const clientsTitleSplit = SplitText.create(clientsTitle);
+      const clientListItems = gsap.utils.toArray(
+        ".scclients__list-item"
+      ) as HTMLElement[];
+      const clientTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: clientsSection,
+          start: "top bottom",
+          end: "top bottom",
+        },
+      });
+      gsap.set([clientsTitle, clientListItems], {
+        opacity: 0,
+        y: 40,
+      });
+      clientTl.to(clientsTitle, {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+      });
+      clientTl.to(
+        clientsTitleSplit.lines,
+        {
+          scrambleText: {
+            text: "{original}",
+            chars: "//ai",
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+        },
+        "<-50%"
+      );
+      clientTl.to(
+        clientListItems,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          stagger: 0.3,
+        },
+        "<"
+      );
       // --------------------------------
       // CTA
       // --------------------------------
+      const ctaSection = aboutRef.current.querySelector(
+        "#sccta"
+      ) as HTMLElement;
+      const ctaTitle = ctaSection.querySelector(".sccta__title-text");
+      const ctaTitleSplit = SplitText.create(ctaTitle);
+      const ctaTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ctaSection,
+          start: "top bottom",
+          end: "top bottom",
+        },
+      });
+      gsap.set(ctaTitle, {
+        opacity: 0,
+        y: 40,
+      });
+      ctaTl.to(ctaTitle, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      });
+      ctaTl.to(
+        ctaTitleSplit.lines,
+        {
+          scrambleText: {
+            text: "{original}",
+            chars: "//ai",
+          },
+          duration: 0.9,
+          ease: "none",
+        },
+        "<-50%"
+      );
+      ctaTl.to(
+        ctaTitleSplit.lines,
+        {
+          color: `var(--neutral-100)`,
+          stagger: 0.2,
+          duration: 0.3,
+          ease: "power1.inOut",
+        },
+        "<+0.3"
+      );
     },
     {
       scope: aboutRef,
@@ -314,66 +407,30 @@ export default function About() {
               <li className="scclients__list-item">
                 {/* Left */}
                 <div className="content">
-                  <span className="content__title --block">Teamwork.inc</span>
+                  <AnimatedTextHover>
+                    <Link
+                      href={"https://etsolution.vn"}
+                      target="_blank"
+                      className="content__title --block --link"
+                    >
+                      Etsolutions - Engineering & Technology Solutions
+                    </Link>
+                  </AnimatedTextHover>
                   <span className="content__time --block">May 5, 2023</span>
                 </div>
                 {/* Right */}
-                <div className="client-logo">
+                <Link
+                  href={"https://etsolution.vn"}
+                  target="_blank"
+                  className="client-logo"
+                >
                   <Image
-                    src="/images/logo-1.png"
-                    alt="uber logo"
+                    src="/images/etsolution-logo.png"
+                    alt="etsolution logo"
                     width={100}
                     height={50}
                   />
-                </div>
-              </li>
-              <li className="scclients__list-item">
-                {/* Left */}
-                <div className="content">
-                  <span className="content__title --block">Teamwork.inc</span>
-                  <span className="content__time --block">May 5, 2023</span>
-                </div>
-                {/* Right */}
-                <div className="client-logo">
-                  <Image
-                    src="/images/logo-1.png"
-                    alt="uber logo"
-                    width={100}
-                    height={50}
-                  />
-                </div>
-              </li>
-              <li className="scclients__list-item">
-                {/* Left */}
-                <div className="content">
-                  <span className="content__title --block">Teamwork.inc</span>
-                  <span className="content__time --block">May 5, 2023</span>
-                </div>
-                {/* Right */}
-                <div className="client-logo">
-                  <Image
-                    src="/images/logo-1.png"
-                    alt="uber logo"
-                    width={100}
-                    height={50}
-                  />
-                </div>
-              </li>
-              <li className="scclients__list-item">
-                {/* Left */}
-                <div className="content">
-                  <span className="content__title --block">Teamwork.inc</span>
-                  <span className="content__time --block">May 5, 2023</span>
-                </div>
-                {/* Right */}
-                <div className="client-logo">
-                  <Image
-                    src="/images/logo-1.png"
-                    alt="uber logo"
-                    width={100}
-                    height={50}
-                  />
-                </div>
+                </Link>
               </li>
             </ul>
           </div>
@@ -387,57 +444,46 @@ export default function About() {
             {/* Links */}
             <ul className="sccta__links">
               <li className="sccta__links-item">
-                <Link href={ROUTES.HOME} className="link">
-                  Home
-                </Link>
+                <AnimatedTextHover>
+                  <Link href={ROUTES.HOME} className="link">
+                    Home
+                  </Link>
+                </AnimatedTextHover>
               </li>
               <li className="sccta__links-item">
-                <Link href={ROUTES.WORK} className="link">
-                  Work
-                </Link>
+                <AnimatedTextHover>
+                  <Link href={ROUTES.WORK} className="link">
+                    Work
+                  </Link>
+                </AnimatedTextHover>
               </li>
               <li className="sccta__links-item">
-                <Link href={ROUTES.BLOG} className="link">
-                  Insights
-                </Link>
+                <AnimatedTextHover>
+                  <Link href={ROUTES.BLOG} className="link">
+                    Insights
+                  </Link>
+                </AnimatedTextHover>
               </li>
             </ul>
             <div className="sccta__title">
-              <h1 className="sccta__title-text">
+              <h1 className="sccta__title-text --gray">
                 <strong>
                   Want to create something
-                  <span className="--gray">awesome?</span>
+                  <span className="--gray"> awesome?</span>
                 </strong>
               </h1>
             </div>
             {/* CTA */}
-            <Link href="#" className="btn btn-talk --btn-primary --lg">
-              <span className="btn-talk__text btn__text">Let's Talk</span>
-              <div className="btn-talk__icon btn__icon">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3.125 10H16.875"
-                    stroke="#030712"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M11.25 4.375L16.875 10L11.25 15.625"
-                    stroke="#030712"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </Link>
+            <Button
+              href="#"
+              variant="talk"
+              size="lg"
+              className="--btn-primary"
+              icon={FiArrowRight}
+              iconPosition="right"
+            >
+              Let's Talk
+            </Button>
           </div>
         </div>
       </section>
