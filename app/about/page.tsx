@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
+import AnimatedThumbnail from "../components/AnimatedThumbnail/AnimatedThumbnail";
 
 export default function About() {
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -23,13 +24,22 @@ export default function About() {
       const heroContent = heroSection.querySelector(".schero__content");
       const heroTitleSplit = SplitText.create(heroTitle);
       const heroDescSplit = SplitText.create(heroDesc);
-
+      const heroInfo = heroSection.querySelector(
+        ".schero__content-info"
+      ) as HTMLElement;
+      const heroInfoHeadline = heroInfo.querySelector(".headline");
+      const heroInfoDescItems = gsap.utils.toArray(
+        ".desc .desc__para"
+      ) as HTMLElement[];
+      const heroInfoHeadLineSplit = SplitText.create(heroInfoHeadline);
       const tl = gsap.timeline({});
-      gsap.set([heroDesc, heroTitle, heroContent], {
-        opacity: 0,
-        y: 40,
-      });
-
+      gsap.set(
+        [heroDesc, heroTitle, heroContent, heroInfoHeadline, heroInfoDescItems],
+        {
+          opacity: 0,
+          y: 40,
+        }
+      );
       tl.to([heroDesc, heroTitle], {
         opacity: 1,
         y: 0,
@@ -37,7 +47,6 @@ export default function About() {
         ease: "power3.out",
         stagger: 0.2,
       });
-
       tl.to(
         [heroDescSplit.lines, heroTitleSplit.lines],
         {
@@ -50,7 +59,6 @@ export default function About() {
         },
         "<-10%"
       );
-
       tl.to(
         heroTitleSplit.lines,
         {
@@ -61,7 +69,6 @@ export default function About() {
         },
         "<+0.3"
       );
-
       tl.to(
         heroContent,
         {
@@ -72,6 +79,58 @@ export default function About() {
         },
         "<"
       );
+
+      const heroInfoTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroInfo,
+          start: "top bottom",
+          end: "top bottom",
+          markers: true,
+        },
+      });
+      heroInfoTl
+        .to(heroInfoHeadline, {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+        })
+        .to(
+          heroInfoHeadLineSplit.lines,
+          {
+            scrambleText: {
+              text: "{original}",
+              chars: "//ai",
+            },
+            duration: 0.9,
+            ease: "none",
+          },
+          "<-50%"
+        );
+      heroInfoDescItems.map((item) => {
+        const split = SplitText.create(item);
+        heroInfoTl
+          .to(
+            item,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.3,
+            },
+            "<"
+          )
+          .to(
+            split.lines,
+            {
+              scrambleText: {
+                text: "{original}",
+                chars: "//ai",
+              },
+              duration: 0.9,
+              ease: "none",
+            },
+            "<-50%"
+          );
+      });
     },
     {
       scope: aboutRef,
@@ -104,7 +163,7 @@ export default function About() {
           <div className="schero__content">
             {/* Thumbnail */}
             <div className="schero__content-thumbnail">
-              <Image
+              <AnimatedThumbnail
                 src="/images/thumbnail.jpg"
                 alt="about hero"
                 className="schero__content-thumbnail-img"

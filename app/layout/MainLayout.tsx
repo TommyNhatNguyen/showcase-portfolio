@@ -19,7 +19,6 @@ const MainLayout = ({ children }: Props) => {
   gsap.registerPlugin(ScrambleTextPlugin);
   gsap.registerPlugin(SplitText);
   const [isHamburgerActive, setIsHamburgerActive] = useState(false);
-  const [prevPath, setPrevPath] = useState(window.location.pathname);
   const path = usePathname();
   const handleToggleHamburger = () => {
     setIsHamburgerActive((prev) => !prev);
