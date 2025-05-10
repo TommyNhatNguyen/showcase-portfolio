@@ -1,15 +1,89 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
+import gsap from "gsap";
+import { SplitText } from "gsap/all";
 
 export default function Work() {
+  const workRef = useRef<HTMLDivElement>(null);
+  useGSAP(
+    () => {
+      if (!workRef.current) return;
+      const heroSection = workRef.current.querySelector(
+        "#schero"
+      ) as HTMLElement;
+      const heroTitle = heroSection.querySelector(".schero__title-text");
+      const heroTitleSplit = SplitText.create(heroTitle);
+      const skillsItems = gsap.utils.toArray(
+        ".schero__skills-item"
+      ) as HTMLElement[];
+
+      const tl = gsap.timeline({});
+
+      gsap.set([heroTitle, skillsItems], {
+        opacity: 0,
+        y: 40,
+      });
+
+      tl.to([heroTitle], {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      });
+
+      tl.to(
+        [heroTitleSplit.lines],
+        {
+          scrambleText: {
+            text: "{original}",
+            chars: "//ai",
+          },
+          duration: 0.9,
+          ease: "none",
+        },
+        "<-10%"
+      );
+
+      tl.to(
+        heroTitleSplit.lines,
+        {
+          color: `var(--neutral-100)`,
+          stagger: 0.2,
+          duration: 0.3,
+          ease: "power1.inOut",
+        },
+        "<+0.3"
+      );
+
+      // Animate skills items
+      tl.to(
+        skillsItems,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+    },
+    {
+      scope: workRef,
+    }
+  );
+
   return (
-    <main className="work" id="work">
+    <main className="work" id="work" ref={workRef}>
       {/* Hero */}
       <section className="schero" id="schero">
         <div className="container">
           <div className="schero-wrapper">
             <div className="schero__title">
-              <h1 className="schero__title-text">
+              <h1 className="schero__title-text --gray">
                 Bringing your brand to life in the
                 <span className="--gray">digital world</span>
               </h1>
