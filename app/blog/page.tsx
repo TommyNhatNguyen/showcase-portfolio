@@ -1,18 +1,76 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { ROUTES } from "../constants/links";
-
+import Button from "../components/Button/Button";
+import { FiArrowRight } from "react-icons/fi";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import React, { useRef } from "react";
+import { SplitText } from "gsap/all";
 export default function Blog() {
+  const blogRef = useRef<HTMLDivElement>(null);
+  useGSAP(
+    () => {
+      if (!blogRef.current) return;
+      const heroSection = blogRef.current.querySelector(
+        "#schero"
+      ) as HTMLElement;
+      const heroTitle = heroSection.querySelector(".schero__title");
+      const heroDesc = heroSection.querySelector(".schero__desc");
+      const heroCaption = heroSection.querySelector(".schero__caption");
+      const heroTitleSplit = SplitText.create(heroTitle);
+      const heroDescSplit = SplitText.create(heroDesc);
+      const heroCaptionSplit = SplitText.create(heroCaption);
+      const tl = gsap.timeline({});
+      gsap.set([heroDesc, heroTitle, heroCaption], {
+        opacity: 0,
+        y: 40,
+      });
+      tl.to([heroCaption, heroTitle, heroDesc], {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.2,
+      });
+      tl.to(
+        [heroDescSplit.lines, heroTitleSplit.lines, heroCaptionSplit.lines],
+        {
+          scrambleText: {
+            text: "{original}",
+            chars: "//ai",
+          },
+          duration: 0.9,
+          ease: "none",
+        },
+        "<-10%"
+      );
+      tl.to(
+        heroTitleSplit.lines,
+        {
+          color: `var(--neutral-100)`,
+          stagger: 0.2,
+          duration: 0.3,
+          ease: "power1.inOut",
+        },
+        "<+0.3"
+      );
+    },
+    {
+      scope: blogRef,
+    }
+  );
   return (
-    <main className="blog" id="blog">
+    <main className="blog" id="blog" ref={blogRef}>
       {/* Hero */}
       <section className="schero --ptb" id="schero">
         <div className="container">
           <div className="schero-wrapper">
             <p className="schero__caption">Insights</p>
-            <h1 className="schero__title">
+            <h1 className="schero__title --gray">
               A collection of my
-              <span className="--gray">insights</span>
+              <span className="--gray"> insights</span>
             </h1>
             <p className="schero__desc">
               Subscribe to my newsletter to learn more about design, our blog
@@ -51,30 +109,13 @@ export default function Blog() {
                     simplicity, clean lines, and negative space can enhance user
                     experiences and create visually stunning designs.
                   </p>
-                  <Link href="#" className="content__btn btn --md --btn-icon">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.125 10H16.875"
-                        stroke="#030712"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M11.25 4.375L16.875 10L11.25 15.625"
-                        stroke="#030712"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </Link>
+                  <Button
+                    href="#"
+                    variant="icon"
+                    size="md"
+                    className="content__btn"
+                    icon={FiArrowRight}
+                  />
                 </div>
               </li>
               <li className="sclatestinsights__list-item">
@@ -205,9 +246,14 @@ export default function Blog() {
                 </div>
               </li>
             </ul>
-            <Link href="#" className="scallinsights__btn btn --md">
+            <Button
+              href="#"
+              size="md"
+              className="scallinsights__btn"
+              variant="talk"
+            >
               Show more
-            </Link>
+            </Button>
           </div>
         </div>
       </section>
