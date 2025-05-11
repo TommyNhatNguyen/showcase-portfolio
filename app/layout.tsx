@@ -72,7 +72,9 @@ export default function RootLayout({
       <body
         className={`${inter_tight_light.variable} ${inter_tight_regular.variable} ${inter_tight_medium.variable} ${inter_tight_semibold.variable} ${inter_tight_bold.variable} ${dm_mono_light.variable} ${dm_mono_regular.variable} ${dm_mono_medium.variable} --loading`}
       >
-        <MainLayout>{children}</MainLayout>
+        <div id="smooth-wrapper">
+          <MainLayout>{children}</MainLayout>
+        </div>
       </body>
     </html>
   );

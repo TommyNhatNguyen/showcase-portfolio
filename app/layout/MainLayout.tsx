@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import {
   ScrambleTextPlugin,
+  ScrollSmoother,
   ScrollTrigger,
   SplitText,
   TextPlugin,
@@ -24,6 +25,7 @@ const MainLayout = ({ children }: Props) => {
   gsap.registerPlugin(ScrambleTextPlugin);
   gsap.registerPlugin(SplitText);
   gsap.registerPlugin(TextPlugin);
+  gsap.registerPlugin(ScrollSmoother);
   const [isHamburgerActive, setIsHamburgerActive] = useState(false);
   const path = usePathname();
   const handleToggleHamburger = () => {
@@ -62,19 +64,28 @@ const MainLayout = ({ children }: Props) => {
     handleHideHamburger();
   }, [path]);
 
+  useGSAP(() => {
+    ScrollSmoother.create({
+      smooth: 1,
+      effects: true,
+    });
+  }, []);
+
   return (
     <>
-      <Header
-        isHamburgerActive={isHamburgerActive}
-        handleToggleHamburger={handleToggleHamburger}
-      />
+      <div id="smooth-content">
+        <Header
+          isHamburgerActive={isHamburgerActive}
+          handleToggleHamburger={handleToggleHamburger}
+        />
+        {children}
+        <Footer />
+        <Navigation
+          isHamburgerActive={isHamburgerActive}
+          handleHideHamburger={handleHideHamburger}
+        />
+      </div>
       <LoadingPage />
-      {children}
-      <Footer />
-      <Navigation
-        isHamburgerActive={isHamburgerActive}
-        handleHideHamburger={handleHideHamburger}
-      />
     </>
   );
 };
