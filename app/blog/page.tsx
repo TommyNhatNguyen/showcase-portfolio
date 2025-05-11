@@ -8,10 +8,15 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import React, { useRef } from "react";
 import { SplitText } from "gsap/all";
+import AnimatedThumbnail from "../components/AnimatedThumbnail/AnimatedThumbnail";
+import AnimatedTextHover from "../components/AnimatedTextHover";
 export default function Blog() {
   const blogRef = useRef<HTMLDivElement>(null);
   useGSAP(
     () => {
+      // --------------------------------
+      // HERO
+      // --------------------------------
       if (!blogRef.current) return;
       const heroSection = blogRef.current.querySelector(
         "#schero"
@@ -56,6 +61,63 @@ export default function Blog() {
         },
         "<+0.3"
       );
+      // --------------------------------
+      // INSIGHTS
+      // --------------------------------
+      const insightsSection = blogRef.current.querySelector(
+        "#sclatestinsights"
+      ) as HTMLElement;
+      const insightsTitle = insightsSection.querySelector(
+        ".sclatestinsights__title .sclatestinsights__title-text"
+      ) as HTMLElement;
+      const insightsTitleSplit = SplitText.create(insightsTitle);
+      const insightsList = insightsSection.querySelector(
+        ".sclatestinsights__list"
+      );
+      const insightListItems = gsap.utils.toArray(
+        ".sclatestinsights__list-item"
+      ) as HTMLElement[];
+      const insightsTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: insightsSection,
+          start: "top bottom",
+          end: "top bottom",
+          markers: true,
+        },
+      });
+      gsap.set([insightsTitle.parentElement, insightsList], {
+        opacity: 0,
+        y: 40,
+      });
+      insightsTl
+        .to(insightsTitle.parentElement, {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+        })
+        .to(
+          insightsTitleSplit.lines,
+          {
+            scrambleText: {
+              text: "{original}",
+              chars: "//ai",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: "none",
+          },
+          "<-50%"
+        );
+      insightsTl.to(
+        insightsList,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+        },
+        "<+0.45"
+      );
     },
     {
       scope: blogRef,
@@ -91,19 +153,21 @@ export default function Blog() {
             </div>
             <ul className="sclatestinsights__list">
               <li className="sclatestinsights__list-item">
-                <div className="thumbnail">
-                  <Image
+                <Link href="#" className="thumbnail">
+                  <AnimatedThumbnail
                     className="thumbnail__img"
                     src="/images/blog.jpg"
                     alt="Blog 1"
                     width={400}
                     height={300}
                   />
-                </div>
+                </Link>
                 <div className="content">
-                  <h3 className="content__title">
-                    Exploring the Power of Minimalism in Visual Design
-                  </h3>
+                  <AnimatedTextHover>
+                    <Link href="#" className="content__title">
+                      Exploring the Power of Minimalism in Visual Design
+                    </Link>
+                  </AnimatedTextHover>
                   <p className="content__desc">
                     Dive into the world of minimalistic design and discover how
                     simplicity, clean lines, and negative space can enhance user
@@ -119,19 +183,21 @@ export default function Blog() {
                 </div>
               </li>
               <li className="sclatestinsights__list-item">
-                <div className="thumbnail">
-                  <Image
+                <Link href="#" className="thumbnail">
+                  <AnimatedThumbnail
                     className="thumbnail__img"
                     src="/images/blog.jpg"
                     alt="Blog 1"
                     width={400}
                     height={300}
                   />
-                </div>
+                </Link>
                 <div className="content">
-                  <h3 className="content__title">
-                    Exploring the Power of Minimalism in Visual Design
-                  </h3>
+                  <AnimatedTextHover>
+                    <Link href="#" className="content__title">
+                      Exploring the Power of Minimalism in Visual Design
+                    </Link>
+                  </AnimatedTextHover>
                   <p className="content__desc">
                     Dive into the world of minimalistic design and discover how
                     simplicity, clean lines, and negative space can enhance user
@@ -140,19 +206,21 @@ export default function Blog() {
                 </div>
               </li>
               <li className="sclatestinsights__list-item">
-                <div className="thumbnail">
-                  <Image
+                <Link href="#" className="thumbnail">
+                  <AnimatedThumbnail
                     className="thumbnail__img"
                     src="/images/blog.jpg"
                     alt="Blog 1"
                     width={400}
                     height={300}
                   />
-                </div>
+                </Link>
                 <div className="content">
-                  <h3 className="content__title">
-                    Exploring the Power of Minimalism in Visual Design
-                  </h3>
+                  <AnimatedTextHover>
+                    <Link href="#" className="content__title">
+                      Exploring the Power of Minimalism in Visual Design
+                    </Link>
+                  </AnimatedTextHover>
                   <p className="content__desc">
                     Dive into the world of minimalistic design and discover how
                     simplicity, clean lines, and negative space can enhance user
@@ -161,19 +229,21 @@ export default function Blog() {
                 </div>
               </li>
               <li className="sclatestinsights__list-item">
-                <div className="thumbnail">
-                  <Image
+                <Link href="#" className="thumbnail">
+                  <AnimatedThumbnail
                     className="thumbnail__img"
                     src="/images/blog.jpg"
                     alt="Blog 1"
                     width={400}
                     height={300}
                   />
-                </div>
+                </Link>
                 <div className="content">
-                  <h3 className="content__title">
-                    Exploring the Power of Minimalism in Visual Design
-                  </h3>
+                  <AnimatedTextHover>
+                    <Link href="#" className="content__title">
+                      Exploring the Power of Minimalism in Visual Design
+                    </Link>
+                  </AnimatedTextHover>
                   <p className="content__desc">
                     Dive into the world of minimalistic design and discover how
                     simplicity, clean lines, and negative space can enhance user
