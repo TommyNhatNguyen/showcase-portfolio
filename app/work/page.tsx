@@ -151,63 +151,65 @@ export default function Work() {
                   })}
                   onClick={() => toggleActive(index)}
                 >
-                  {/* Content */}
-                  <div className="content">
-                    <div className="content__info">
-                      <div className="content__info-title --block">
-                        Sportly
-                        <div className="icon">
-                          <FiArrowRight />
+                  <div className="wrapper">
+                    {/* Content */}
+                    <div className="content">
+                      <div className="content__info">
+                        <div className="content__info-title --block">
+                          Sportly
+                          <div className="icon">
+                            <FiArrowRight />
+                          </div>
                         </div>
+                        <span className="content__info-time --block">
+                          May 5, 2023
+                        </span>
                       </div>
-                      <span className="content__info-time --block">
-                        May 5, 2023
-                      </span>
+                      <div className="content__desc">
+                        <p className="content__desc-text">
+                          Website Redesign: Improving user experience and
+                          modernizing design.
+                        </p>
+                        <ul className="content__desc-tags">
+                          <li>UIUX</li>
+                          <li>Branding</li>
+                        </ul>
+                      </div>
                     </div>
-                    <div className="content__desc">
-                      <p className="content__desc-text">
-                        Website Redesign: Improving user experience and
-                        modernizing design.
-                      </p>
-                      <ul className="content__desc-tags">
-                        <li>UIUX</li>
-                        <li>Branding</li>
-                      </ul>
-                    </div>
+                    {/* Thumbnail */}
+                    <Link href="#" className="thumbnail">
+                      <Image
+                        src="/images/project-1.jpg"
+                        alt="Sportly"
+                        width={400}
+                        height={300}
+                      />
+                      <div className="thumbnail__btn btn --md --btn-icon">
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M3.125 10H16.875"
+                            stroke="#030712"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M11.25 4.375L16.875 10L11.25 15.625"
+                            stroke="#030712"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                    </Link>
                   </div>
-                  {/* Thumbnail */}
-                  <Link href="#" className="thumbnail">
-                    <Image
-                      src="/images/project-1.jpg"
-                      alt="Sportly"
-                      width={400}
-                      height={300}
-                    />
-                    <div className="thumbnail__btn btn --md --btn-icon">
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M3.125 10H16.875"
-                          stroke="#030712"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M11.25 4.375L16.875 10L11.25 15.625"
-                          stroke="#030712"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                  </Link>
                 </li>
               ))}
             </ul>

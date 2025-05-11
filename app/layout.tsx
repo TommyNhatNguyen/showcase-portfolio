@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter_Tight, DM_Mono } from "next/font/google";
 import "./scss/index.scss";
 import MainLayout from "./layout/MainLayout";
+import Script from "next/script";
 
 const inter_tight_light = Inter_Tight({
   variable: "--ff-light",

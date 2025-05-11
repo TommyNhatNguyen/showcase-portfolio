@@ -21,17 +21,21 @@
   .scwork {
     &__list {
       &-item {
-        padding-top: 48px;
-        padding-bottom: 48px;
         border-bottom: 1px solid var(--neutral-20);
-        padding-left: 24px;
-        padding-right: 24px;
-        margin-left: -24px;
-        margin-right: -24px;
         cursor: pointer;
-        transition: all 0.3s ease-in-out;
+        .wrapper {
+          padding-top: 48px;
+          padding-bottom: 48px;
+          padding-left: 24px;
+          padding-right: 24px;
+          margin-left: -24px;
+          margin-right: -24px;
+          transition: all 0.3s ease-in-out;
+        }
         &:not(.--active):hover {
-          background-color: rgba(229, 231, 235, 0.6);
+          .wrapper {
+            background-color: rgba(229, 231, 235, 0.6);
+          }
           .content {
             &__info {
               &-title {

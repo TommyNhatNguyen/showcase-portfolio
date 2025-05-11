@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import Navigation from "../components/Navigation";
@@ -13,7 +13,7 @@ import {
   TextPlugin,
 } from "gsap/all";
 import { usePathname } from "next/navigation";
-
+import LoadingPage from "../components/LoadingPage";
 type Props = {
   children: React.ReactNode;
 };
@@ -34,10 +34,9 @@ const MainLayout = ({ children }: Props) => {
   const handleHideHamburger = () => {
     setIsHamburgerActive(false);
     document.body.classList.remove("--disable-scroll");
-    // window.scrollTo({
-    //   top: 0,
-    //   behavior: "smooth",
-    // });
+    window.scrollTo({
+      top: 0,
+    });
   };
 
   useEffect(() => {
@@ -69,6 +68,7 @@ const MainLayout = ({ children }: Props) => {
         isHamburgerActive={isHamburgerActive}
         handleToggleHamburger={handleToggleHamburger}
       />
+      <LoadingPage />
       {children}
       <Footer />
       <Navigation
