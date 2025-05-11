@@ -32,6 +32,15 @@
         transition: all 0.3s ease-in-out;
         &:not(.--active):hover {
           background-color: rgba(229, 231, 235, 0.6);
+          .content {
+            &__info {
+              &-title {
+                .icon {
+                  transform: rotate(45deg);
+                }
+              }
+            }
+          }
         }
         .content {
           display: flex;
@@ -44,6 +53,15 @@
               font-size: var(--fs-body-md);
               font-family: var(--ff-semibold);
               color: var(--neutral-100);
+              display: flex;
+              align-items: center;
+              gap: var(--gap);
+              .icon {
+                height: fit-content;
+                width: fit-content;
+                line-height: 0;
+                transition: all 0.3s;
+              }
             }
             &-time {
               margin-top: 8px;
@@ -112,6 +130,15 @@
             height: 100%;
             max-height: 512px;
             margin-top: 32px;
+          }
+          .content {
+            &__info {
+              &-title {
+                .icon {
+                  transform: rotate(90deg);
+                }
+              }
+            }
           }
         }
       }

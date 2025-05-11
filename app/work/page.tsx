@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import clsx from "clsx";
+import { FiArrowRight } from "react-icons/fi";
 
 export default function Work() {
   const workRef = useRef<HTMLDivElement>(null);
@@ -153,9 +154,12 @@ export default function Work() {
                   {/* Content */}
                   <div className="content">
                     <div className="content__info">
-                      <span className="content__info-title --block">
+                      <div className="content__info-title --block">
                         Sportly
-                      </span>
+                        <div className="icon">
+                          <FiArrowRight />
+                        </div>
+                      </div>
                       <span className="content__info-time --block">
                         May 5, 2023
                       </span>
