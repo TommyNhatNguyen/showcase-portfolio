@@ -29,7 +29,7 @@ export default function Home() {
       const heroCta = heroSection.querySelector(".schero__cta-button");
       const heroTitleSplit = SplitText.create(heroTitle);
       const heroDescSplit = SplitText.create(heroDesc);
-      const tl = gsap.timeline({});
+      const tl = gsap.timeline({ paused: true });
       gsap.set([heroDesc, heroTitle, heroCta], {
         opacity: 0,
         y: 40,
@@ -82,6 +82,16 @@ export default function Home() {
         },
         "<"
       );
+
+      const checkLoading = () => {
+        if (!document.body.classList.contains("--loading")) {
+          tl.play();
+        } else {
+          gsap.delayedCall(0, checkLoading);
+        }
+      };
+
+      checkLoading();
 
       // --------------------------------
       // ABOUT

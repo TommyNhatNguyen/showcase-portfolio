@@ -67,10 +67,10 @@ export default function RootLayout({
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>TOMMY NGUYEN 🧑🏻‍🎨 Visual Developer</title>
       </head>
       <body
-        className={`${inter_tight_light.variable} ${inter_tight_regular.variable} ${inter_tight_medium.variable} ${inter_tight_semibold.variable} ${inter_tight_bold.variable} ${dm_mono_light.variable} ${dm_mono_regular.variable} ${dm_mono_medium.variable}`}
+        className={`${inter_tight_light.variable} ${inter_tight_regular.variable} ${inter_tight_medium.variable} ${inter_tight_semibold.variable} ${inter_tight_bold.variable} ${dm_mono_light.variable} ${dm_mono_regular.variable} ${dm_mono_medium.variable} --loading`}
       >
         <MainLayout>{children}</MainLayout>
       </body>

@@ -402,6 +402,20 @@ a {
     height: 100%;
     background-color: var(--bg-color);
     z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .loading-indicator__title {
+      font-size: var(--fs-h2);
+      font-family: var(--ff-bold);
+      color: var(--neutral-100);
+      opacity: 0;
+      span {
+        &.--emphasize {
+          color: var(--neutral-70);
+        }
+      }
+    }
   }
   .bg-opacity-loading {
     position: fixed;
