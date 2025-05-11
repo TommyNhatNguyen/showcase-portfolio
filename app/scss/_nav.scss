@@ -22,6 +22,16 @@
       &:not(:first-of-type) {
         margin-top: 32px;
       }
+      &:hover {
+        .link {
+          transform: translateX(12px);
+          &__btn {
+            .btn__icon {
+              transform: rotate(-45deg);
+            }
+          }
+        }
+      }
       .link {
         display: block;
         height: 100%;
@@ -30,6 +40,7 @@
         align-items: center;
         justify-content: space-between;
         gap: var(--gap);
+        transition: all 0.3s;
         &__text {
           font-size: var(--fs-h2);
           font-family: var(--ff-bold);
@@ -41,6 +52,7 @@
         &__btn {
           border-color: var(--neutral-0);
           .btn__icon {
+            transition: all 0.3s;
             svg,
             path {
               stroke: var(--neutral-0);

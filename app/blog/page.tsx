@@ -74,15 +74,11 @@ export default function Blog() {
       const insightsList = insightsSection.querySelector(
         ".sclatestinsights__list"
       );
-      const insightListItems = gsap.utils.toArray(
-        ".sclatestinsights__list-item"
-      ) as HTMLElement[];
       const insightsTl = gsap.timeline({
         scrollTrigger: {
           trigger: insightsSection,
           start: "top bottom",
           end: "top bottom",
-          markers: true,
         },
       });
       gsap.set([insightsTitle.parentElement, insightsList], {
@@ -115,6 +111,70 @@ export default function Blog() {
           opacity: 1,
           y: 0,
           duration: 0.3,
+        },
+        "<+0.45"
+      );
+      // --------------------------------
+      // ALL INSIGHTS
+      // --------------------------------
+      const allInsightsSection = blogRef.current.querySelector(
+        "#scallinsights"
+      ) as HTMLElement;
+      const allInsightsTitle = allInsightsSection.querySelector(
+        ".scallinsights__title .scallinsights__title-text"
+      ) as HTMLElement;
+      const allInsightsTitleSplit = SplitText.create(allInsightsTitle);
+      const allInsightsListItems = gsap.utils.toArray(
+        ".scallinsights__list-item"
+      ) as HTMLElement[];
+      const allInsightsButton = allInsightsSection.querySelector(
+        ".scallinsights__btn"
+      ) as HTMLElement;
+      const allInsightsTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: allInsightsSection,
+          start: "top +=90%",
+          end: "bottom bottom",
+        },
+      });
+      gsap.set(
+        [
+          allInsightsTitle.parentElement,
+          allInsightsListItems,
+          allInsightsButton,
+        ],
+        {
+          opacity: 0,
+          y: 40,
+        }
+      );
+      allInsightsTl
+        .to(allInsightsTitle.parentElement, {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+        })
+        .to(
+          allInsightsTitleSplit.lines,
+          {
+            scrambleText: {
+              text: "{original}",
+              chars: "//ai",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: "none",
+          },
+          "<-50%"
+        );
+      allInsightsTl.to(
+        [allInsightsListItems, allInsightsButton],
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.15,
         },
         "<+0.45"
       );
@@ -265,55 +325,64 @@ export default function Blog() {
             </div>
             <ul className="scallinsights__list">
               <li className="scallinsights__list-item">
-                <div className="content">
-                  <p className="content__title">
-                    Designing for Accessibility: Bridging the Gap to Inclusive
-                    Experiences
-                  </p>
-                  <p className="content__time">May 5, 2023</p>
-                </div>
-                <div className="desc">
-                  <p className="desc__text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id
-                    nulla accusantium ratione in ducimus asperiores expedita
-                    dolorem perferendis ipsa nobis tempora reprehenderit quia
-                    repudiandae voluptates rerum adipisci, officia cum corrupti?
-                  </p>
-                </div>
+                <Link href="#" className="link">
+                  <div className="content">
+                    <p className="content__title">
+                      Designing for Accessibility: Bridging the Gap to Inclusive
+                      Experiences
+                    </p>
+                    <p className="content__time">May 5, 2023</p>
+                  </div>
+                  <div className="desc">
+                    <p className="desc__text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Id nulla accusantium ratione in ducimus asperiores
+                      expedita dolorem perferendis ipsa nobis tempora
+                      reprehenderit quia repudiandae voluptates rerum adipisci,
+                      officia cum corrupti?
+                    </p>
+                  </div>
+                </Link>
               </li>
               <li className="scallinsights__list-item">
-                <div className="content">
-                  <p className="content__title">
-                    Designing for Accessibility: Bridging the Gap to Inclusive
-                    Experiences
-                  </p>
-                  <p className="content__time">May 5, 2023</p>
-                </div>
-                <div className="desc">
-                  <p className="desc__text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id
-                    nulla accusantium ratione in ducimus asperiores expedita
-                    dolorem perferendis ipsa nobis tempora reprehenderit quia
-                    repudiandae voluptates rerum adipisci, officia cum corrupti?
-                  </p>
-                </div>
+                <Link href="#" className="link">
+                  <div className="content">
+                    <p className="content__title">
+                      Designing for Accessibility: Bridging the Gap to Inclusive
+                      Experiences
+                    </p>
+                    <p className="content__time">May 5, 2023</p>
+                  </div>
+                  <div className="desc">
+                    <p className="desc__text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Id nulla accusantium ratione in ducimus asperiores
+                      expedita dolorem perferendis ipsa nobis tempora
+                      reprehenderit quia repudiandae voluptates rerum adipisci,
+                      officia cum corrupti?
+                    </p>
+                  </div>
+                </Link>
               </li>
               <li className="scallinsights__list-item">
-                <div className="content">
-                  <p className="content__title">
-                    Designing for Accessibility: Bridging the Gap to Inclusive
-                    Experiences
-                  </p>
-                  <p className="content__time">May 5, 2023</p>
-                </div>
-                <div className="desc">
-                  <p className="desc__text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id
-                    nulla accusantium ratione in ducimus asperiores expedita
-                    dolorem perferendis ipsa nobis tempora reprehenderit quia
-                    repudiandae voluptates rerum adipisci, officia cum corrupti?
-                  </p>
-                </div>
+                <Link href="#" className="link">
+                  <div className="content">
+                    <p className="content__title">
+                      Designing for Accessibility: Bridging the Gap to Inclusive
+                      Experiences
+                    </p>
+                    <p className="content__time">May 5, 2023</p>
+                  </div>
+                  <div className="desc">
+                    <p className="desc__text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Id nulla accusantium ratione in ducimus asperiores
+                      expedita dolorem perferendis ipsa nobis tempora
+                      reprehenderit quia repudiandae voluptates rerum adipisci,
+                      officia cum corrupti?
+                    </p>
+                  </div>
+                </Link>
               </li>
             </ul>
             <Button

@@ -43,7 +43,13 @@
           border-radius: 20px;
           overflow: hidden;
           display: block;
+          &:hover {
+            img {
+              transform: scale(1.05);
+            }
+          }
           img {
+            transition: all 0.3s ease-in-out;
             object-fit: cover;
           }
         }
@@ -95,7 +101,6 @@
   .scallinsights {
     &__title {
       padding-bottom: 24px;
-      border-bottom: 1px solid var(--neutral-20);
       &-text {
         font-size: var(--fs-h5);
         color: var(--neutral-100);
@@ -104,14 +109,30 @@
     }
     &__list {
       &-item {
-        padding-top: 24px;
-        padding-bottom: 24px;
         border-bottom: 1px solid var(--neutral-20);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--gutter);
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        &:first-of-type {
+          border-top: 1px solid var(--neutral-20);
+        }
+        .link {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--gutter);
+          height: 100%;
+          width: 100%;
+          padding: 24px;
+          margin-left: -24px;
+          margin-right: -24px;
+          transition: all 0.3s ease-in-out;
+          &:hover {
+            background-color: rgba(229, 231, 235, 0.6);
+          }
+        }
         .content {
+          flex: 1;
           &__title {
             font-size: var(--fs-body-md);
             color: var(--neutral-100);
@@ -123,6 +144,7 @@
           }
         }
         .desc {
+          flex: 1;
           &__text {
             font-size: var(--fs-body-sm);
             color: var(--neutral-70);
