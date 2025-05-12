@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ROUTES, SOCIAL_LINKS } from "../../constants/links";
-import Button from "../Button/Button";
 import { FiArrowUpRight } from "react-icons/fi";
 import AnimatedTextHover from "../AnimatedTextHover";
 import SectionSocial from "./SectionSocial";
+import Button from "../Button/Button";
 
 const Footer = () => {
   return (
@@ -15,18 +15,26 @@ const Footer = () => {
           <div className="footer__cta-wrapper">
             <div className="footer__cta-title">
               <p className="para">HAVE A NICE WORKS? LET'S TALK WITH ME</p>
-              <Button
-                href="mailto:nguyenanhnhat123456@gmail.com"
-                variant="link"
-                className="email"
-                icon={FiArrowUpRight}
-                iconPosition="right"
-                isRounded={false}
-              >
-                <p className="email__text">
-                  <span className="--gray">nguyenanhnhat123456</span>@gmail.com
-                </p>
-              </Button>
+              <AnimatedTextHover>
+                <div className="email-wrapper">
+                  <Link
+                    href="mailto:nguyenanhnhat123456@gmail.com"
+                    className="email"
+                  >
+                    <p className="email__text">
+                      <span className="--gray">nguyenanhnhat123456</span>
+                      @gmail.com
+                    </p>
+                  </Link>
+
+                  <Button
+                    variant="link"
+                    className="btn-email"
+                    icon={FiArrowUpRight}
+                    isRounded={false}
+                  />
+                </div>
+              </AnimatedTextHover>
             </div>
           </div>
         </div>

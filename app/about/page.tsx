@@ -147,7 +147,6 @@ export default function About() {
           trigger: experienceSection,
           start: "top bottom",
           end: "top bottom",
-          markers: true,
         },
       });
       gsap.set(experienceList, {

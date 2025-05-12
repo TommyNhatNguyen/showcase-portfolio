@@ -10,17 +10,22 @@
         font-size: var(--fs-body-md);
         font-family: var(--ff-medium);
       }
-      .email {
-        color: var(--neutral-0);
-        padding: 0;
-        height: initial;
-        &__text {
-          font-size: var(--fs-h1);
-          font-family: var(--ff-bold);
-          text-wrap: wrap;
-          word-break: break-all;
+      .email-wrapper {
+        display: flex;
+        align-items: center;
+        gap: var(--gap);
+        .email {
+          color: var(--neutral-0);
+          padding: 0;
+          height: initial;
+          &__text {
+            font-size: var(--fs-h2);
+            font-family: var(--ff-bold);
+            text-wrap: wrap;
+            word-break: break-all;
+          }
         }
-        .btn-arrow {
+        .btn-email {
           height: 72px;
           width: 72px;
           border-radius: 100%;

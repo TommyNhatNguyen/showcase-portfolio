@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ROUTES } from "../constants/links";
 import Button from "../components/Button/Button";
-import { FiArrowRight } from "react-icons/fi";
+import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import React, { useRef } from "react";
@@ -235,10 +235,11 @@ export default function Blog() {
                   </p>
                   <Button
                     href="#"
-                    variant="icon"
-                    size="md"
+                    variant="link"
+                    size="lg"
                     className="content__btn"
-                    icon={FiArrowRight}
+                    icon={FiArrowUpRight}
+                    isRounded={false}
                   />
                 </div>
               </li>
