@@ -7,6 +7,7 @@ import clsx from "clsx";
 import AnimatedTextHover from "../AnimatedTextHover";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { Observer } from "gsap/all";
 
 type HeaderProps = {
   handleToggleHamburger: () => void;
@@ -66,6 +67,17 @@ const Header = ({ handleToggleHamburger, isHamburgerActive }: HeaderProps) => {
           "<+0.1"
         );
       });
+      const observer = Observer.create({
+        target: window,
+        onUp: (self) => {
+          headerSection.classList.add("--scroll-up");
+          headerSection.classList.remove("--scroll-down");
+        },
+        onDown: (self) => {
+          headerSection.classList.add("--scroll-down");
+          headerSection.classList.add("--scroll-up");
+        },
+      });
     },
     {
       scope: headerRef,
@@ -73,7 +85,7 @@ const Header = ({ handleToggleHamburger, isHamburgerActive }: HeaderProps) => {
   );
   return (
     <header
-      className={clsx("header", isHamburgerActive && "--active")}
+      className={clsx("header", isHamburgerActive ? "--active" : "--scroll-up")}
       id="header"
       ref={headerRef}
     >

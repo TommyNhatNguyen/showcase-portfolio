@@ -73,18 +73,18 @@ const MainLayout = ({ children }: Props) => {
 
   return (
     <>
+      <Header
+        isHamburgerActive={isHamburgerActive}
+        handleToggleHamburger={handleToggleHamburger}
+      />
       <div id="smooth-content">
-        <Header
-          isHamburgerActive={isHamburgerActive}
-          handleToggleHamburger={handleToggleHamburger}
-        />
         {children}
         <Footer />
-        <Navigation
-          isHamburgerActive={isHamburgerActive}
-          handleHideHamburger={handleHideHamburger}
-        />
       </div>
+      <Navigation
+        isHamburgerActive={isHamburgerActive}
+        handleHideHamburger={handleHideHamburger}
+      />
       <LoadingPage />
     </>
   );
