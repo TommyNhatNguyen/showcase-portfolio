@@ -13,9 +13,39 @@
   }
   &__logo {
     align-content: center;
-    &-name {
-      font-size: var(--fs-h6);
+    &-link {
+      overflow: hidden;
+      position: relative;
+      display: block;
+    }
+    &.--text {
+      font-size: var(--fs-link);
       font-family: var(--ff-bold);
+    }
+    &-name {
+      color: var(--neutral-40);
+    }
+    &-middle {
+      color: var(--neutral-100);
+    }
+    .content-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      height: fit-content;
+      width: 100%;
+    }
+    .content-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      gap: 0;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: fit-content;
     }
   }
   &__cta {
