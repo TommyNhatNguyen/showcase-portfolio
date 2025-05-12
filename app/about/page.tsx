@@ -445,20 +445,15 @@ export default function About() {
                   </div>
                   {/* Right */}
                   <div className="link__navigate">
-                    <Link
-                      href={"https://etsolution.vn"}
-                      target="_blank"
-                      className="link__navigate-logo"
-                    >
+                    <div className="link__navigate-logo">
                       <Image
                         src="/images/etsolution-logo.png"
                         alt="etsolution logo"
                         width={100}
                         height={50}
                       />
-                    </Link>
+                    </div>
                     <Button
-                      href="#"
                       variant="link"
                       size="lg"
                       className="link__navigate-btn"

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { ROUTES } from "../../constants/links";
 import Button from "../Button/Button";
@@ -8,6 +8,7 @@ import AnimatedTextHover from "../AnimatedTextHover";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Observer } from "gsap/all";
+import { usePathname } from "next/navigation";
 
 type HeaderProps = {
   handleToggleHamburger: () => void;
@@ -16,6 +17,7 @@ type HeaderProps = {
 
 const Header = ({ handleToggleHamburger, isHamburgerActive }: HeaderProps) => {
   const headerRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
   useGSAP(
     () => {
       const headerSection = document.querySelector("#header") as HTMLElement;
@@ -83,6 +85,9 @@ const Header = ({ handleToggleHamburger, isHamburgerActive }: HeaderProps) => {
       scope: headerRef,
     }
   );
+  useEffect(() => {
+    headerRef.current?.classList.remove("--scroll-up", "--scroll-down");
+  }, [pathname]);
   return (
     <header
       className={clsx("header", isHamburgerActive ? "--active" : "--scroll-up")}
