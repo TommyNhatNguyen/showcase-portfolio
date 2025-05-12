@@ -450,33 +450,6 @@ export default function Home() {
           </div>
 
           <div className="schero__cta">
-            {/* <ul className="schero__cta-socials">
-              <li className="social">
-                <Link href={SOCIAL_LINKS.INSTAGRAM} className="social__link">
-                  <span className="social__link-text">Instagram</span>
-                  <div className="social__link-icon">
-                    <FiArrowUpRight />
-                  </div>
-                </Link>
-              </li>
-              <li className="social">
-                <Link href={SOCIAL_LINKS.BEHANCE} className="social__link">
-                  <span className="social__link-text">Behance</span>
-                  <div className="social__link-icon">
-                    <FiArrowUpRight />
-                  </div>
-                </Link>
-              </li>
-              <li className="social">
-                <Link href={SOCIAL_LINKS.DRIBBLE} className="social__link">
-                  <span className="social__link-text">Dribble</span>
-                  <div className="social__link-icon">
-                    <FiArrowUpRight />
-                  </div>
-                </Link>
-              </li>
-            </ul> */}
-
             <Button
               href="#"
               variant="talk"
@@ -568,10 +541,11 @@ export default function Home() {
 
                     <Button
                       href="#"
-                      variant="icon"
-                      size="md"
+                      variant="link"
+                      size="lg"
                       className="cardwork__content-btn"
-                      icon={FiArrowRight}
+                      icon={FiArrowUpRight}
+                      isRounded={false}
                     />
                   </div>
                 </HideTextWrapper>
@@ -598,10 +572,11 @@ export default function Home() {
 
                     <Button
                       href="#"
-                      variant="icon"
-                      size="md"
+                      variant="link"
+                      size="lg"
                       className="cardwork__content-btn"
-                      icon={FiArrowRight}
+                      icon={FiArrowUpRight}
+                      isRounded={false}
                     />
                   </div>
                 </HideTextWrapper>
@@ -616,24 +591,27 @@ export default function Home() {
                   />
                 </Link>
 
-                <div className="cardwork__content">
-                  <div className="cardwork__content-desc">
-                    <AnimatedTextHover>
-                      <Link href="#" className="title">
-                        Wepay
-                      </Link>
-                    </AnimatedTextHover>
-                    <p className="desc">Mobile App Design</p>
-                  </div>
+                <HideTextWrapper>
+                  <div className="cardwork__content">
+                    <div className="cardwork__content-desc">
+                      <AnimatedTextHover>
+                        <Link href="#" className="title">
+                          Wepay
+                        </Link>
+                      </AnimatedTextHover>
+                      <p className="desc">Mobile App Design</p>
+                    </div>
 
-                  <Button
-                    href="#"
-                    variant="icon"
-                    size="md"
-                    className="cardwork__content-btn"
-                    icon={FiArrowRight}
-                  />
-                </div>
+                    <Button
+                      href="#"
+                      variant="link"
+                      size="lg"
+                      className="cardwork__content-btn"
+                      icon={FiArrowUpRight}
+                      isRounded={false}
+                    />
+                  </div>
+                </HideTextWrapper>
               </li>
               <li className="scwork__list-item cardwork">
                 <Link href="#" className="cardwork__thumbnail">
@@ -645,24 +623,27 @@ export default function Home() {
                   />
                 </Link>
 
-                <div className="cardwork__content">
-                  <div className="cardwork__content-desc">
-                    <AnimatedTextHover>
-                      <Link href="#" className="title">
-                        Estatery
-                      </Link>
-                    </AnimatedTextHover>
-                    <p className="desc">Mobile App Design</p>
-                  </div>
+                <HideTextWrapper>
+                  <div className="cardwork__content">
+                    <div className="cardwork__content-desc">
+                      <AnimatedTextHover>
+                        <Link href="#" className="title">
+                          Estatery
+                        </Link>
+                      </AnimatedTextHover>
+                      <p className="desc">Mobile App Design</p>
+                    </div>
 
-                  <Button
-                    href="#"
-                    variant="icon"
-                    size="md"
-                    className="cardwork__content-btn"
-                    icon={FiArrowRight}
-                  />
-                </div>
+                    <Button
+                      href="#"
+                      variant="link"
+                      size="lg"
+                      className="cardwork__content-btn"
+                      icon={FiArrowUpRight}
+                      isRounded={false}
+                    />
+                  </div>
+                </HideTextWrapper>
               </li>
               <li className="scwork__list-item cardwork">
                 <Link href="#" className="cardwork__thumbnail">
@@ -674,24 +655,27 @@ export default function Home() {
                   />
                 </Link>
 
-                <div className="cardwork__content">
-                  <div className="cardwork__content-desc">
-                    <AnimatedTextHover>
-                      <Link href="#" className="title">
-                        Sportly
-                      </Link>
-                    </AnimatedTextHover>
-                    <p className="desc">Mobile App Design</p>
-                  </div>
+                <HideTextWrapper>
+                  <div className="cardwork__content">
+                    <div className="cardwork__content-desc">
+                      <AnimatedTextHover>
+                        <Link href="#" className="title">
+                          Sportly
+                        </Link>
+                      </AnimatedTextHover>
+                      <p className="desc">Mobile App Design</p>
+                    </div>
 
-                  <Button
-                    href="#"
-                    variant="icon"
-                    size="md"
-                    className="cardwork__content-btn"
-                    icon={FiArrowRight}
-                  />
-                </div>
+                    <Button
+                      href="#"
+                      variant="link"
+                      size="lg"
+                      className="cardwork__content-btn"
+                      icon={FiArrowUpRight}
+                      isRounded={false}
+                    />
+                  </div>
+                </HideTextWrapper>
               </li>
             </ul>
 

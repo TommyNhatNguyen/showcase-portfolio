@@ -7,6 +7,7 @@ type Props = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const AnimatedTextHover = ({ children, className, ...props }: Props) => {
+  
   return (
     <div className={clsx("animated-text-hover", className)} {...props}>
       <div className="content-top">{children}</div>

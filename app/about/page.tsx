@@ -10,7 +10,7 @@ import AnimatedThumbnail from "../components/AnimatedThumbnail/AnimatedThumbnail
 import { extractNumber } from "../utils/extractNumber";
 import AnimatedTextHover from "../components/AnimatedTextHover";
 import Button from "../components/Button/Button";
-import { FiArrowRight } from "react-icons/fi";
+import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
 
 export default function About() {
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -428,31 +428,44 @@ export default function About() {
             <h5 className="scclients__title">Clients</h5>
             <ul className="scclients__list">
               <li className="scclients__list-item">
-                {/* Left */}
-                <div className="content">
-                  <AnimatedTextHover>
-                    <Link
-                      href={"https://etsolution.vn"}
-                      target="_blank"
-                      className="content__title --block --link"
-                    >
-                      Etsolutions - Engineering & Technology Solutions
-                    </Link>
-                  </AnimatedTextHover>
-                  <span className="content__time --block">May 5, 2023</span>
-                </div>
-                {/* Right */}
                 <Link
                   href={"https://etsolution.vn"}
                   target="_blank"
-                  className="client-logo"
+                  className="link"
                 >
-                  <Image
-                    src="/images/etsolution-logo.png"
-                    alt="etsolution logo"
-                    width={100}
-                    height={50}
-                  />
+                  {/* Left */}
+                  <div className="link__content">
+                    <AnimatedTextHover>
+                      <p className="link__content-title --block">
+                        Etsolutions - Engineering & Technology Solutions
+                      </p>
+                    </AnimatedTextHover>
+                    <span className="link__content-time --block">
+                      May 5, 2023
+                    </span>
+                  </div>
+                  {/* Right */}
+                  <div className="link__navigate">
+                    <Link
+                      href={"https://etsolution.vn"}
+                      target="_blank"
+                      className="link__navigate-logo"
+                    >
+                      <Image
+                        src="/images/etsolution-logo.png"
+                        alt="etsolution logo"
+                        width={100}
+                        height={50}
+                      />
+                    </Link>
+                    <Button
+                      href="#"
+                      variant="link"
+                      size="lg"
+                      className="link__navigate-btn"
+                      icon={FiArrowUpRight}
+                    />
+                  </div>
                 </Link>
               </li>
             </ul>

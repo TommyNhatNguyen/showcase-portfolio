@@ -24,12 +24,16 @@
       }
       &:hover {
         .link {
-          transform: translateX(12px);
-          &__btn {
-            .btn__icon {
-              transform: rotate(-45deg);
-            }
+          transform: translateX(72px);
+          .arrow {
+            transform: rotate(45deg);
+            opacity: 1;
           }
+          // &__btn {
+          //   .btn__icon {
+          //     transform: rotate(-45deg);
+          //   }
+          // }
         }
       }
       .link {
@@ -38,9 +42,23 @@
         width: 100%;
         display: flex;
         align-items: center;
-        justify-content: space-between;
         gap: var(--gap);
         transition: all 0.3s;
+        position: relative;
+        .arrow {
+          height: 72px;
+          width: 72px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: all 0.3s;
+          svg {
+            height: 72px;
+            width: 72px;
+            color: var(--neutral-0);
+          }
+        }
         &__text {
           font-size: var(--fs-h2);
           font-family: var(--ff-bold);
@@ -49,16 +67,16 @@
             color: var(--neutral-50);
           }
         }
-        &__btn {
-          border-color: var(--neutral-0);
-          .btn__icon {
-            transition: all 0.3s;
-            svg,
-            path {
-              stroke: var(--neutral-0);
-            }
-          }
-        }
+        // &__btn {
+        //   border-color: var(--neutral-0);
+        //   .btn__icon {
+        //     transition: all 0.3s;
+        //     svg,
+        //     path {
+        //       stroke: var(--neutral-0);
+        //     }
+        //   }
+        // }
       }
     }
   }

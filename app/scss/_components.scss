@@ -136,6 +136,11 @@
       }
     }
     &-btn {
+      svg {
+        height: 72px;
+        width: 72px;
+        aspect-ratio: 72 / 72;
+      }
     }
   }
 }

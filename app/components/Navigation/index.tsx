@@ -2,11 +2,12 @@ import { ROUTES } from "@/app/constants/links";
 import Link from "next/link";
 import React, { useRef } from "react";
 import Button from "../Button/Button";
-import { FiArrowRight } from "react-icons/fi";
+import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
 import clsx from "clsx";
 import AnimatedTextHover from "../AnimatedTextHover";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import SectionSocial from "../Footer/SectionSocial";
 
 type Props = {
   isHamburgerActive: boolean;
@@ -20,12 +21,22 @@ const Navigation = ({ isHamburgerActive, handleHideHamburger }: Props) => {
   };
   useGSAP(
     () => {
+      const GAP = 16;
       const tl = gsap.timeline({});
       const bgOpacity = document.querySelector(".bg-opacity");
       const navListItem = document.querySelectorAll(".nav__list-item");
+      const navListItemText = document.querySelectorAll(
+        ".nav__list-item .link__text"
+      );
+      const navListItemArrow = document.querySelectorAll(
+        ".nav__list-item .arrow"
+      );
       if (isHamburgerActive) {
         tl.set([navRef.current, bgOpacity], {
           opacity: 1,
+        });
+        tl.set(navListItem, {
+          x: -navListItemArrow[0].clientWidth - GAP,
         });
         tl.to(bgOpacity, {
           height: "100%",
@@ -44,7 +55,7 @@ const Navigation = ({ isHamburgerActive, handleHideHamburger }: Props) => {
           "<+0.3"
         );
         tl.from(
-          navListItem,
+          navListItemText,
           {
             opacity: 0,
             x: -100,
@@ -86,18 +97,14 @@ const Navigation = ({ isHamburgerActive, handleHideHamburger }: Props) => {
                 className="link"
                 onClick={_onHideHamburger}
               >
+                <div className="arrow">
+                  <FiArrowUpRight />
+                </div>
                 <AnimatedTextHover>
                   <div className="link__text">
                     Home <span className="link__text-position">(01)</span>
                   </div>
                 </AnimatedTextHover>
-                <Button
-                  variant="icon"
-                  size="md"
-                  className="link__btn"
-                  icon={FiArrowRight}
-                  type="button"
-                />
               </Link>
             </li>
             <li className="nav__list-item">
@@ -106,18 +113,14 @@ const Navigation = ({ isHamburgerActive, handleHideHamburger }: Props) => {
                 className="link"
                 onClick={_onHideHamburger}
               >
+                <div className="arrow">
+                  <FiArrowUpRight />
+                </div>
                 <AnimatedTextHover>
                   <div className="link__text">
                     About Me <span className="link__text-position">(02)</span>
                   </div>
                 </AnimatedTextHover>
-                <Button
-                  variant="icon"
-                  size="md"
-                  className="link__btn"
-                  icon={FiArrowRight}
-                  type="button"
-                />
               </Link>
             </li>
             <li className="nav__list-item">
@@ -126,18 +129,14 @@ const Navigation = ({ isHamburgerActive, handleHideHamburger }: Props) => {
                 className="link"
                 onClick={_onHideHamburger}
               >
+                <div className="arrow">
+                  <FiArrowUpRight />
+                </div>
                 <AnimatedTextHover>
                   <div className="link__text">
                     Works <span className="link__text-position">(03)</span>
                   </div>
                 </AnimatedTextHover>
-                <Button
-                  variant="icon"
-                  size="md"
-                  className="link__btn"
-                  icon={FiArrowRight}
-                  type="button"
-                />
               </Link>
             </li>
             <li className="nav__list-item">
@@ -146,18 +145,14 @@ const Navigation = ({ isHamburgerActive, handleHideHamburger }: Props) => {
                 className="link"
                 onClick={_onHideHamburger}
               >
+                <div className="arrow">
+                  <FiArrowUpRight />
+                </div>
                 <AnimatedTextHover>
                   <div className="link__text">
                     Blog <span className="link__text-position">(04)</span>
                   </div>
                 </AnimatedTextHover>
-                <Button
-                  variant="icon"
-                  size="md"
-                  className="link__btn"
-                  icon={FiArrowRight}
-                  type="button"
-                />
               </Link>
             </li>
           </ul>
