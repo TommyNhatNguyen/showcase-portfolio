@@ -96,6 +96,7 @@ const Navigation = ({ isHamburgerActive, handleHideHamburger }: Props) => {
                 href={ROUTES.HOME}
                 className="link"
                 onClick={_onHideHamburger}
+                prefetch={true}
               >
                 <div className="arrow">
                   <FiArrowUpRight />
@@ -112,6 +113,7 @@ const Navigation = ({ isHamburgerActive, handleHideHamburger }: Props) => {
                 href={ROUTES.ABOUT}
                 className="link"
                 onClick={_onHideHamburger}
+                prefetch={true}
               >
                 <div className="arrow">
                   <FiArrowUpRight />
@@ -128,6 +130,7 @@ const Navigation = ({ isHamburgerActive, handleHideHamburger }: Props) => {
                 href={ROUTES.WORK}
                 className="link"
                 onClick={_onHideHamburger}
+                prefetch={true}
               >
                 <div className="arrow">
                   <FiArrowUpRight />
@@ -144,6 +147,7 @@ const Navigation = ({ isHamburgerActive, handleHideHamburger }: Props) => {
                 href={ROUTES.BLOG}
                 className="link"
                 onClick={_onHideHamburger}
+                prefetch={true}
               >
                 <div className="arrow">
                   <FiArrowUpRight />

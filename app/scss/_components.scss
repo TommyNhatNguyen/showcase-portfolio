@@ -222,6 +222,13 @@
         flex: 1;
       }
       &-icon {
+        height: fit-content;
+        width: fit-content;
+        padding: 0;
+        transition: 0.3s;
+        &:hover {
+          transform: rotate(45deg);
+        }
         svg {
           stroke: var(--neutral-0);
           width: 24px;

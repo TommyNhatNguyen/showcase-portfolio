@@ -110,6 +110,7 @@ const SectionSocial = (props: Props) => {
                 <Button
                   type="submit"
                   variant="icon"
+                  size="md"
                   className="formgroup__inputgroup-icon"
                   icon={FiArrowUpRight}
                   isRounded={false}

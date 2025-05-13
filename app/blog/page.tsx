@@ -233,14 +233,14 @@ export default function Blog() {
                     simplicity, clean lines, and negative space can enhance user
                     experiences and create visually stunning designs.
                   </p>
-                  <Button
+                  {/* <Button
                     href="#"
                     variant="link"
                     size="lg"
                     className="content__btn"
                     icon={FiArrowUpRight}
                     isRounded={false}
-                  />
+                  /> */}
                 </div>
               </li>
               <li className="sclatestinsights__list-item">
