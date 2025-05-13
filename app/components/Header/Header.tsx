@@ -20,6 +20,7 @@ const Header = ({ handleToggleHamburger, isHamburgerActive }: HeaderProps) => {
   const pathname = usePathname();
   useGSAP(
     () => {
+      // HEADER
       const headerSection = document.querySelector("#header") as HTMLElement;
       const logoLink = headerSection.querySelector(
         ".header__logo-link"
