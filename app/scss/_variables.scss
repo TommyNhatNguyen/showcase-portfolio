@@ -96,9 +96,10 @@
 
   @include xs {
     /* Container */
+    --page-max-width: 100%;
     --pd-container: 20px;
     --pd-section: 40px;
-    --container-max-width: calc(690px + 2 * var(--pd-container));
+    --container-max-width: 100%;
     --gutter: 12px;
     --gap: 8px;
     --header-height: 88px;

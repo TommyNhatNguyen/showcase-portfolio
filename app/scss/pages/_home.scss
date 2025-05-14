@@ -193,4 +193,31 @@
       }
     }
   }
+  // RESPONSIVE
+  @include xs {
+    // HERO
+    .schero {
+      &__title {
+        text-align: center;
+      }
+      &__desc {
+        display: block;
+        &-line {
+          display: none;
+        }
+        &-text {
+          text-align: center;
+          margin: auto;
+        }
+      }
+      &__cta {
+        margin-top: 40px;
+        display: block;
+        .btn {
+          background-color: var(--neutral-100);
+          color: var(--neutral-0);
+        }
+      }
+    }
+  }
 }

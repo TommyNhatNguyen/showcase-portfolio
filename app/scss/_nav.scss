@@ -1,3 +1,4 @@
+@import "./mixins";
 .nav {
   position: fixed;
   top: 0;
@@ -29,11 +30,6 @@
             transform: rotate(45deg);
             opacity: 1;
           }
-          // &__btn {
-          //   .btn__icon {
-          //     transform: rotate(-45deg);
-          //   }
-          // }
         }
       }
       .link {
@@ -67,18 +63,11 @@
             color: var(--neutral-50);
           }
         }
-        // &__btn {
-        //   border-color: var(--neutral-0);
-        //   .btn__icon {
-        //     transition: all 0.3s;
-        //     svg,
-        //     path {
-        //       stroke: var(--neutral-0);
-        //     }
-        //   }
-        // }
       }
     }
+  }
+  // RESPONSIVE
+  @include xs {
   }
 }
 
