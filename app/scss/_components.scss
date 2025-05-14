@@ -143,6 +143,11 @@
       }
     }
   }
+  @include xs {
+    &__thumbnail {
+      border-radius: 24px;
+    }
+  }
 }
 
 .titlegroup {
