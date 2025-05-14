@@ -474,25 +474,19 @@ export default function About() {
             {/* Links */}
             <ul className="sccta__links">
               <li className="sccta__links-item">
-                <AnimatedTextHover>
-                  <Link href={ROUTES.HOME} className="link">
-                    Home
-                  </Link>
-                </AnimatedTextHover>
+                <Link href={ROUTES.HOME} className="link">
+                  Home
+                </Link>
               </li>
               <li className="sccta__links-item">
-                <AnimatedTextHover>
-                  <Link href={ROUTES.WORK} className="link">
-                    Work
-                  </Link>
-                </AnimatedTextHover>
+                <Link href={ROUTES.WORK} className="link">
+                  Work
+                </Link>
               </li>
               <li className="sccta__links-item">
-                <AnimatedTextHover>
-                  <Link href={ROUTES.BLOG} className="link">
-                    Insights
-                  </Link>
-                </AnimatedTextHover>
+                <Link href={ROUTES.BLOG} className="link">
+                  Insights
+                </Link>
               </li>
             </ul>
             <div className="sccta__title">

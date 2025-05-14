@@ -102,6 +102,15 @@
             height: 1px;
             background-color: var(--neutral-0);
             border-radius: 999999px;
+            transform: scaleX(0);
+            transition: transform 0.3s;
+            transform-origin: right;
+          }
+          &:hover {
+            &::after {
+              transform: scaleX(1);
+              transform-origin: left;
+            }
           }
         }
       }

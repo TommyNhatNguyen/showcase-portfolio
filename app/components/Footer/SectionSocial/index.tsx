@@ -19,22 +19,22 @@ const SectionSocial = (props: Props) => {
           <ul className="sitemap">
             <li className="sitemap__item">
               <Link href={ROUTES.HOME} className="sitemap__item-link">
-                <AnimatedTextHover>Home</AnimatedTextHover>
+                Home
               </Link>
             </li>
             <li className="sitemap__item">
               <Link href={ROUTES.ABOUT} className="sitemap__item-link">
-                <AnimatedTextHover>About me</AnimatedTextHover>
+                About
               </Link>
             </li>
             <li className="sitemap__item">
               <Link href={ROUTES.WORK} className="sitemap__item-link">
-                <AnimatedTextHover>Works</AnimatedTextHover>
+                Works
               </Link>
             </li>
             <li className="sitemap__item">
               <Link href={ROUTES.BLOG} className="sitemap__item-link">
-                <AnimatedTextHover>Insights</AnimatedTextHover>
+                Insights
               </Link>
             </li>
           </ul>
