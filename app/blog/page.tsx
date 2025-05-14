@@ -213,7 +213,7 @@ export default function Blog() {
             </div>
             <ul className="sclatestinsights__list">
               <li className="sclatestinsights__list-item">
-                <Link href="#" className="thumbnail">
+                <Link href={ROUTES.BLOG} className="thumbnail" prefetch>
                   <AnimatedThumbnail
                     className="thumbnail__img"
                     src="/images/blog.jpg"
@@ -224,7 +224,7 @@ export default function Blog() {
                 </Link>
                 <div className="content">
                   <AnimatedTextHover>
-                    <Link href="#" className="content__title">
+                    <Link href={ROUTES.BLOG} className="content__title">
                       Exploring the Power of Minimalism in Visual Design
                     </Link>
                   </AnimatedTextHover>
@@ -244,7 +244,7 @@ export default function Blog() {
                 </div>
               </li>
               <li className="sclatestinsights__list-item">
-                <Link href="#" className="thumbnail">
+                <Link href={ROUTES.BLOG} className="thumbnail" prefetch>
                   <AnimatedThumbnail
                     className="thumbnail__img"
                     src="/images/blog.jpg"
@@ -255,7 +255,7 @@ export default function Blog() {
                 </Link>
                 <div className="content">
                   <AnimatedTextHover>
-                    <Link href="#" className="content__title">
+                    <Link href={ROUTES.BLOG} className="content__title">
                       Exploring the Power of Minimalism in Visual Design
                     </Link>
                   </AnimatedTextHover>
@@ -267,7 +267,7 @@ export default function Blog() {
                 </div>
               </li>
               <li className="sclatestinsights__list-item">
-                <Link href="#" className="thumbnail">
+                <Link href={ROUTES.BLOG} className="thumbnail" prefetch>
                   <AnimatedThumbnail
                     className="thumbnail__img"
                     src="/images/blog.jpg"
@@ -278,7 +278,7 @@ export default function Blog() {
                 </Link>
                 <div className="content">
                   <AnimatedTextHover>
-                    <Link href="#" className="content__title">
+                    <Link href={ROUTES.BLOG} className="content__title">
                       Exploring the Power of Minimalism in Visual Design
                     </Link>
                   </AnimatedTextHover>
@@ -290,7 +290,7 @@ export default function Blog() {
                 </div>
               </li>
               <li className="sclatestinsights__list-item">
-                <Link href="#" className="thumbnail">
+                <Link href={ROUTES.BLOG} className="thumbnail" prefetch>
                   <AnimatedThumbnail
                     className="thumbnail__img"
                     src="/images/blog.jpg"
@@ -301,7 +301,7 @@ export default function Blog() {
                 </Link>
                 <div className="content">
                   <AnimatedTextHover>
-                    <Link href="#" className="content__title">
+                    <Link href={ROUTES.BLOG} className="content__title">
                       Exploring the Power of Minimalism in Visual Design
                     </Link>
                   </AnimatedTextHover>
@@ -326,7 +326,7 @@ export default function Blog() {
             </div>
             <ul className="scallinsights__list">
               <li className="scallinsights__list-item">
-                <Link href="#" className="link">
+                <Link href={ROUTES.BLOG} className="link" prefetch>
                   <div className="content">
                     <p className="content__title">
                       Designing for Accessibility: Bridging the Gap to Inclusive
@@ -346,7 +346,7 @@ export default function Blog() {
                 </Link>
               </li>
               <li className="scallinsights__list-item">
-                <Link href="#" className="link">
+                <Link href={ROUTES.BLOG} className="link" prefetch>
                   <div className="content">
                     <p className="content__title">
                       Designing for Accessibility: Bridging the Gap to Inclusive
@@ -366,7 +366,7 @@ export default function Blog() {
                 </Link>
               </li>
               <li className="scallinsights__list-item">
-                <Link href="#" className="link">
+                <Link href={ROUTES.BLOG} className="link" prefetch>
                   <div className="content">
                     <p className="content__title">
                       Designing for Accessibility: Bridging the Gap to Inclusive
@@ -387,7 +387,7 @@ export default function Blog() {
               </li>
             </ul>
             <Button
-              href="#"
+              href={ROUTES.BLOG}
               size="md"
               className="scallinsights__btn"
               variant="talk"

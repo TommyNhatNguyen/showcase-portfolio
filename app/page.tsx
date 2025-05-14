@@ -519,7 +519,11 @@ export default function Home() {
 
             <ul className="scwork__list">
               <li className="scwork__list-item cardwork">
-                <Link href="#" className="cardwork__thumbnail">
+                <Link
+                  href={ROUTES.WORK}
+                  className="cardwork__thumbnail"
+                  prefetch
+                >
                   <AnimatedThumbnail
                     src="/images/project-1.jpg"
                     alt="project 1"
@@ -532,7 +536,7 @@ export default function Home() {
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
                       <AnimatedTextHover>
-                        <Link href="#" className="title">
+                        <Link href={ROUTES.WORK} prefetch className="title">
                           Sportly
                         </Link>
                       </AnimatedTextHover>
@@ -540,7 +544,7 @@ export default function Home() {
                     </div>
 
                     <Button
-                      href="#"
+                      href={ROUTES.WORK}
                       variant="link"
                       size="lg"
                       className="cardwork__content-btn"
@@ -551,7 +555,11 @@ export default function Home() {
                 </HideTextWrapper>
               </li>
               <li className="scwork__list-item cardwork">
-                <Link href="#" className="cardwork__thumbnail">
+                <Link
+                  href={ROUTES.WORK}
+                  className="cardwork__thumbnail"
+                  prefetch
+                >
                   <AnimatedThumbnail
                     src="/images/project-2.jpg"
                     alt="project 2"
@@ -563,7 +571,7 @@ export default function Home() {
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
                       <AnimatedTextHover>
-                        <Link href="#" className="title">
+                        <Link href={ROUTES.WORK} prefetch className="title">
                           Payrole
                         </Link>
                       </AnimatedTextHover>
@@ -571,7 +579,7 @@ export default function Home() {
                     </div>
 
                     <Button
-                      href="#"
+                      href={ROUTES.WORK}
                       variant="link"
                       size="lg"
                       className="cardwork__content-btn"
@@ -582,7 +590,11 @@ export default function Home() {
                 </HideTextWrapper>
               </li>
               <li className="scwork__list-item cardwork">
-                <Link href="#" className="cardwork__thumbnail">
+                <Link
+                  href={ROUTES.WORK}
+                  className="cardwork__thumbnail"
+                  prefetch
+                >
                   <AnimatedThumbnail
                     src="/images/project-3.jpg"
                     alt="project 3"
@@ -595,7 +607,7 @@ export default function Home() {
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
                       <AnimatedTextHover>
-                        <Link href="#" className="title">
+                        <Link href={ROUTES.WORK} prefetch className="title">
                           Wepay
                         </Link>
                       </AnimatedTextHover>
@@ -603,7 +615,7 @@ export default function Home() {
                     </div>
 
                     <Button
-                      href="#"
+                      href={ROUTES.WORK}
                       variant="link"
                       size="lg"
                       className="cardwork__content-btn"
@@ -614,7 +626,11 @@ export default function Home() {
                 </HideTextWrapper>
               </li>
               <li className="scwork__list-item cardwork">
-                <Link href="#" className="cardwork__thumbnail">
+                <Link
+                  href={ROUTES.WORK}
+                  className="cardwork__thumbnail"
+                  prefetch
+                >
                   <AnimatedThumbnail
                     src="/images/project-4.jpg"
                     alt="project 4"
@@ -627,7 +643,7 @@ export default function Home() {
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
                       <AnimatedTextHover>
-                        <Link href="#" className="title">
+                        <Link href={ROUTES.WORK} prefetch className="title">
                           Estatery
                         </Link>
                       </AnimatedTextHover>
@@ -635,7 +651,7 @@ export default function Home() {
                     </div>
 
                     <Button
-                      href="#"
+                      href={ROUTES.WORK}
                       variant="link"
                       size="lg"
                       className="cardwork__content-btn"
@@ -646,7 +662,11 @@ export default function Home() {
                 </HideTextWrapper>
               </li>
               <li className="scwork__list-item cardwork">
-                <Link href="#" className="cardwork__thumbnail">
+                <Link
+                  href={ROUTES.WORK}
+                  className="cardwork__thumbnail"
+                  prefetch
+                >
                   <AnimatedThumbnail
                     src="/images/project-5.jpg"
                     alt="project 5"
@@ -659,7 +679,7 @@ export default function Home() {
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
                       <AnimatedTextHover>
-                        <Link href="#" className="title">
+                        <Link href={ROUTES.WORK} prefetch className="title">
                           Sportly
                         </Link>
                       </AnimatedTextHover>
@@ -667,7 +687,7 @@ export default function Home() {
                     </div>
 
                     <Button
-                      href="#"
+                      href={ROUTES.WORK}
                       variant="link"
                       size="lg"
                       className="cardwork__content-btn"
@@ -824,7 +844,7 @@ export default function Home() {
                 </div>
               </li>
               <li className="scblog__list-card card --horizontal">
-                <Link href={"#"} className="card__thumbnail">
+                <Link href={ROUTES.BLOG} className="card__thumbnail" prefetch>
                   <Image
                     src="/images/blog-1.jpg"
                     alt="blog thumbnail 1"
@@ -834,7 +854,7 @@ export default function Home() {
                 </Link>
                 <div className="card__content">
                   <AnimatedTextHover>
-                    <Link href={"#"} className="card__content-title">
+                    <Link href={ROUTES.BLOG} className="card__content-title">
                       Designing for User Experience: Creating Intuitive and
                       Engaging Interfaces
                     </Link>

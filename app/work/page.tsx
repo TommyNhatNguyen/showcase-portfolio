@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import clsx from "clsx";
 import { FiArrowRight } from "react-icons/fi";
+import { ROUTES } from "../constants/links";
 
 export default function Work() {
   const workRef = useRef<HTMLDivElement>(null);
@@ -177,7 +178,7 @@ export default function Work() {
                       </div>
                     </div>
                     {/* Thumbnail */}
-                    <Link href="#" className="thumbnail">
+                    <Link href={ROUTES.WORK} className="thumbnail" prefetch>
                       <Image
                         src="/images/project-1.jpg"
                         alt="Sportly"
