@@ -1,3 +1,4 @@
+@import "./mixins";
 :root {
   /* Container */
   --page-max-width: 1920px;
@@ -92,4 +93,38 @@
   --line-right: 1px 0px 0px rgba(194, 194, 194, 1);
   --line-down: 0px 1px 0px rgba(194, 194, 194, 1);
   --line-left: -1px 0px 0px rgba(194, 194, 194, 1);
+
+  @include xs {
+    /* Container */
+    --pd-container: 20px;
+    --pd-section: 40px;
+    --container-max-width: calc(690px + 2 * var(--pd-container));
+    --gutter: 12px;
+    --gap: 8px;
+    --header-height: 88px;
+
+    /* Color styles */
+    --fs-error: 1.4rem;
+    --fs-body: 1.8rem;
+    --fs-body-md: 2.2rem;
+    --fs-body-lg: 2.8rem;
+    --fs-link: 1.6rem;
+    --fs-h1: 5.8rem;
+    --fs-h2: 5.6rem;
+    --fs-h3: 4.8rem;
+    --fs-h4: 4rem;
+    --fs-h5: 3.2rem;
+    --fs-h6: 2.8rem;
+
+    --btn-height: 56px;
+
+    --btn-height-lg: 72px;
+    --btn-primary-color: var(--neutral-100);
+
+    --btn-height-md: 56px;
+
+    --input-height: 44px;
+    --input-pd: 8px;
+    --input-border-radius: 8px;
+  }
 }
