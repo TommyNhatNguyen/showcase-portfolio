@@ -213,7 +213,7 @@ export default function Blog() {
             </div>
             <ul className="sclatestinsights__list">
               <li className="sclatestinsights__list-item">
-                <Link href={ROUTES.BLOG} className="thumbnail" prefetch>
+                <Link href={ROUTES.BLOG} className="thumbnail">
                   <AnimatedThumbnail
                     className="thumbnail__img"
                     src="/images/blog.jpg"
@@ -244,7 +244,7 @@ export default function Blog() {
                 </div>
               </li>
               <li className="sclatestinsights__list-item">
-                <Link href={ROUTES.BLOG} className="thumbnail" prefetch>
+                <Link href={ROUTES.BLOG} className="thumbnail">
                   <AnimatedThumbnail
                     className="thumbnail__img"
                     src="/images/blog.jpg"
@@ -267,7 +267,7 @@ export default function Blog() {
                 </div>
               </li>
               <li className="sclatestinsights__list-item">
-                <Link href={ROUTES.BLOG} className="thumbnail" prefetch>
+                <Link href={ROUTES.BLOG} className="thumbnail">
                   <AnimatedThumbnail
                     className="thumbnail__img"
                     src="/images/blog.jpg"
@@ -290,7 +290,7 @@ export default function Blog() {
                 </div>
               </li>
               <li className="sclatestinsights__list-item">
-                <Link href={ROUTES.BLOG} className="thumbnail" prefetch>
+                <Link href={ROUTES.BLOG} className="thumbnail">
                   <AnimatedThumbnail
                     className="thumbnail__img"
                     src="/images/blog.jpg"
@@ -326,7 +326,7 @@ export default function Blog() {
             </div>
             <ul className="scallinsights__list">
               <li className="scallinsights__list-item">
-                <Link href={ROUTES.BLOG} className="link" prefetch>
+                <Link href={ROUTES.BLOG} className="link">
                   <div className="content">
                     <p className="content__title">
                       Designing for Accessibility: Bridging the Gap to Inclusive
@@ -346,7 +346,7 @@ export default function Blog() {
                 </Link>
               </li>
               <li className="scallinsights__list-item">
-                <Link href={ROUTES.BLOG} className="link" prefetch>
+                <Link href={ROUTES.BLOG} className="link">
                   <div className="content">
                     <p className="content__title">
                       Designing for Accessibility: Bridging the Gap to Inclusive
@@ -366,7 +366,7 @@ export default function Blog() {
                 </Link>
               </li>
               <li className="scallinsights__list-item">
-                <Link href={ROUTES.BLOG} className="link" prefetch>
+                <Link href={ROUTES.BLOG} className="link">
                   <div className="content">
                     <p className="content__title">
                       Designing for Accessibility: Bridging the Gap to Inclusive

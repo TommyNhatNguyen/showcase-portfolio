@@ -178,7 +178,7 @@ export default function Work() {
                       </div>
                     </div>
                     {/* Thumbnail */}
-                    <Link href={ROUTES.WORK} className="thumbnail" prefetch>
+                    <Link href={ROUTES.WORK} className="thumbnail">
                       <Image
                         src="/images/project-1.jpg"
                         alt="Sportly"

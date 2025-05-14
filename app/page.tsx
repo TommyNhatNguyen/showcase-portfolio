@@ -519,11 +519,7 @@ export default function Home() {
 
             <ul className="scwork__list">
               <li className="scwork__list-item cardwork">
-                <Link
-                  href={ROUTES.WORK}
-                  className="cardwork__thumbnail"
-                  prefetch
-                >
+                <Link href={ROUTES.WORK} className="cardwork__thumbnail">
                   <AnimatedThumbnail
                     src="/images/project-1.jpg"
                     alt="project 1"
@@ -536,7 +532,7 @@ export default function Home() {
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
                       <AnimatedTextHover>
-                        <Link href={ROUTES.WORK} prefetch className="title">
+                        <Link href={ROUTES.WORK} className="title">
                           Sportly
                         </Link>
                       </AnimatedTextHover>
@@ -555,11 +551,7 @@ export default function Home() {
                 </HideTextWrapper>
               </li>
               <li className="scwork__list-item cardwork">
-                <Link
-                  href={ROUTES.WORK}
-                  className="cardwork__thumbnail"
-                  prefetch
-                >
+                <Link href={ROUTES.WORK} className="cardwork__thumbnail">
                   <AnimatedThumbnail
                     src="/images/project-2.jpg"
                     alt="project 2"
@@ -571,7 +563,7 @@ export default function Home() {
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
                       <AnimatedTextHover>
-                        <Link href={ROUTES.WORK} prefetch className="title">
+                        <Link href={ROUTES.WORK} className="title">
                           Payrole
                         </Link>
                       </AnimatedTextHover>
@@ -590,11 +582,7 @@ export default function Home() {
                 </HideTextWrapper>
               </li>
               <li className="scwork__list-item cardwork">
-                <Link
-                  href={ROUTES.WORK}
-                  className="cardwork__thumbnail"
-                  prefetch
-                >
+                <Link href={ROUTES.WORK} className="cardwork__thumbnail">
                   <AnimatedThumbnail
                     src="/images/project-3.jpg"
                     alt="project 3"
@@ -607,7 +595,7 @@ export default function Home() {
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
                       <AnimatedTextHover>
-                        <Link href={ROUTES.WORK} prefetch className="title">
+                        <Link href={ROUTES.WORK} className="title">
                           Wepay
                         </Link>
                       </AnimatedTextHover>
@@ -626,11 +614,7 @@ export default function Home() {
                 </HideTextWrapper>
               </li>
               <li className="scwork__list-item cardwork">
-                <Link
-                  href={ROUTES.WORK}
-                  className="cardwork__thumbnail"
-                  prefetch
-                >
+                <Link href={ROUTES.WORK} className="cardwork__thumbnail">
                   <AnimatedThumbnail
                     src="/images/project-4.jpg"
                     alt="project 4"
@@ -643,7 +627,7 @@ export default function Home() {
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
                       <AnimatedTextHover>
-                        <Link href={ROUTES.WORK} prefetch className="title">
+                        <Link href={ROUTES.WORK} className="title">
                           Estatery
                         </Link>
                       </AnimatedTextHover>
@@ -662,11 +646,7 @@ export default function Home() {
                 </HideTextWrapper>
               </li>
               <li className="scwork__list-item cardwork">
-                <Link
-                  href={ROUTES.WORK}
-                  className="cardwork__thumbnail"
-                  prefetch
-                >
+                <Link href={ROUTES.WORK} className="cardwork__thumbnail">
                   <AnimatedThumbnail
                     src="/images/project-5.jpg"
                     alt="project 5"
@@ -679,7 +659,7 @@ export default function Home() {
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
                       <AnimatedTextHover>
-                        <Link href={ROUTES.WORK} prefetch className="title">
+                        <Link href={ROUTES.WORK} className="title">
                           Sportly
                         </Link>
                       </AnimatedTextHover>
@@ -844,7 +824,7 @@ export default function Home() {
                 </div>
               </li>
               <li className="scblog__list-card card --horizontal">
-                <Link href={ROUTES.BLOG} className="card__thumbnail" prefetch>
+                <Link href={ROUTES.BLOG} className="card__thumbnail">
                   <Image
                     src="/images/blog-1.jpg"
                     alt="blog thumbnail 1"
