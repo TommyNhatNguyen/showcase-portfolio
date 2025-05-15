@@ -198,6 +198,14 @@
         }
       }
     }
-    .scexperience {}
+    .scexperience {
+      &__list {
+        flex-direction: column;
+        gap: 56px;
+        &-item {
+          width: 100%;
+        }
+      }
+    }
   }
 }
