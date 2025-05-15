@@ -1,56 +1,6 @@
 import type { Metadata } from "next";
-import { Inter_Tight, DM_Mono } from "next/font/google";
 import "./scss/index.scss";
 import MainLayout from "./layout/MainLayout";
-import Script from "next/script";
-
-const inter_tight_light = Inter_Tight({
-  variable: "--ff-light",
-  weight: "300",
-  subsets: ["latin"],
-});
-
-const inter_tight_regular = Inter_Tight({
-  variable: "--ff-regular",
-  weight: "400",
-  subsets: ["latin"],
-});
-
-const inter_tight_medium = Inter_Tight({
-  variable: "--ff-medium",
-  weight: "500",
-  subsets: ["latin"],
-});
-
-const inter_tight_semibold = Inter_Tight({
-  variable: "--ff-semibold",
-  weight: "600",
-  subsets: ["latin"],
-});
-
-const inter_tight_bold = Inter_Tight({
-  variable: "--ff-bold",
-  weight: "700",
-  subsets: ["latin"],
-});
-
-const dm_mono_light = DM_Mono({
-  variable: "--ff-mono-light",
-  weight: "300",
-  subsets: ["latin"],
-});
-
-const dm_mono_regular = DM_Mono({
-  variable: "--ff-mono-regular",
-  weight: "400",
-  subsets: ["latin"],
-});
-
-const dm_mono_medium = DM_Mono({
-  variable: "--ff-mono-medium",
-  weight: "500",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -68,10 +18,85 @@ export default function RootLayout({
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>TOMMY NGUYEN 🧑🏻‍🎨 Visual Developer</title>
+        <link
+          rel="preload"
+          href="/fonts/InterTight-Bold.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/InterTight-Bold.woff"
+          as="font"
+          type="font/woff"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/InterTight-Medium.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/InterTight-Medium.woff"
+          as="font"
+          type="font/woff"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/InterTight-Regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/InterTight-Regular.woff"
+          as="font"
+          type="font/woff"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/InterTight-SemiBold.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/InterTight-SemiBold.woff"
+          as="font"
+          type="font/woff"
+          crossOrigin="anonymous"
+        />
+        <style>
+          {`
+              html {
+  font-size: 62.5%;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  line-height: normal;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--ff-regular);
+  font-size: var(--fs-body);
+  color: var(--primary-text-color);
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+            `}
+        </style>
       </head>
-      <body
-        className={`${inter_tight_light.variable} ${inter_tight_regular.variable} ${inter_tight_medium.variable} ${inter_tight_semibold.variable} ${inter_tight_bold.variable} ${dm_mono_light.variable} ${dm_mono_regular.variable} ${dm_mono_medium.variable} --loading`}
-      >
+      <body className={`--loading`}>
         <div id="smooth-wrapper">
           <MainLayout>{children}</MainLayout>
         </div>

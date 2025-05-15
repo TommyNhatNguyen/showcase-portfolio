@@ -1,3 +1,4 @@
+@import "../mixins";
 .about {
   .schero {
     &__title {
@@ -174,6 +175,21 @@
       width: fit-content;
       margin-left: auto;
       margin-right: auto;
+    }
+  }
+  // RESPONSIVE
+  @include xs {
+    .schero {
+      &__content {
+        margin-top: 40px;
+        &-thumbnail {
+          max-height: 100%;
+          aspect-ratio: initial;
+        }
+        &-info {
+          margin-top: 40px;
+        }
+      }
     }
   }
 }
