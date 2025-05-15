@@ -207,5 +207,27 @@
         }
       }
     }
+    .scclients {
+      &__list {
+        margin-top: 24px;
+        &-item {
+          .link {
+            &__content {
+              display: none;
+            }
+            &__navigate {
+              flex: 1;
+              justify-content: space-between;
+            }
+          }
+        }
+      }
+    }
+    .sccta {
+      &__links {
+      }
+      &__title {
+      }
+    }
   }
 }
