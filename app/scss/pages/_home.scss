@@ -192,6 +192,12 @@
         flex: 1;
       }
     }
+    &__btnviewall.--mobile {
+      margin-top: 32px;
+      margin-left: auto;
+      margin-right: auto;
+      display: none;
+    }
   }
   // RESPONSIVE
   @include xs {
@@ -256,6 +262,43 @@
       }
       &__btnviewall {
         margin-top: 32px;
+      }
+    }
+    // CLIENTS
+    .scclient {
+      &__title {
+        text-align: center;
+      }
+      &__list {
+        margin-top: 32px;
+        flex-direction: column;
+        gap: 32px;
+        &-item {
+          margin: auto;
+          gap: 24px;
+          .content {
+            text-align: center;
+            &__title {
+              font-size: var(--fs-body-md);
+            }
+          }
+        }
+      }
+    }
+    .scblog {
+      &__title {
+        text-align: center;
+
+        .btn {
+          display: none;
+        }
+      }
+      &__list {
+        flex-direction: column;
+        gap: 32px;
+      }
+      &__btnviewall.--mobile {
+        display: block;
       }
     }
   }

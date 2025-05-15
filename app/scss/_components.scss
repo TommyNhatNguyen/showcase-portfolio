@@ -196,6 +196,19 @@
       }
     }
   }
+  @include xs {
+    flex-direction: column;
+    &__thumbnail {
+      max-width: initial;
+    }
+    &.--horizontal {
+      gap: 16px;
+      .card__thumbnail {
+        max-width: initial;
+        max-height: 145px;
+      }
+    }
+  }
 }
 
 .form {

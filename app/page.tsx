@@ -845,6 +845,16 @@ export default function Home() {
                 </div>
               </li>
             </ul>
+
+            <Button
+              href={ROUTES.BLOG}
+              variant="link"
+              className="btn --btn-link scblog__btnviewall --mobile"
+              icon={FiArrowRight}
+              isRounded={false}
+            >
+              View All Insights
+            </Button>
           </div>
         </div>
       </section>
