@@ -10,8 +10,6 @@
   z-index: 1;
   padding-top: 0;
   overflow: hidden;
-  &.--active {
-  }
   &__list {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -68,6 +66,19 @@
   }
   // RESPONSIVE
   @include xs {
+    &__list {
+      &-item {
+        .link {
+          width: fit-content;
+          .animated-text-hover {
+            width: 100%;
+          }
+          &__text {
+            text-wrap: nowrap;
+          }
+        }
+      }
+    }
   }
 }
 
