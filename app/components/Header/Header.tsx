@@ -73,10 +73,12 @@ const Header = ({ handleToggleHamburger, isHamburgerActive }: HeaderProps) => {
       const observer = Observer.create({
         target: window,
         onUp: (self) => {
+          if (document.body.classList.contains("--disable-scroll")) return;
           headerSection.classList.add("--scroll-up");
           headerSection.classList.remove("--scroll-down");
         },
         onDown: (self) => {
+          if (document.body.classList.contains("--disable-scroll")) return;
           headerSection.classList.add("--scroll-down");
           headerSection.classList.add("--scroll-up");
         },
