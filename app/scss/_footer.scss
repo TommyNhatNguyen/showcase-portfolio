@@ -147,6 +147,9 @@
               .email__content {
                 > * {
                   word-break: break-all;
+                  > * {
+                    word-break: break-all;
+                  }
                 }
               }
             }
@@ -155,6 +158,30 @@
       }
     }
     &__socials {
+      &-top {
+        flex-direction: column;
+        gap: 64px;
+        .sitemap {
+          width: 100%;
+        }
+        .socials {
+          width: 100%;
+          gap: 32px;
+          &__item {
+            width: 20px;
+            height: 20px;
+            aspect-ratio: 1 / 1;
+          }
+        }
+      }
+      &-bottom {
+        margin-top: 56px;
+        flex-direction: column;
+        .copyright {
+          margin-top: 72px;
+          text-align: center;
+        }
+      }
     }
   }
 }

@@ -198,6 +198,8 @@
   }
   @include xs {
     flex-direction: column;
+    max-width: initial;
+    width: 100%;
     &__thumbnail {
       max-width: initial;
     }
@@ -264,6 +266,10 @@
       position: absolute;
       bottom: -24px;
     }
+  }
+  // RESPONSIVE
+  @include xs {
+    width: 100%;
   }
 }
 

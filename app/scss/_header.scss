@@ -1,3 +1,4 @@
+@import "./mixins";
 .header {
   height: var(--header-height);
   margin: auto;
@@ -137,5 +138,19 @@
   }
   &.--scroll-up {
     background-color: var(--bg-color);
+  }
+  // RESPONSIVE
+  @include xs {
+    &__cta {
+      .btn-hamburger {
+        height: 48px;
+        width: 64px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+      }
+    }
   }
 }
