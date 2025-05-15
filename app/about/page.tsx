@@ -11,6 +11,7 @@ import { extractNumber } from "../utils/extractNumber";
 import AnimatedTextHover from "../components/AnimatedTextHover";
 import Button from "../components/Button/Button";
 import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
+import { BREAKPOINTS } from "../constants/media";
 
 export default function About() {
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -26,8 +27,7 @@ export default function About() {
       const heroTitle = heroSection.querySelector(".schero__title-text");
       const heroDesc = heroSection.querySelector(".schero__desc");
       const heroContent = heroSection.querySelector(".schero__content");
-      const heroTitleSplit = SplitText.create(heroTitle);
-      const heroDescSplit = SplitText.create(heroDesc);
+
       const heroInfo = heroSection.querySelector(
         ".schero__content-info"
       ) as HTMLElement;
@@ -35,7 +35,7 @@ export default function About() {
       const heroInfoDescItems = gsap.utils.toArray(
         ".desc .desc__para"
       ) as HTMLElement[];
-      const heroInfoHeadLineSplit = SplitText.create(heroInfoHeadline);
+
       const tl = gsap.timeline({});
       const heroInfoTl = gsap.timeline({
         scrollTrigger: {
@@ -44,60 +44,33 @@ export default function About() {
           end: "top bottom",
         },
       });
-      gsap.set(
-        [heroDesc, heroTitle, heroContent, heroInfoHeadline, heroInfoDescItems],
-        {
-          opacity: 0,
-          y: 40,
-        }
-      );
-      tl.to([heroDesc, heroTitle], {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        stagger: 0.2,
-      });
-      tl.to(
-        [heroDescSplit.lines, heroTitleSplit.lines],
-        {
-          scrambleText: {
-            text: "{original}",
-            chars: "//ai",
-          },
-          duration: 0.9,
-          ease: "none",
-        },
-        "<-10%"
-      );
-      tl.to(
-        heroTitleSplit.lines,
-        {
-          color: `var(--neutral-100)`,
+      let mm = gsap.matchMedia();
+      mm.add(BREAKPOINTS.desktop, () => {
+        const heroTitleSplit = SplitText.create(heroTitle);
+        const heroDescSplit = SplitText.create(heroDesc);
+        const heroInfoHeadLineSplit = SplitText.create(heroInfoHeadline);
+        gsap.set(
+          [
+            heroDesc,
+            heroTitle,
+            heroContent,
+            heroInfoHeadline,
+            heroInfoDescItems,
+          ],
+          {
+            opacity: 0,
+            y: 40,
+          }
+        );
+        tl.to([heroDesc, heroTitle], {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
           stagger: 0.2,
-          duration: 0.3,
-          ease: "power1.inOut",
-        },
-        "<+0.3"
-      );
-      tl.to(
-        heroContent,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.3,
-          delay: 0.2,
-        },
-        "<"
-      );
-      heroInfoTl
-        .to(heroInfoHeadline, {
-          opacity: 1,
-          y: 0,
-          duration: 0.3,
-        })
-        .to(
-          heroInfoHeadLineSplit.lines,
+        });
+        tl.to(
+          [heroDescSplit.lines, heroTitleSplit.lines],
           {
             scrambleText: {
               text: "{original}",
@@ -106,22 +79,36 @@ export default function About() {
             duration: 0.9,
             ease: "none",
           },
-          "<-50%"
+          "<-10%"
         );
-      heroInfoDescItems.map((item) => {
-        const split = SplitText.create(item);
+        tl.to(
+          heroTitleSplit.lines,
+          {
+            color: `var(--neutral-100)`,
+            stagger: 0.2,
+            duration: 0.3,
+            ease: "power1.inOut",
+          },
+          "<+0.3"
+        );
+        tl.to(
+          heroContent,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.3,
+            delay: 0.2,
+          },
+          "<"
+        );
         heroInfoTl
+          .to(heroInfoHeadline, {
+            opacity: 1,
+            y: 0,
+            duration: 0.3,
+          })
           .to(
-            item,
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.3,
-            },
-            "<"
-          )
-          .to(
-            split.lines,
+            heroInfoHeadLineSplit.lines,
             {
               scrambleText: {
                 text: "{original}",
@@ -132,6 +119,128 @@ export default function About() {
             },
             "<-50%"
           );
+        heroInfoDescItems.map((item) => {
+          const split = SplitText.create(item);
+          heroInfoTl
+            .to(
+              item,
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.3,
+              },
+              "<"
+            )
+            .to(
+              split.lines,
+              {
+                scrambleText: {
+                  text: "{original}",
+                  chars: "//ai",
+                },
+                duration: 0.9,
+                ease: "none",
+              },
+              "<-50%"
+            );
+        });
+      });
+      mm.add(BREAKPOINTS.mobile, () => {
+        gsap.set(
+          [
+            heroDesc,
+            heroTitle,
+            heroContent,
+            heroInfoHeadline,
+            heroInfoDescItems,
+          ],
+          {
+            opacity: 0,
+            y: 40,
+          }
+        );
+        tl.to([heroTitle, heroDesc], {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.2,
+        });
+        tl.to(
+          [heroTitle, heroDesc],
+          {
+            scrambleText: {
+              text: "{original}",
+              chars: "//ai",
+            },
+            duration: 0.9,
+            ease: "none",
+          },
+          "<-10%"
+        );
+        tl.to(
+          heroTitle,
+          {
+            color: `var(--neutral-100)`,
+            stagger: 0.2,
+            duration: 0.3,
+            ease: "power1.inOut",
+          },
+          "<+0.3"
+        );
+        tl.to(
+          heroContent,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.3,
+            delay: 0.2,
+          },
+          "<"
+        );
+        heroInfoTl
+          .to(heroInfoHeadline, {
+            opacity: 1,
+            y: 0,
+            duration: 0.3,
+          })
+          .to(
+            heroInfoHeadline,
+            {
+              scrambleText: {
+                text: "{original}",
+                chars: "//ai",
+              },
+              duration: 0.9,
+              ease: "none",
+            },
+            "<-50%"
+          );
+        heroInfoDescItems.map((item) => {
+          const split = SplitText.create(item);
+          heroInfoTl
+            .to(
+              item,
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.3,
+              },
+              "<"
+            )
+            .to(
+              split.lines,
+              {
+                scrambleText: {
+                  text: "{original}",
+                  chars: "//ai",
+                },
+                duration: 0.9,
+                ease: "none",
+              },
+              "<-50%"
+            );
+        });
       });
       // --------------------------------
       // EXPERIENCE

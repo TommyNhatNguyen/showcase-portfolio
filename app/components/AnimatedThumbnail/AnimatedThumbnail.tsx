@@ -4,6 +4,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import clsx from "clsx";
+import { BREAKPOINTS } from "@/app/constants/media";
 
 interface AnimatedThumbnailProps {
   src: string;

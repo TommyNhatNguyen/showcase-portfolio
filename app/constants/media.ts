@@ -15,5 +15,5 @@ export const MEDIA_MAX_WIDTH = {
 export const BREAKPOINTS = {
   mobile: `(max-width: ${MEDIA_MAX_WIDTH.xs}px)`,
   tablet: `(max-width: ${MEDIA_MAX_WIDTH.ipad12pro}px) and (min-width: ${MEDIA_MAX_WIDTH.xs}px)`,
-  desktop: `(min-width: ${MEDIA_MAX_WIDTH.md}px)`,
+  desktop: `(min-width: ${MEDIA_MAX_WIDTH.xs}px)`,
 };

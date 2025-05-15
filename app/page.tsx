@@ -11,6 +11,7 @@ import { SplitText } from "gsap/all";
 import AnimatedThumbnail from "./components/AnimatedThumbnail/AnimatedThumbnail";
 import HideTextWrapper from "./components/HideTextWrapper/HideTextWrapper";
 import AnimatedTextHover from "./components/AnimatedTextHover";
+import { BREAKPOINTS } from "./constants/media";
 
 export default function Home() {
   const homeRef = useRef<HTMLDivElement>(null);
@@ -27,72 +28,6 @@ export default function Home() {
       const heroDesc = heroSection.querySelector(".schero__desc-text");
       const heroDescLine = heroSection.querySelector(".schero__desc-line");
       const heroCta = heroSection.querySelector(".schero__cta-button");
-      const heroTitleSplit = SplitText.create(heroTitle);
-      const heroDescSplit = SplitText.create(heroDesc);
-      const tl = gsap.timeline({ paused: true });
-      gsap.set([heroDesc, heroTitle, heroCta], {
-        opacity: 0,
-        y: 40,
-      });
-      tl.to([heroDesc, heroTitle], {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        stagger: 0.2,
-      });
-      tl.to(
-        [heroDescSplit.lines, heroTitleSplit.lines],
-        {
-          scrambleText: {
-            text: "{original}",
-            chars: "//ai",
-          },
-          duration: 0.9,
-          ease: "none",
-        },
-        "<-10%"
-      );
-      tl.to(
-        heroTitleSplit.lines,
-        {
-          color: `var(--neutral-100)`,
-          stagger: 0.2,
-          duration: 0.3,
-          ease: "power1.inOut",
-        },
-        "<+0.3"
-      );
-      tl.to(
-        heroCta,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.3,
-          delay: 0.2,
-        },
-        "<"
-      );
-      tl.from(
-        heroDescLine,
-        {
-          width: 0,
-          duration: 0.3,
-          ease: "power3.inOut",
-        },
-        "<"
-      );
-
-      const checkLoading = () => {
-        if (!document.body.classList.contains("--loading")) {
-          tl.play();
-        } else {
-          gsap.delayedCall(0, checkLoading);
-        }
-      };
-
-      checkLoading();
-
       // --------------------------------
       // ABOUT
       // --------------------------------
@@ -100,61 +35,9 @@ export default function Home() {
         "#scabout"
       ) as HTMLElement;
       const aboutTitle = aboutSection.querySelector(".scabout__content-title");
-      const aboutTitleSplit = SplitText.create(aboutTitle);
       const aboutDesc = aboutSection.querySelector(".scabout__content-desc");
-      const aboutDescSplit = SplitText.create(aboutDesc);
-      const aboutButton = aboutSection.querySelector(".scabout__content-link");
 
-      const aboutTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: aboutSection,
-          start: "top +=90%",
-          end: "bottom bottom",
-        },
-      });
-      let aboutTextDuration = 0.3;
-      aboutTl
-        .to(
-          [aboutTitle],
-          {
-            opacity: 1,
-            y: 0,
-            duration: aboutTextDuration,
-          },
-          "<+0.3"
-        )
-        .to(
-          aboutDesc,
-          {
-            opacity: 1,
-            y: 0,
-            duration: aboutTextDuration * 2,
-          },
-          "<"
-        )
-        .to(
-          aboutButton,
-          {
-            opacity: 1,
-            y: 0,
-            duration: aboutTextDuration * 2.5,
-          },
-          "<"
-        )
-        .to(
-          [aboutTitleSplit.lines, aboutDescSplit.lines],
-          {
-            scrambleText: {
-              text: "{original}",
-              chars: "//ai",
-            },
-            opacity: 1,
-            y: 0,
-            duration: 0.9,
-            ease: "none",
-          },
-          "<-50%"
-        );
+      const aboutButton = aboutSection.querySelector(".scabout__content-link");
       // --------------------------------
       // WORKS
       // --------------------------------
@@ -167,6 +50,50 @@ export default function Home() {
       const workListItems = gsap.utils.toArray(
         ".scwork__list-item"
       ) as HTMLElement[];
+      const workListFirstGroup = workListItems.slice(0, 3);
+      const workListMidGroup = workListItems.slice(3, 4);
+      const workListLastGroup = workListItems.slice(4);
+      // --------------------------------
+      // CLIENTS
+      // --------------------------------
+      const clientsSection = homeRef.current.querySelector(
+        "#scclient"
+      ) as HTMLElement;
+      const clientsTitle = clientsSection.querySelector(".scclient__title");
+      const clientsTitleSplit = SplitText.create(clientsTitle);
+      const clientListItems = gsap.utils.toArray(
+        ".scclient__list-item"
+      ) as HTMLElement[];
+      // --------------------------------
+      // BLOG
+      // --------------------------------
+      const blogSection = homeRef.current.querySelector(
+        "#scblog"
+      ) as HTMLElement;
+      const blogTitle = blogSection.querySelector(
+        ".scblog__title .titlegroup__title"
+      );
+      const blogTitleSplit = SplitText.create(blogTitle);
+      const blogBtn = blogSection.querySelector(".scblog__btn");
+      const blogListItems = gsap.utils.toArray(
+        ".scblog__list-card"
+      ) as HTMLElement[];
+
+      const tl = gsap.timeline({ paused: true });
+      const aboutTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: aboutSection,
+          start: "top +=90%",
+          end: "bottom bottom",
+        },
+      });
+      const blogTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: blogSection,
+          start: "top +=90%",
+          end: "bottom bottom",
+        },
+      });
       const workTl = gsap.timeline({
         scrollTrigger: {
           trigger: worksSection,
@@ -174,6 +101,214 @@ export default function Home() {
           end: "bottom bottom",
         },
       });
+      const clientTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: clientsSection,
+          start: "top +=90%",
+          end: "bottom bottom",
+        },
+      });
+      let aboutTextDuration = 0.3;
+      const mm = gsap.matchMedia();
+      mm.add(BREAKPOINTS.desktop, () => {
+        const heroTitleSplit = SplitText.create(heroTitle);
+        const heroDescSplit = SplitText.create(heroDesc);
+        const aboutTitleSplit = SplitText.create(aboutTitle);
+        const aboutDescSplit = SplitText.create(aboutDesc);
+        gsap.set([heroDesc, heroTitle, heroCta], {
+          opacity: 0,
+          y: 40,
+        });
+        tl.to([heroDesc, heroTitle], {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.2,
+        });
+        tl.to(
+          [heroDescSplit.lines, heroTitleSplit.lines],
+          {
+            scrambleText: {
+              text: "{original}",
+              chars: "//ai",
+            },
+            duration: 0.9,
+            ease: "none",
+          },
+          "<-10%"
+        );
+        tl.to(
+          heroTitleSplit.lines,
+          {
+            color: `var(--neutral-100)`,
+            stagger: 0.2,
+            duration: 0.3,
+            ease: "power1.inOut",
+          },
+          "<+0.3"
+        );
+        tl.to(
+          heroCta,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.3,
+            delay: 0.2,
+          },
+          "<"
+        );
+        tl.from(
+          heroDescLine,
+          {
+            width: 0,
+            duration: 0.3,
+            ease: "power3.inOut",
+          },
+          "<"
+        );
+
+        aboutTl
+          .to(
+            [aboutTitle],
+            {
+              opacity: 1,
+              y: 0,
+              duration: aboutTextDuration,
+            },
+            "<+0.3"
+          )
+          .to(
+            aboutDesc,
+            {
+              opacity: 1,
+              y: 0,
+              duration: aboutTextDuration * 2,
+            },
+            "<"
+          )
+          .to(
+            aboutButton,
+            {
+              opacity: 1,
+              y: 0,
+              duration: aboutTextDuration * 2.5,
+            },
+            "<"
+          )
+          .to(
+            [aboutTitleSplit.lines, aboutDescSplit.lines],
+            {
+              scrambleText: {
+                text: "{original}",
+                chars: "//ai",
+              },
+              opacity: 1,
+              y: 0,
+              duration: 0.9,
+              ease: "none",
+            },
+            "<-50%"
+          );
+      });
+      mm.add(BREAKPOINTS.mobile, () => {
+        gsap.set([heroDesc, heroTitle, heroCta], {
+          opacity: 0,
+          y: 40,
+        });
+        tl.to([heroDesc, heroTitle], {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.2,
+        });
+        tl.to(
+          [heroTitle, heroDesc],
+          {
+            scrambleText: {
+              text: "{original}",
+              chars: "//ai",
+            },
+            duration: 0.9,
+            ease: "none",
+          },
+          "<-10%"
+        );
+        tl.to(
+          heroTitle,
+          {
+            color: `var(--neutral-100)`,
+            stagger: 0.2,
+            duration: 0.3,
+            ease: "power1.inOut",
+          },
+          "<+0.3"
+        );
+        tl.to(
+          heroCta,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.3,
+            delay: 0.2,
+          },
+          "<"
+        );
+
+        aboutTl
+          .to(
+            [aboutTitle],
+            {
+              opacity: 1,
+              y: 0,
+              duration: aboutTextDuration,
+            },
+            "<+0.3"
+          )
+          .to(
+            aboutDesc,
+            {
+              opacity: 1,
+              y: 0,
+              duration: aboutTextDuration * 2,
+            },
+            "<"
+          )
+          .to(
+            aboutButton,
+            {
+              opacity: 1,
+              y: 0,
+              duration: aboutTextDuration * 2.5,
+            },
+            "<"
+          )
+          .to(
+            [aboutTitle, aboutDesc],
+            {
+              scrambleText: {
+                text: "{original}",
+                chars: "//ai",
+              },
+              opacity: 1,
+              y: 0,
+              duration: 0.9,
+              ease: "none",
+            },
+            "<-50%"
+          );
+      });
+
+      const checkLoading = () => {
+        if (!document.body.classList.contains("--loading")) {
+          tl.play();
+        } else {
+          gsap.delayedCall(0, checkLoading);
+        }
+      };
+      checkLoading();
+
       workTl
         .to(worksTitle, {
           opacity: 1,
@@ -194,9 +329,7 @@ export default function Home() {
           },
           "<-50%"
         );
-      const workListFirstGroup = workListItems.slice(0, 3);
-      const workListMidGroup = workListItems.slice(3, 4);
-      const workListLastGroup = workListItems.slice(4);
+
       workListFirstGroup.forEach((item) => {
         const content = item.querySelector(".cardwork__content");
         const contentTitle = content?.querySelector(
@@ -307,24 +440,6 @@ export default function Home() {
         duration: 0.3,
       });
 
-      // --------------------------------
-      // CLIENTS
-      // --------------------------------
-      const clientsSection = homeRef.current.querySelector(
-        "#scclient"
-      ) as HTMLElement;
-      const clientsTitle = clientsSection.querySelector(".scclient__title");
-      const clientsTitleSplit = SplitText.create(clientsTitle);
-      const clientListItems = gsap.utils.toArray(
-        ".scclient__list-item"
-      ) as HTMLElement[];
-      const clientTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: clientsSection,
-          start: "top +=90%",
-          end: "bottom bottom",
-        },
-      });
       gsap.set(clientListItems, {
         opacity: 0,
         y: 40,
@@ -357,27 +472,7 @@ export default function Home() {
         },
         "<"
       );
-      // --------------------------------
-      // BLOG
-      // --------------------------------
-      const blogSection = homeRef.current.querySelector(
-        "#scblog"
-      ) as HTMLElement;
-      const blogTitle = blogSection.querySelector(
-        ".scblog__title .titlegroup__title"
-      );
-      const blogTitleSplit = SplitText.create(blogTitle);
-      const blogBtn = blogSection.querySelector(".scblog__btn");
-      const blogListItems = gsap.utils.toArray(
-        ".scblog__list-card"
-      ) as HTMLElement[];
-      const blogTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: blogSection,
-          start: "top +=90%",
-          end: "bottom bottom",
-        },
-      });
+
       gsap.to([blogBtn, blogListItems], {
         opacity: 0,
         y: 40,

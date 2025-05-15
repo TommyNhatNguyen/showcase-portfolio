@@ -96,6 +96,9 @@
       gap: var(--gap);
       flex-direction: column;
       width: 100%;
+      &-wrapper {
+        width: 100%;
+      }
       &-desc {
         margin-top: 24px;
       }
@@ -202,6 +205,9 @@
   // RESPONSIVE
   @include xs {
     // HERO
+    br {
+      display: none;
+    }
     .schero {
       &__title {
         text-align: center;
