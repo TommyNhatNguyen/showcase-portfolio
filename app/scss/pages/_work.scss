@@ -177,5 +177,46 @@
         }
       }
     }
+    .scwork {
+      &__list {
+        &-item {
+          .wrapper {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            padding-left: 0;
+            padding-right: 0;
+            .content {
+              flex-direction: column;
+              &__info {
+                width: 100%;
+                padding-left: 4px;
+              }
+              &__desc {
+                margin-top: 8px;
+                flex-direction: column;
+                max-width: initial;
+                width: 100%;
+                &-text {
+                  padding-left: 4px;
+                }
+                &-tags {
+                  margin-top: 8px;
+                }
+              }
+            }
+            .thumbnail {
+              margin-top: 16px;
+              height: 100%;
+              max-height: 512px;
+            }
+          }
+          &:not(.--active):hover {
+            .wrapper {
+              background-color: transparent;
+            }
+          }
+        }
+      }
+    }
   }
 }
