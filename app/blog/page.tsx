@@ -10,6 +10,7 @@ import React, { useRef } from "react";
 import { SplitText } from "gsap/all";
 import AnimatedThumbnail from "../components/AnimatedThumbnail/AnimatedThumbnail";
 import AnimatedTextHover from "../components/AnimatedTextHover";
+import { BREAKPOINTS } from "../constants/media";
 export default function Blog() {
   const blogRef = useRef<HTMLDivElement>(null);
   useGSAP(
@@ -24,43 +25,82 @@ export default function Blog() {
       const heroTitle = heroSection.querySelector(".schero__title");
       const heroDesc = heroSection.querySelector(".schero__desc");
       const heroCaption = heroSection.querySelector(".schero__caption");
-      const heroTitleSplit = SplitText.create(heroTitle);
-      const heroDescSplit = SplitText.create(heroDesc);
-      const heroCaptionSplit = SplitText.create(heroCaption);
       const tl = gsap.timeline({});
-      gsap.set([heroDesc, heroTitle, heroCaption], {
-        opacity: 0,
-        y: 40,
-      });
-      tl.to([heroCaption, heroTitle, heroDesc], {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        stagger: 0.2,
-      });
-      tl.to(
-        [heroDescSplit.lines, heroTitleSplit.lines, heroCaptionSplit.lines],
-        {
-          scrambleText: {
-            text: "{original}",
-            chars: "//ai",
-          },
-          duration: 0.9,
-          ease: "none",
-        },
-        "<-10%"
-      );
-      tl.to(
-        heroTitleSplit.lines,
-        {
-          color: `var(--neutral-100)`,
+      let mm = gsap.matchMedia();
+      mm.add(BREAKPOINTS.desktop, () => {
+        const heroTitleSplit = SplitText.create(heroTitle);
+        const heroDescSplit = SplitText.create(heroDesc);
+        const heroCaptionSplit = SplitText.create(heroCaption);
+        gsap.set([heroDesc, heroTitle, heroCaption], {
+          opacity: 0,
+          y: 40,
+        });
+        tl.to([heroCaption, heroTitle, heroDesc], {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
           stagger: 0.2,
-          duration: 0.3,
-          ease: "power1.inOut",
-        },
-        "<+0.3"
-      );
+        });
+        tl.to(
+          [heroDescSplit.lines, heroTitleSplit.lines, heroCaptionSplit.lines],
+          {
+            scrambleText: {
+              text: "{original}",
+              chars: "//ai",
+            },
+            duration: 0.9,
+            ease: "none",
+          },
+          "<-10%"
+        );
+        tl.to(
+          heroTitleSplit.lines,
+          {
+            color: `var(--neutral-100)`,
+            stagger: 0.2,
+            duration: 0.3,
+            ease: "power1.inOut",
+          },
+          "<+0.3"
+        );
+      });
+      mm.add(BREAKPOINTS.mobile, () => {
+        gsap.set([heroDesc, heroTitle, heroCaption], {
+          opacity: 0,
+          y: 40,
+        });
+        tl.to([heroCaption, heroTitle, heroDesc], {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.2,
+        });
+        tl.to(
+          [heroDesc, heroTitle, heroCaption],
+          {
+            scrambleText: {
+              text: "{original}",
+              chars: "//ai",
+            },
+            duration: 0.9,
+            ease: "none",
+          },
+          "<-10%"
+        );
+        tl.to(
+          heroTitle,
+          {
+            color: `var(--neutral-100)`,
+            stagger: 0.2,
+            duration: 0.3,
+            ease: "power1.inOut",
+          },
+          "<+0.3"
+        );
+      });
+
       // --------------------------------
       // INSIGHTS
       // --------------------------------
