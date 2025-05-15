@@ -139,6 +139,7 @@
           flex: 1;
           &__title {
             font-size: var(--fs-body-md);
+            font-family: var(--ff-semibold);
             color: var(--neutral-100);
           }
           &__time {
@@ -199,6 +200,27 @@
       }
     }
     .scallinsights {
+      &__list {
+        &-item {
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 24px;
+          padding-bottom: 24px;
+          .link {
+            padding: 0;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            &:hover {
+              background-color: initial;
+            }
+          }
+        }
+      }
+      &__btn {
+        margin-top: 32px;
+        font-size: var(--fs-link);
+      }
     }
   }
 }
