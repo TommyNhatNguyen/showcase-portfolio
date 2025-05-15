@@ -1,3 +1,4 @@
+@import "./mixins";
 .footer {
   background-color: var(--neutral-100);
   color: var(--neutral-0);
@@ -15,16 +16,6 @@
         align-items: center;
         gap: var(--gap);
         margin-top: 32px;
-        // .arrow {
-        //   height: 72px;
-        //   width: 72px;
-        //   aspect-ratio: 1 / 1;
-        //   opacity: 0;
-        //   svg {
-        //     height: 100%;
-        //     width: 100%;
-        //   }
-        // }
         .email {
           color: var(--neutral-0);
           padding: 0;
@@ -55,6 +46,9 @@
               left: 0;
               width: 100%;
             }
+          }
+          &.--mobile {
+            display: none;
           }
         }
         .btn-email {
@@ -133,6 +127,34 @@
       .copyright {
         color: var(--neutral-60);
       }
+    }
+  }
+  //  RESPONSIVE
+  @include xs {
+    &__cta {
+      padding-top: var(--pd-section);
+      padding-bottom: var(--pd-section);
+      &-title {
+        font-size: var(--fs-body-lg);
+        text-align: center;
+        .email-wrapper {
+          margin-top: 40px;
+          .email {
+            width: fit-content;
+            display: none;
+            &.--mobile {
+              display: block;
+              .email__content {
+                > * {
+                  word-break: break-all;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &__socials {
     }
   }
 }

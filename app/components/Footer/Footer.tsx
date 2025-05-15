@@ -8,6 +8,7 @@ import Button from "../Button/Button";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { BREAKPOINTS, MEDIA_MAX_WIDTH } from "@/app/constants/media";
 
 const Footer = () => {
   const footerRef = useRef<HTMLDivElement>(null);
@@ -18,7 +19,7 @@ const Footer = () => {
         ".email-wrapper"
       ) as HTMLElement;
       const footerEmail = footer?.querySelector(".email") as HTMLElement;
-      const footerEmailContentTop = footer?.querySelector(
+      const footerEmailContentTop = footerEmail?.querySelector(
         ".content-top"
       ) as HTMLElement;
       const footerEmailContentTopText = footerEmailContentTop?.querySelector(
@@ -40,31 +41,34 @@ const Footer = () => {
           ".email__content-extension"
         ) as HTMLElement;
       const tl = gsap.timeline({});
-      footerEmailWrapper.addEventListener("mouseenter", () => {
-        tl.to([footerEmailContentTopText, footerEmailContentBottomText], {
-          y: "-100%",
-          duration: 0.3,
-        }).to(
-          [footerEmailContentTopExtension, footerEmailContentBottomExtension],
-          {
+      const mm = gsap.matchMedia();
+      mm.add(BREAKPOINTS.desktop, () => {
+        footerEmailWrapper.addEventListener("mouseenter", () => {
+          tl.to([footerEmailContentTopText, footerEmailContentBottomText], {
             y: "-100%",
             duration: 0.3,
-            onComplete: () => {
-              gsap.set(
-                [
-                  footerEmailContentTopText,
-                  footerEmailContentBottomText,
-                  footerEmailContentTopExtension,
-                  footerEmailContentBottomExtension,
-                ],
-                {
-                  clearProps: "all",
-                }
-              );
+          }).to(
+            [footerEmailContentTopExtension, footerEmailContentBottomExtension],
+            {
+              y: "-100%",
+              duration: 0.3,
+              onComplete: () => {
+                gsap.set(
+                  [
+                    footerEmailContentTopText,
+                    footerEmailContentBottomText,
+                    footerEmailContentTopExtension,
+                    footerEmailContentBottomExtension,
+                  ],
+                  {
+                    clearProps: "all",
+                  }
+                );
+              },
             },
-          },
-          "<+0.1"
-        );
+            "<+0.1"
+          );
+        });
       });
     },
     {
@@ -104,6 +108,25 @@ const Footer = () => {
                     </span>
                   </div>
                 </Link>
+                <AnimatedTextHover>
+                  <Link
+                    href="mailto:nguyenanhnhat123456@gmail.com"
+                    className="email --mobile"
+                  >
+                    <div className="email__content content-top">
+                      <span className="email__content-text --text ">
+                        <span className="--gray">nguyenanhnhat123456</span>{" "}
+                        @gmail.com
+                      </span>
+                    </div>
+                    <div className="email__content content-bottom">
+                      <span className="email__content-text --text ">
+                        <span className="--gray">nguyenanhnhat123456</span>{" "}
+                        @gmail.com
+                      </span>
+                    </div>
+                  </Link>
+                </AnimatedTextHover>
               </div>
             </div>
           </div>
