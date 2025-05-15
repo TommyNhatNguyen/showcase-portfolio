@@ -118,7 +118,7 @@ export default function Work() {
             <div className="schero__title">
               <h1 className="schero__title-text --gray">
                 Bringing your brand to life in the
-                <span className="--gray">digital world</span>
+                <span className="--gray"> digital world</span>
               </h1>
             </div>
             <ul className="schero__skills">
