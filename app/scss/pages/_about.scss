@@ -188,8 +188,16 @@
         }
         &-info {
           margin-top: 40px;
+          .desc {
+            margin-top: 16px;
+            flex-direction: column;
+            &__para {
+              width: 100%;
+            }
+          }
         }
       }
     }
+    .scexperience {}
   }
 }
