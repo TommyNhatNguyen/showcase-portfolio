@@ -112,7 +112,7 @@ export default function Work() {
   return (
     <main className="work" id="work" ref={workRef}>
       {/* Hero */}
-      <section className="schero" id="schero">
+      <section className="schero --pt" id="schero">
         <div className="container">
           <div className="schero-wrapper">
             <div className="schero__title">
