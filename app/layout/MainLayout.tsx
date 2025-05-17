@@ -6,6 +6,7 @@ import Navigation from "../components/Navigation";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import {
+  CustomEase,
   ScrambleTextPlugin,
   ScrollSmoother,
   ScrollTrigger,
@@ -14,6 +15,7 @@ import {
 } from "gsap/all";
 import { usePathname } from "next/navigation";
 import LoadingPage from "../components/LoadingPage";
+import { GSDevTools } from "gsap/GSDevTools";
 type Props = {
   children: React.ReactNode;
 };
@@ -25,6 +27,8 @@ const MainLayout = ({ children }: Props) => {
   gsap.registerPlugin(SplitText);
   gsap.registerPlugin(TextPlugin);
   gsap.registerPlugin(ScrollSmoother);
+  gsap.registerPlugin(GSDevTools);
+  gsap.registerPlugin(CustomEase);
   const [isHamburgerActive, setIsHamburgerActive] = useState(false);
   const path = usePathname();
   const handleToggleHamburger = () => {
@@ -64,6 +68,7 @@ const MainLayout = ({ children }: Props) => {
   }, [path]);
 
   useGSAP(() => {
+    // GSDevTools.create();
     ScrollSmoother.create({
       smooth: 1,
       effects: true,
