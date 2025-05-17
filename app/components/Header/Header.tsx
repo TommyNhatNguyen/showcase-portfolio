@@ -72,6 +72,7 @@ const Header = ({ handleToggleHamburger, isHamburgerActive }: HeaderProps) => {
       });
       const observer = Observer.create({
         target: window,
+        type: "wheel,touch,scroll,pointer",
         onUp: (self) => {
           if (document.body.classList.contains("--disable-scroll")) return;
           headerSection.classList.add("--scroll-up");
