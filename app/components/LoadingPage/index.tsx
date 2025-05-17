@@ -3,7 +3,6 @@ import { BREAKPOINTS } from "@/app/constants/media";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { CustomEase, SplitText } from "gsap/all";
-import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 
 type Props = {};
@@ -13,6 +12,9 @@ const LoadingPage = ({}: Props) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useGSAP(() => {
+    gsap.set(document.body, {
+      visibility: "visible",
+    });
     if (!loaderRef.current) return;
     const line = document.querySelector(".loading-indicator__line");
     const lineInner = document.querySelector(".loading-indicator__line-inner");
@@ -42,6 +44,9 @@ const LoadingPage = ({}: Props) => {
         x: "-100%",
       });
       const tl = gsap.timeline({
+        defaults: {
+          autoAlpha: 1,
+        },
         onUpdate: function () {
           if (this.progress() >= 0.91) {
             gsap.to([text, line, counterContainer], {
@@ -95,7 +100,6 @@ const LoadingPage = ({}: Props) => {
         "<+0.3"
       );
     });
-
     // MOBILE
     const loadingIndicatorMobile = document.querySelector(
       ".loading.--mobile"
@@ -120,6 +124,9 @@ const LoadingPage = ({}: Props) => {
       });
 
       const tlMobile = gsap.timeline({
+        defaults: {
+          autoAlpha: 1,
+        },
         onUpdate: function () {
           if (this.progress() >= 0.91) {
             gsap.to(counterContainerMobile, {
