@@ -9,184 +9,134 @@ type Props = {};
 
 const LoadingPage = ({}: Props) => {
   const loaderRef = useRef<HTMLDivElement>(null);
-  const [isLoading, setIsLoading] = useState(true);
 
   useGSAP(() => {
     gsap.set(document.body, {
       visibility: "visible",
     });
     if (!loaderRef.current) return;
-    const line = document.querySelector(".loading-indicator__line");
-    const lineInner = document.querySelector(".loading-indicator__line-inner");
-    const loadingIndicator = document.querySelector(".loading");
-    const bgOpacityLoading = document.querySelector(".bg-opacity-loading");
-    const text = document.querySelector(".loading-indicator__text");
-    const counterContainer = document.querySelector(
-      ".loading-indicator__loading"
-    );
-    const counter2 = document.querySelector(".counter-2");
-    const counter3 = document.querySelector(".counter-3");
-    const numHeight = document.querySelector(".num")?.clientHeight || 80;
     const DURATION = 3;
     const EASE = CustomEase.create(
       "custom",
-      "M0,0 C0.027,0.085 0.055,0.253 0.06,0.26 0.169,0.435 0.3,0.5 0.3,0.5 0.3,0.5 0.601,0.52 0.601,0.52 0.601,0.52 0.91,0.895 1,1.1"
+      "M0,0 C0.127,0.008 0.174,0.003 0.205,0.057 0.295,0.217 0.233,0.366 0.334,0.448 0.407,0.507 0.841,0.435 0.877,0.592 0.908,0.729 0.899,1 1,1 "
     );
+
+    const loadingContainer = document.querySelector(".loading");
+    const loadingContainerMobile = document.querySelector(".loading.--mobile");
     const mm = gsap.matchMedia();
+    // Desktop
     mm.add(BREAKPOINTS.desktop, () => {
-      gsap.set(counter3, {
-        y: numHeight * ((counter3?.children.length || 0) - 1),
-      });
-      gsap.set(counter2, {
-        y: numHeight * (counter2?.children.length || 0),
-      });
-      gsap.set(lineInner, {
-        x: "-100%",
-      });
-      const tl = gsap.timeline({
-        defaults: {
-          autoAlpha: 1,
-        },
-        onUpdate: function () {
-          if (this.progress() >= 0.91) {
-            gsap.to([text, line, counterContainer], {
-              y: -40,
-              opacity: 0,
-              stagger: 0.1,
-              duration: 0.1,
-            });
-            gsap.to(loadingIndicator, {
-              height: 0,
-              duration: 0.8,
-              ease: "power2.inOut",
-            });
-            gsap.to(bgOpacityLoading, {
-              height: 0,
-              duration: 0.6,
-              delay: 0.6,
-              ease: "power2.out",
-              onComplete: () => {
-                setIsLoading(false);
-              },
-            });
-          }
-          if (this.progress() >= 1) {
-            document.body.classList.remove("--loading");
-          }
-        },
-      });
-      gsap.set([text, line, counterContainer], {
+      const loadingIndicator = loadingContainer?.querySelector(
+        ".loading-indicator"
+      ) as HTMLElement;
+      const loadingCounter = loadingIndicator.querySelector(
+        ".loading-indicator__loading"
+      ) as HTMLElement;
+      const loadingBackground = loadingContainer?.querySelector(
+        ".bg-opacity-loading"
+      ) as HTMLElement;
+      gsap.from(loadingIndicator.children, {
+        y: -60,
         opacity: 0,
-        y: 40,
+        duration: 0.6,
+        ease: "back(2)",
       });
-      gsap.to([text, line, counterContainer], {
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-        stagger: 0.1,
-      });
-      tl.to(counter3, {
-        y: 0,
+      gsap.from(loadingCounter, {
+        textContent: `${0}%`,
+        snap: {
+          textContent: 1,
+        },
+        stagger: {
+          each: 1,
+          onUpdate: function () {
+            const _this = this as any;
+            const progress = _this.progress();
+            if (progress >= 0.97) {
+              _this.paused(true);
+              gsap.to(loadingIndicator.children, {
+                y: -100,
+                opacity: 0,
+                duration: 0.3,
+              });
+              gsap.to(loadingContainer, {
+                height: 0,
+                duration: 0.5,
+                ease: "power2.inOut",
+                padding: 0,
+              });
+              gsap.to(loadingBackground, {
+                height: 0,
+                duration: 0.5,
+                ease: "power2.inOut",
+                delay: 0.2,
+              });
+              document.body.classList.remove("--loading");
+            }
+          },
+        },
         duration: DURATION,
         ease: EASE,
       });
-      tl.to(
-        counter2,
-        {
-          y: 0,
-          duration: DURATION,
-          ease: EASE,
-        },
-        "<+0.3"
-      );
     });
-    // MOBILE
-    const loadingIndicatorMobile = document.querySelector(
-      ".loading.--mobile"
-    ) as HTMLDivElement;
-    const bgOpacityLoadingMobile = loadingIndicatorMobile.querySelector(
-      ".bg-opacity-loading"
-    ) as HTMLDivElement;
-    const counterContainerMobile = loadingIndicatorMobile.querySelector(
-      ".loading-indicator__loading"
-    ) as HTMLDivElement;
+    // Mobile
     mm.add(BREAKPOINTS.mobile, () => {
-      const counter2Mobile = loadingIndicatorMobile.querySelector(".counter-2");
-      const counter3Mobile = loadingIndicatorMobile.querySelector(".counter-3");
-      const numHeightMobile =
-        loadingIndicatorMobile.querySelector(".num")?.clientHeight || 40;
-
-      gsap.set(counter3Mobile, {
-        y: numHeightMobile * ((counter3Mobile?.children.length || 0) - 1),
-      });
-      gsap.set(counter2Mobile, {
-        y: numHeightMobile * (counter2Mobile?.children.length || 0),
-      });
-
-      const tlMobile = gsap.timeline({
-        defaults: {
-          autoAlpha: 1,
-        },
-        onUpdate: function () {
-          if (this.progress() >= 0.91) {
-            gsap.to(counterContainerMobile, {
-              y: -20,
-              opacity: 0,
-              duration: 0.1,
-            });
-            gsap.to(loadingIndicatorMobile, {
-              height: 0,
-              duration: 0.8,
-              ease: "power2.inOut",
-            });
-            gsap.to(bgOpacityLoadingMobile, {
-              height: 0,
-              duration: 0.6,
-              delay: 0.6,
-              ease: "power2.out",
-              onComplete: () => {
-                setIsLoading(false);
-              },
-            });
-          }
-          if (this.progress() >= 1) {
-            document.body.classList.remove("--loading");
-          }
-        },
-      });
-
-      gsap.set(counterContainerMobile, {
+      const loadingIndicator = loadingContainerMobile?.querySelector(
+        ".loading-indicator"
+      ) as HTMLElement;
+      const loadingCounter = loadingIndicator.querySelector(
+        ".loading-indicator__loading"
+      ) as HTMLElement;
+      const loadingBackground = loadingContainerMobile?.querySelector(
+        ".bg-opacity-loading"
+      ) as HTMLElement;
+      gsap.from(loadingIndicator.children, {
+        y: -60,
         opacity: 0,
-        y: 20,
+        duration: 0.6,
+        ease: "back(2)",
       });
-      gsap.to(counterContainerMobile, {
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-      });
-
-      tlMobile.to(counter3Mobile, {
-        y: 0,
+      gsap.from(loadingCounter, {
+        textContent: `${0}%`,
+        snap: {
+          textContent: 1,
+        },
+        stagger: {
+          each: 1,
+          onUpdate: function () {
+            const _this = this as any;
+            const progress = _this.progress();
+            if (progress >= 0.97) {
+              _this.paused(true);
+              gsap.to(loadingIndicator.children, {
+                y: -100,
+                opacity: 0,
+                duration: 0.3,
+              });
+              gsap.to(loadingContainerMobile, {
+                height: 0,
+                duration: 0.5,
+                ease: "power2.inOut",
+                padding: 0,
+              });
+              gsap.to(loadingBackground, {
+                height: 0,
+                duration: 0.5,
+                ease: "power2.inOut",
+                delay: 0.2,
+              });
+              document.body.classList.remove("--loading");
+            }
+          },
+        },
         duration: DURATION,
         ease: EASE,
       });
-      tlMobile.to(
-        counter2Mobile,
-        {
-          y: 0,
-          duration: DURATION,
-          ease: EASE,
-        },
-        "<+0.3"
-      );
     });
   }, []);
 
   useEffect(() => {
     document.body.classList.add("--loading");
   }, []);
-
-  if (!isLoading) return null;
 
   return (
     <div className="loading-page">
@@ -198,115 +148,13 @@ const LoadingPage = ({}: Props) => {
           <div className="loading-indicator__line line">
             <div className="loading-indicator__line-inner"></div>
           </div>
-          <div className="loading-indicator__loading counter">
-            {/* Ten */}
-            <div className="counter-2 digit">
-              <div className="num">0</div>
-              <div className="num num1offset2">1</div>
-              <div className="num">2</div>
-              <div className="num">3</div>
-              <div className="num">4</div>
-              <div className="num">5</div>
-              <div className="num">6</div>
-              <div className="num">7</div>
-              <div className="num">8</div>
-              <div className="num">9</div>
-            </div>
-            {/* Digit */}
-            <div className="counter-3">
-              <div className="num">0</div>
-              <div className="num">1</div>
-              <div className="num">2</div>
-              <div className="num">3</div>
-              <div className="num">4</div>
-              <div className="num">5</div>
-              <div className="num">6</div>
-              <div className="num">7</div>
-              <div className="num">8</div>
-              <div className="num">9</div>
-              <div className="num">0</div>
-              <div className="num">1</div>
-              <div className="num">2</div>
-              <div className="num">3</div>
-              <div className="num">4</div>
-              <div className="num">5</div>
-              <div className="num">6</div>
-              <div className="num">7</div>
-              <div className="num">8</div>
-              <div className="num">9</div>
-              <div className="num">0</div>
-              <div className="num">1</div>
-              <div className="num">2</div>
-              <div className="num">3</div>
-              <div className="num">4</div>
-              <div className="num">5</div>
-              <div className="num">6</div>
-              <div className="num">7</div>
-              <div className="num">8</div>
-              <div className="num">9</div>
-            </div>
-            {/* Percentage */}
-            <div className="counter-4 digit">
-              <div className="num percentage">%</div>
-            </div>
-          </div>
+          <div className="loading-indicator__loading counter">100%</div>
         </div>
         <div className="bg-opacity-loading"></div>
       </div>
       <div className="loading --mobile">
         <div className="loading-indicator">
-          <div className="loading-indicator__loading counter">
-            {/* Ten */}
-            <div className="counter-2 digit">
-              <div className="num">0</div>
-              <div className="num num1offset2">1</div>
-              <div className="num">2</div>
-              <div className="num">3</div>
-              <div className="num">4</div>
-              <div className="num">5</div>
-              <div className="num">6</div>
-              <div className="num">7</div>
-              <div className="num">8</div>
-              <div className="num">9</div>
-            </div>
-            {/* Digit */}
-            <div className="counter-3">
-              <div className="num">0</div>
-              <div className="num">1</div>
-              <div className="num">2</div>
-              <div className="num">3</div>
-              <div className="num">4</div>
-              <div className="num">5</div>
-              <div className="num">6</div>
-              <div className="num">7</div>
-              <div className="num">8</div>
-              <div className="num">9</div>
-              <div className="num">0</div>
-              <div className="num">1</div>
-              <div className="num">2</div>
-              <div className="num">3</div>
-              <div className="num">4</div>
-              <div className="num">5</div>
-              <div className="num">6</div>
-              <div className="num">7</div>
-              <div className="num">8</div>
-              <div className="num">9</div>
-              <div className="num">0</div>
-              <div className="num">1</div>
-              <div className="num">2</div>
-              <div className="num">3</div>
-              <div className="num">4</div>
-              <div className="num">5</div>
-              <div className="num">6</div>
-              <div className="num">7</div>
-              <div className="num">8</div>
-              <div className="num">9</div>
-            </div>
-            {/* Percentage */}
-            <div className="counter-4 digit">
-              <div className="num percentage">%</div>
-            </div>
-          </div>
+          <div className="loading-indicator__loading counter">100%</div>
         </div>
         <div className="bg-opacity-loading"></div>
       </div>

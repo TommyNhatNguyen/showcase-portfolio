@@ -451,21 +451,10 @@ a {
         font-family: var(--ff-bold);
         color: var(--neutral-100);
         flex-shrink: 0;
-        line-height: 0.75;
         display: flex;
         align-items: flex-end;
         overflow: hidden;
-        max-height: 78px;
-        .counter-1,
-        .counter-2,
-        .counter-3,
-        .counter-4 {
-          position: relative;
-          height: 100%;
-        }
-        .num {
-          text-align: center;
-        }
+        line-height: 0.8;
       }
       &__line {
         position: relative;
@@ -519,9 +508,6 @@ a {
           align-items: center;
           justify-content: center;
           padding: var(--gap);
-          &__loading {
-            max-height: 44px;
-          }
         }
       }
     }
