@@ -9,6 +9,9 @@
     &__desc {
       margin-top: 24px;
       text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
     &__content {
       margin-top: 56px;
@@ -20,7 +23,7 @@
         border-radius: 20px;
         img {
           object-fit: cover;
-          object-position: top;
+          object-position: 50% 15%;
         }
       }
       &-info {
@@ -39,6 +42,7 @@
     }
   }
   .scexperience {
+    display: none;
     &__list {
       display: flex;
       align-items: flex-start;

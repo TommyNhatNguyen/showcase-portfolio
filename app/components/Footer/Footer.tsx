@@ -82,7 +82,9 @@ const Footer = () => {
         <div className="container">
           <div className="footer__cta-wrapper">
             <div className="footer__cta-title">
-              <p className="para">HAVE A NICE WORKS? LET'S TALK WITH ME</p>
+              <p className="para">
+                FEELS LIKE WE'RE ON THE SAME PAGE? LET'S CONNECT
+              </p>
               <div className="email-wrapper">
                 {/* <div className="arrow">
                   <FiArrowUpRight />

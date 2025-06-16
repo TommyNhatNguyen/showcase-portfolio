@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { ROUTES, SOCIAL_LINKS } from "./constants/links";
+import { CONTACT_LINKS, ROUTES, SOCIAL_LINKS } from "./constants/links";
 import Button from "./components/Button/Button";
 import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
 import { useGSAP } from "@gsap/react";
@@ -526,9 +526,11 @@ export default function Home() {
         <div className="container">
           <div className="schero__title">
             <h1 className="schero__title-text --gray">
-              <strong> I'm a visual designer with passion to create </strong>
+              <strong> A Frontend Developer </strong>
               <br />
-              <span className="schero__title-gray">a great experiences</span>
+              <span className="schero__title-gray">
+                building engaging and user-friendly websites
+              </span>
             </h1>
           </div>
 
@@ -537,23 +539,23 @@ export default function Home() {
 
             <div className="schero__desc-text">
               <p className="para">
-                I'm Ivan, a Visual Designer living in Munich, and I focus on
-                making digital experiences that are easy to use, enjoyable, and
-                get the job done.
+                I'm Tommy Nguyen, a Frontend Developer living in Vietnam, and I
+                focus on building websites that are easy to use, enjoyable, and
+                engaging with users.
               </p>
             </div>
           </div>
 
           <div className="schero__cta">
             <Button
-              href="#"
+              href={CONTACT_LINKS.EMAIL}
               variant="talk"
               size="lg"
               className="schero__cta-button"
               icon={FiArrowRight}
               iconPosition="right"
             >
-              Let's Talk
+              Let's Connect
             </Button>
           </div>
         </div>
@@ -574,15 +576,17 @@ export default function Home() {
               <div className="scabout__content-wrapper">
                 <HideTextWrapper>
                   <h2 className="scabout__content-title">
-                    Design that sparks engagement and inspires action
+                    Crafting websites that tell your story.
                   </h2>
                 </HideTextWrapper>
                 <HideTextWrapper>
                   <p className="scabout__content-desc para">
-                    Concentrate on your primary objective which is expanding
-                    your business, and leave it to me to ensure that your
-                    business is efficiently portrayed in the digital realm and
-                    distinguishes itself from the rivals.
+                    I believe websites are more than just digital storefronts -
+                    they're magical meeting points where brands and users dance
+                    together! This two-way interaction creates a wonderful
+                    opportunity for businesses to truly understand their
+                    customers, while allowing customers to embrace and become
+                    part of the brand's story.
                   </p>
                 </HideTextWrapper>
               </div>
@@ -608,13 +612,17 @@ export default function Home() {
           <div className="scwork-wrapper">
             <HideTextWrapper>
               <h2 className="scwork__title">
-                <strong>Discover my latest works</strong>
+                <strong>My latest works</strong>
               </h2>
             </HideTextWrapper>
 
             <ul className="scwork__list">
               <li className="scwork__list-item cardwork">
-                <Link href={ROUTES.WORK} className="cardwork__thumbnail">
+                <Link
+                  href={`https://etsolution.vn/home`}
+                  target="_blank"
+                  className="cardwork__thumbnail"
+                >
                   <AnimatedThumbnail
                     src="/images/project-1.jpg"
                     alt="project 1"
@@ -627,15 +635,20 @@ export default function Home() {
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
                       <AnimatedTextHover>
-                        <Link href={ROUTES.WORK} className="title">
-                          Sportly
+                        <Link
+                          href={`https://etsolution.vn/home`}
+                          target="_blank"
+                          className="title"
+                        >
+                          ETSolution
                         </Link>
                       </AnimatedTextHover>
-                      <p className="desc">Mobile App Design</p>
+                      <p className="desc">Website</p>
                     </div>
 
                     <Button
-                      href={ROUTES.WORK}
+                      href={`https://etsolution.vn/home`}
+                      target="_blank"
                       variant="link"
                       size="lg"
                       className="cardwork__content-btn"
@@ -646,7 +659,11 @@ export default function Home() {
                 </HideTextWrapper>
               </li>
               <li className="scwork__list-item cardwork">
-                <Link href={ROUTES.WORK} className="cardwork__thumbnail">
+                <Link
+                  href={`https://architecture-ver1.vercel.app/`}
+                  target="_blank"
+                  className="cardwork__thumbnail"
+                >
                   <AnimatedThumbnail
                     src="/images/project-2.jpg"
                     alt="project 2"
@@ -658,15 +675,20 @@ export default function Home() {
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
                       <AnimatedTextHover>
-                        <Link href={ROUTES.WORK} className="title">
-                          Payrole
+                        <Link
+                          href={`https://architecture-ver1.vercel.app/`}
+                          target="_blank"
+                          className="title"
+                        >
+                          RUMAÉ (Concept)
                         </Link>
                       </AnimatedTextHover>
-                      <p className="desc">Mobile App Design</p>
+                      <p className="desc">Website Development</p>
                     </div>
 
                     <Button
-                      href={ROUTES.WORK}
+                      href={`https://architecture-ver1.vercel.app/`}
+                      target="_blank"
                       variant="link"
                       size="lg"
                       className="cardwork__content-btn"
@@ -677,9 +699,13 @@ export default function Home() {
                 </HideTextWrapper>
               </li>
               <li className="scwork__list-item cardwork">
-                <Link href={ROUTES.WORK} className="cardwork__thumbnail">
+                <Link
+                  href={`https://architecture-ver2.vercel.app/`}
+                  target="_blank"
+                  className="cardwork__thumbnail"
+                >
                   <AnimatedThumbnail
-                    src="/images/project-3.jpg"
+                    src="/images/project-5.jpg"
                     alt="project 3"
                     width={400}
                     height={300}
@@ -690,15 +716,20 @@ export default function Home() {
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
                       <AnimatedTextHover>
-                        <Link href={ROUTES.WORK} className="title">
-                          Wepay
+                        <Link
+                          href={`https://architecture-ver2.vercel.app/`}
+                          target="_blank"
+                          className="title"
+                        >
+                          AGRESSOV (Concept)
                         </Link>
                       </AnimatedTextHover>
-                      <p className="desc">Mobile App Design</p>
+                      <p className="desc">Website Development</p>
                     </div>
 
                     <Button
-                      href={ROUTES.WORK}
+                      href={`https://architecture-ver2.vercel.app/`}
+                      target="_blank"
                       variant="link"
                       size="lg"
                       className="cardwork__content-btn"
@@ -709,7 +740,11 @@ export default function Home() {
                 </HideTextWrapper>
               </li>
               <li className="scwork__list-item cardwork">
-                <Link href={ROUTES.WORK} className="cardwork__thumbnail">
+                <Link
+                  href={`https://finance-flow-rho.vercel.app/`}
+                  target="_blank"
+                  className="cardwork__thumbnail"
+                >
                   <AnimatedThumbnail
                     src="/images/project-4.jpg"
                     alt="project 4"
@@ -722,15 +757,20 @@ export default function Home() {
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
                       <AnimatedTextHover>
-                        <Link href={ROUTES.WORK} className="title">
-                          Estatery
+                        <Link
+                          href={`https://finance-flow-rho.vercel.app/`}
+                          target="_blank"
+                          className="title"
+                        >
+                          Finance Flow (Concept)
                         </Link>
                       </AnimatedTextHover>
-                      <p className="desc">Mobile App Design</p>
+                      <p className="desc">Website Development</p>
                     </div>
 
                     <Button
-                      href={ROUTES.WORK}
+                      href={`https://finance-flow-rho.vercel.app/`}
+                      target="_blank"
                       variant="link"
                       size="lg"
                       className="cardwork__content-btn"
@@ -741,9 +781,13 @@ export default function Home() {
                 </HideTextWrapper>
               </li>
               <li className="scwork__list-item cardwork">
-                <Link href={ROUTES.WORK} className="cardwork__thumbnail">
+                <Link
+                  href={`https://dqh-architecture.vercel.app/`}
+                  target="_blank"
+                  className="cardwork__thumbnail"
+                >
                   <AnimatedThumbnail
-                    src="/images/project-5.jpg"
+                    src="/images/project-3.jpg"
                     alt="project 5"
                     width={400}
                     height={300}
@@ -754,15 +798,20 @@ export default function Home() {
                   <div className="cardwork__content">
                     <div className="cardwork__content-desc">
                       <AnimatedTextHover>
-                        <Link href={ROUTES.WORK} className="title">
-                          Sportly
+                        <Link
+                          href={`https://dqh-architecture.vercel.app/`}
+                          target="_blank"
+                          className="title"
+                        >
+                          DQH Architecture (Concept)
                         </Link>
                       </AnimatedTextHover>
-                      <p className="desc">Mobile App Design</p>
+                      <p className="desc">Website Development</p>
                     </div>
 
                     <Button
-                      href={ROUTES.WORK}
+                      href={`https://dqh-architecture.vercel.app/`}
+                      target="_blank"
                       variant="link"
                       size="lg"
                       className="cardwork__content-btn"
@@ -794,9 +843,7 @@ export default function Home() {
         <div className="container">
           <div className="scclient-wrapper">
             <HideTextWrapper>
-              <h2 className="scclient__title">
-                A visual partner for brands, companies, and agencies
-              </h2>
+              <h2 className="scclient__title">Experiences</h2>
             </HideTextWrapper>
 
             <ul className="scclient__list">
@@ -909,12 +956,11 @@ export default function Home() {
                 <div className="card__content">
                   <AnimatedTextHover>
                     <Link href={"#"} className="card__content-title">
-                      Mastering the Art of Color Theory: A Visual Designer's
-                      Guide
+                      Comming soon...
                     </Link>
                   </AnimatedTextHover>
                   <span className="card__content-time --block">
-                    May 5, 2023
+                    Comming soon...
                   </span>
                 </div>
               </li>
@@ -930,12 +976,11 @@ export default function Home() {
                 <div className="card__content">
                   <AnimatedTextHover>
                     <Link href={ROUTES.BLOG} className="card__content-title">
-                      Designing for User Experience: Creating Intuitive and
-                      Engaging Interfaces
+                      Comming soon...
                     </Link>
                   </AnimatedTextHover>
                   <span className="card__content-time --block">
-                    May 5, 2023
+                    Comming soon...
                   </span>
                 </div>
               </li>

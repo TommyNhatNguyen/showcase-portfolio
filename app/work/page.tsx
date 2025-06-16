@@ -7,7 +7,7 @@ import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import clsx from "clsx";
 import { FiArrowRight } from "react-icons/fi";
-import { ROUTES } from "../constants/links";
+import { ROUTES, WORK_ITEMS } from "../constants/links";
 
 export default function Work() {
   const workRef = useRef<HTMLDivElement>(null);
@@ -123,6 +123,9 @@ export default function Work() {
             </div>
             <ul className="schero__skills">
               <li className="schero__skills-item">
+                <span>Web Development</span>
+              </li>
+              <li className="schero__skills-item">
                 <span>Web Design</span>
               </li>
               <li className="schero__skills-item">
@@ -130,9 +133,6 @@ export default function Work() {
               </li>
               <li className="schero__skills-item">
                 <span>Branding</span>
-              </li>
-              <li className="schero__skills-item">
-                <span>Mobile App</span>
               </li>
             </ul>
           </div>
@@ -144,7 +144,7 @@ export default function Work() {
         <div className="container">
           <div className="scwork-wrapper">
             <ul className="scwork__list">
-              {[1, 2, 3, 4, 5].map((item, index) => (
+              {WORK_ITEMS.map((item, index) => (
                 <li
                   key={index}
                   className={clsx("scwork__list-item", {
@@ -157,31 +157,31 @@ export default function Work() {
                     <div className="content">
                       <div className="content__info">
                         <div className="content__info-title --block">
-                          Sportly
+                          {item.title}
                           <div className="icon">
                             <FiArrowRight />
                           </div>
                         </div>
-                        <span className="content__info-time --block">
+                        {/* <span className="content__info-time --block">
                           May 5, 2023
-                        </span>
+                        </span> */}
                       </div>
                       <div className="content__desc">
-                        <p className="content__desc-text">
-                          Website Redesign: Improving user experience and
-                          modernizing design.
-                        </p>
+                        <p className="content__desc-text">{item.desc}</p>
                         <ul className="content__desc-tags">
-                          <li>UIUX</li>
-                          <li>Branding</li>
+                          <li>Web Development</li>
                         </ul>
                       </div>
                     </div>
                     {/* Thumbnail */}
-                    <Link href={ROUTES.WORK} className="thumbnail">
+                    <Link
+                      href={item.href}
+                      target="_blank"
+                      className="thumbnail"
+                    >
                       <Image
-                        src="/images/project-1.jpg"
-                        alt="Sportly"
+                        src={item.image}
+                        alt={item.title}
                         width={400}
                         height={300}
                       />

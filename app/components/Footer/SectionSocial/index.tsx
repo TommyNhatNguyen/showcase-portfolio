@@ -40,7 +40,7 @@ const SectionSocial = (props: Props) => {
           </ul>
           {/* Socials */}
           <ul className="socials">
-            <li className="socials__item">
+            {/* <li className="socials__item">
               <Link href={SOCIAL_LINKS.TWITTER} className="socials__item-link">
                 <AnimatedTextHover>
                   <Image
@@ -51,8 +51,8 @@ const SectionSocial = (props: Props) => {
                   />
                 </AnimatedTextHover>
               </Link>
-            </li>
-            <li className="socials__item">
+            </li> */}
+            {/* <li className="socials__item">
               <Link href={SOCIAL_LINKS.YOUTUBE} className="socials__item-link">
                 <AnimatedTextHover>
                   <Image
@@ -90,7 +90,7 @@ const SectionSocial = (props: Props) => {
                   />
                 </AnimatedTextHover>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
         {/* Bottom */}
@@ -99,7 +99,7 @@ const SectionSocial = (props: Props) => {
           <form action="/" className="form form-email">
             <div className="formgroup">
               <label className="formgroup__label" htmlFor="email">
-                Keep up with me if you can.
+                Let's connect and talk about your project.
               </label>
               <div className="formgroup__inputgroup">
                 <input
@@ -121,9 +121,9 @@ const SectionSocial = (props: Props) => {
             </div>
           </form>
           {/* Copyright */}
-          <p className="copyright">
+          {/* <p className="copyright">
             &#169;2025 All Rights Reserved. Designed with 🤍 and Coded with ❤️‍🔥
-          </p>
+          </p> */}
         </div>
       </div>
     </section>

@@ -16,6 +16,7 @@ interface ButtonProps {
   isAnimated?: boolean;
   isRounded?: boolean;
   as?: "button" | "a" | "div";
+  target?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -31,6 +32,7 @@ const Button: React.FC<ButtonProps> = ({
   black = false,
   isAnimated = true,
   isRounded = true,
+  target,
   ...props
 }) => {
   const baseClasses = "btn";
@@ -75,7 +77,12 @@ const Button: React.FC<ButtonProps> = ({
 
   if (href) {
     return (
-      <Link href={href} className={buttonClasses} {...props}>
+      <Link
+        href={href}
+        className={buttonClasses}
+        target={target}
+        {...props}
+      >
         {isAnimated ? (
           <>
             <div className="content-top">{content}</div>

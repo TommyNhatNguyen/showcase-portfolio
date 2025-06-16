@@ -82,6 +82,7 @@
       img {
         object-fit: cover;
         transition-duration: 0.3s;
+        object-position: 50% 10%;
       }
       &:hover {
         img {
@@ -149,6 +150,7 @@
   }
   // CLIENTS
   .scclient {
+    display: none;
     &__title {
     }
     &__list {
@@ -191,8 +193,9 @@
       align-items: flex-start;
       justify-content: space-between;
       gap: var(--gutter);
-      &-item {
+      &-card {
         flex: 1;
+        justify-content: initial;
       }
     }
     &__btnviewall.--mobile {

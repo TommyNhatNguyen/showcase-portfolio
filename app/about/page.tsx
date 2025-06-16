@@ -444,17 +444,19 @@ export default function About() {
           <div className="schero__title">
             <h1 className="schero__title-text --gray">
               <strong>
-                <span className="--gray">About me,</span> a Visual Designer
-                living in Munich
+                <span className="--gray">About me,</span> a Frontend Developer
+                living in Vietnam
               </strong>
             </h1>
           </div>
           {/* Description */}
           <div className="schero__desc">
             <p className="para">
-              As a Senior Designer with over 10 years of experience, I
-              specialize in creating intuitive and user-centered interfaces for
-              a wide range of digital products and experiences.
+              As a Frontend Developer with 3+ years of experience, I believe in
+              crafting websites that are more than just interfaces - they're
+              delightful digital experiences where brands and users connect
+              meaningfully. I specialize in building intuitive, user-centered
+              designs that tell compelling stories.
             </p>
           </div>
           {/* Content */}
@@ -474,22 +476,22 @@ export default function About() {
               {/* Headline */}
               <h4 className="headline">
                 <strong>
-                  I'm the UI/UX and brand designer you need to take your digital
-                  presence to the next level
+                  I'm the Frontend Developer you need to convey your brand's
+                  message to your audience
                 </strong>
               </h4>
               {/* Description */}
               <div className="desc">
                 <p className="desc__para">
-                  With a collaborative mindset and a dedication to their craft,
-                  I'm works closely with clients to understand their goals and
-                  objectives, providing tailored design solutions that meet
-                  their unique needs.
+                  With a collaborative mindset and a dedication to frontend
+                  development, I work closely with clients to understand their
+                  technical requirements and business goals, crafting responsive
+                  and performant web solutions that deliver engaging user
+                  experiences.
                 </p>
                 <p className="desc__para">
-                  Outside of work, you can find me exploring the latest design
-                  trends, attending design conferences, or working on personal
-                  projects.
+                  Outside of work, you can find me exploring the latest trends
+                  or working on personal projects.
                 </p>
               </div>
             </div>
@@ -608,14 +610,14 @@ export default function About() {
             </div>
             {/* CTA */}
             <Button
-              href="#"
+              href="mailto:nguyenanhnhat123456@gmail.com"
               variant="talk"
               size="lg"
               className="--btn-primary"
               icon={FiArrowRight}
               iconPosition="right"
             >
-              Let's Talk
+              Let's Connect
             </Button>
           </div>
         </div>
