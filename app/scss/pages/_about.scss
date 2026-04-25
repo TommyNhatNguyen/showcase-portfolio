@@ -42,11 +42,12 @@
     }
   }
   .scexperience {
-    display: none;
+    // display: none;
     &__list {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
+      flex-wrap: wrap;
       gap: var(--gap);
       &-item {
         flex: 1;

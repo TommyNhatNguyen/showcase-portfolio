@@ -34,8 +34,8 @@
     &__cta {
       margin-top: 56px;
       display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: flex-start;
       gap: var(--gap);
       &-socials {
         display: flex;

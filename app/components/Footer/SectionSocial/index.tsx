@@ -30,7 +30,7 @@ const SectionSocial = (props: Props) => {
             </li>
             <li className="sitemap__item">
               <Link href={ROUTES.BLOG} className="sitemap__item-link">
-                Insights
+                Blogs
               </Link>
             </li>
             <li className="sitemap__item">

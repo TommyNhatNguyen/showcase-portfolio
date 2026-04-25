@@ -117,19 +117,22 @@ export default function Work() {
           <div className="schero-wrapper">
             <div className="schero__title">
               <h1 className="schero__title-text --gray">
-                Bringing your brand to life in the
-                <span className="--gray"> digital world</span>
+                SELECTED
+                <span className="--gray"> PROJECTS</span>
               </h1>
             </div>
             <ul className="schero__skills">
               <li className="schero__skills-item">
-                <span>Front-end Development</span>
+                <span>TypeScript</span>
               </li>
               <li className="schero__skills-item">
-                <span>NextJS & Typescript</span>
+                <span>Next.js</span>
               </li>
               <li className="schero__skills-item">
-                <span>Web Developement</span>
+                <span>Node.js</span>
+              </li>
+              <li className="schero__skills-item">
+                <span>Python</span>
               </li>
             </ul>
           </div>
@@ -172,8 +175,8 @@ export default function Work() {
                     </div>
                     {/* Thumbnail */}
                     <Link
-                      href={item.href}
-                      target="_blank"
+                      href={item.href ? item.href : "#"}
+                      target={item.href ? "_blank" : undefined}
                       className="thumbnail"
                     >
                       <Image

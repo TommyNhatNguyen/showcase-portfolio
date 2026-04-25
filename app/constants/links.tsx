@@ -21,6 +21,19 @@ export const CONTACT_LINKS = {
 
 export const WORK_ITEMS = [
   {
+    href: null,
+    image: "/images/picare-project.gif",
+    title: "Picare CMS",
+    desc: (
+      <p>
+        A comprehensive web admin panel for managing apartment and building
+        services, including resident management, project oversight, and service
+        coordination. Built with <span className="font-bold">NextJs</span> and{" "}
+        <span className="font-bold">TypeScript</span>.
+      </p>
+    ),
+  },
+  {
     href: "https://dqharchitects.vn/vi/home",
     image: "/images/project-3.jpg",
     title: "DQH Architecture",
@@ -30,6 +43,19 @@ export const WORK_ITEMS = [
         intergrated with <span className="font-bold">Strapi CMS</span> to manage
         content. Designed in Swiss-inspired style with a focus on simplicity and
         functionality
+      </p>
+    ),
+  },
+  {
+    href: "https://quang-portfolio-two.vercel.app/work",
+    image: "/images/project-7.png",
+    title: "Quang's Portfolio",
+    desc: (
+      <p>
+        A portfolio website for Quang Nguyen, a software engineer. Built with{" "}
+        <span className="font-bold">NextJs</span>,{" "}
+        <span className="font-bold">TypeScript</span>, and{" "}
+        <span className="font-bold">Tailwind CSS</span>.
       </p>
     ),
   },
@@ -76,6 +102,17 @@ export const WORK_ITEMS = [
     desc: (
       <p>
         Digital Asset Landing Page Concept with minimal animation and layout
+      </p>
+    ),
+  },
+  {
+    href: "https://github.com/TommyNhatNguyen/Advertisement-Conversion-Rate-Analysis",
+    image: "/images/analysis-project.gif",
+    title: "Advertisement Conversion Rate Analysis (Project)",
+    desc: (
+      <p>
+        Analyze the best way to put advertising banners online to increase
+        conversion rate.
       </p>
     ),
   },

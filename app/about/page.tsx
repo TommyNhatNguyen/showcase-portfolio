@@ -1,16 +1,13 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
-import { ROUTES } from "../constants/links";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
+import Link from "next/link";
+import { useRef } from "react";
+import { FiArrowRight } from "react-icons/fi";
 import AnimatedThumbnail from "../components/AnimatedThumbnail/AnimatedThumbnail";
-import { extractNumber } from "../utils/extractNumber";
-import AnimatedTextHover from "../components/AnimatedTextHover";
 import Button from "../components/Button/Button";
-import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
+import { ROUTES, SOCIAL_LINKS } from "../constants/links";
 import { BREAKPOINTS } from "../constants/media";
 
 export default function About() {
@@ -22,18 +19,18 @@ export default function About() {
       // --------------------------------
       if (!aboutRef.current) return;
       const heroSection = aboutRef.current.querySelector(
-        "#schero"
+        "#schero",
       ) as HTMLElement;
       const heroTitle = heroSection.querySelector(".schero__title-text");
       const heroDesc = heroSection.querySelector(".schero__desc");
       const heroContent = heroSection.querySelector(".schero__content");
 
       const heroInfo = heroSection.querySelector(
-        ".schero__content-info"
+        ".schero__content-info",
       ) as HTMLElement;
       const heroInfoHeadline = heroInfo.querySelector(".headline");
       const heroInfoDescItems = gsap.utils.toArray(
-        ".desc .desc__para"
+        ".desc .desc__para",
       ) as HTMLElement[];
 
       const tl = gsap.timeline({});
@@ -60,7 +57,7 @@ export default function About() {
           {
             opacity: 0,
             y: 40,
-          }
+          },
         );
         tl.to([heroDesc, heroTitle], {
           opacity: 1,
@@ -79,7 +76,7 @@ export default function About() {
             duration: 0.9,
             ease: "none",
           },
-          "<-10%"
+          "<-10%",
         );
         tl.to(
           heroTitleSplit.lines,
@@ -89,7 +86,7 @@ export default function About() {
             duration: 0.3,
             ease: "power1.inOut",
           },
-          "<+0.3"
+          "<+0.3",
         );
         tl.to(
           heroContent,
@@ -99,7 +96,7 @@ export default function About() {
             duration: 0.3,
             delay: 0.2,
           },
-          "<"
+          "<",
         );
         heroInfoTl
           .to(heroInfoHeadline, {
@@ -117,7 +114,7 @@ export default function About() {
               duration: 0.9,
               ease: "none",
             },
-            "<-50%"
+            "<-50%",
           );
         heroInfoDescItems.map((item) => {
           const split = SplitText.create(item);
@@ -129,7 +126,7 @@ export default function About() {
                 y: 0,
                 duration: 0.3,
               },
-              "<"
+              "<",
             )
             .to(
               split.lines,
@@ -141,7 +138,7 @@ export default function About() {
                 duration: 0.9,
                 ease: "none",
               },
-              "<-50%"
+              "<-50%",
             );
         });
       });
@@ -157,7 +154,7 @@ export default function About() {
           {
             opacity: 0,
             y: 40,
-          }
+          },
         );
         tl.to([heroTitle, heroDesc], {
           opacity: 1,
@@ -176,7 +173,7 @@ export default function About() {
             duration: 0.9,
             ease: "none",
           },
-          "<-10%"
+          "<-10%",
         );
         tl.to(
           heroTitle,
@@ -186,7 +183,7 @@ export default function About() {
             duration: 0.3,
             ease: "power1.inOut",
           },
-          "<+0.3"
+          "<+0.3",
         );
         tl.to(
           heroContent,
@@ -196,7 +193,7 @@ export default function About() {
             duration: 0.3,
             delay: 0.2,
           },
-          "<"
+          "<",
         );
         heroInfoTl
           .to(heroInfoHeadline, {
@@ -214,7 +211,7 @@ export default function About() {
               duration: 0.9,
               ease: "none",
             },
-            "<-50%"
+            "<-50%",
           );
         heroInfoDescItems.map((item) => {
           const split = SplitText.create(item);
@@ -226,7 +223,7 @@ export default function About() {
                 y: 0,
                 duration: 0.3,
               },
-              "<"
+              "<",
             )
             .to(
               split.lines,
@@ -238,7 +235,7 @@ export default function About() {
                 duration: 0.9,
                 ease: "none",
               },
-              "<-50%"
+              "<-50%",
             );
         });
       });
@@ -246,10 +243,10 @@ export default function About() {
       // EXPERIENCE
       // --------------------------------
       const experienceSection = aboutRef.current.querySelector(
-        "#scexperience"
+        "#scexperience",
       ) as HTMLElement;
       const experienceList = gsap.utils.toArray(
-        ".scexperience__list-item"
+        ".scexperience__list-item",
       ) as HTMLElement[];
       const experienceListTl = gsap.timeline({
         scrollTrigger: {
@@ -282,7 +279,7 @@ export default function About() {
             duration: 0.9 * (index + 1),
             ease: "none",
           },
-          `<-${10 * (index + 1)}%`
+          `<-${10 * (index + 1)}%`,
         );
         experienceListTl.to(
           year,
@@ -294,7 +291,7 @@ export default function About() {
             duration: 0.9,
             ease: "none",
           },
-          "<-10%"
+          "<-10%",
         );
         experienceListTl.to(
           desc,
@@ -306,69 +303,69 @@ export default function About() {
             duration: 0.9,
             ease: "none",
           },
-          "<-10%"
+          "<-10%",
         );
       });
       // --------------------------------
       // CLIENTS
       // --------------------------------
-      const clientsSection = aboutRef.current.querySelector(
-        "#scclients"
-      ) as HTMLElement;
-      const clientsTitle = clientsSection.querySelector(".scclients__title");
-      const clientsTitleSplit = SplitText.create(clientsTitle);
-      const clientListItems = gsap.utils.toArray(
-        ".scclients__list-item"
-      ) as HTMLElement[];
-      const clientTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: clientsSection,
-          start: "top bottom",
-          end: "top bottom",
-        },
-      });
-      gsap.set([clientsTitle, clientListItems], {
-        opacity: 0,
-        y: 40,
-      });
-      clientTl.to(clientsTitle, {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-      });
-      clientTl.to(
-        clientsTitleSplit.lines,
-        {
-          scrambleText: {
-            text: "{original}",
-            chars: "//ai",
-          },
-          opacity: 1,
-          y: 0,
-          duration: 0.9,
-        },
-        "<-50%"
-      );
-      clientTl.to(
-        clientListItems,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.9,
-          stagger: 0.3,
-        },
-        "<"
-      );
+      // const clientsSection = aboutRef.current.querySelector(
+      //   "#scclients",
+      // ) as HTMLElement;
+      // const clientsTitle = clientsSection.querySelector(".scclients__title");
+      // const clientsTitleSplit = SplitText.create(clientsTitle);
+      // const clientListItems = gsap.utils.toArray(
+      //   ".scclients__list-item",
+      // ) as HTMLElement[];
+      // const clientTl = gsap.timeline({
+      //   scrollTrigger: {
+      //     trigger: clientsSection,
+      //     start: "top bottom",
+      //     end: "top bottom",
+      //   },
+      // });
+      // gsap.set([clientsTitle, clientListItems], {
+      //   opacity: 0,
+      //   y: 40,
+      // });
+      // clientTl.to(clientsTitle, {
+      //   opacity: 1,
+      //   y: 0,
+      //   duration: 0.3,
+      // });
+      // clientTl.to(
+      //   clientsTitleSplit.lines,
+      //   {
+      //     scrambleText: {
+      //       text: "{original}",
+      //       chars: "//ai",
+      //     },
+      //     opacity: 1,
+      //     y: 0,
+      //     duration: 0.9,
+      //   },
+      //   "<-50%",
+      // );
+      // clientTl.to(
+      //   clientListItems,
+      //   {
+      //     opacity: 1,
+      //     y: 0,
+      //     duration: 0.9,
+      //     stagger: 0.3,
+      //   },
+      //   "<",
+      // );
       // --------------------------------
       // CTA
       // --------------------------------
       const ctaSection = aboutRef.current.querySelector(
-        "#sccta"
+        "#sccta",
       ) as HTMLElement;
       const ctaTitle = ctaSection.querySelector(".sccta__title-text");
       const ctaTitleSplit = SplitText.create(ctaTitle);
       const ctaLinks = gsap.utils.toArray(
-        ".sccta__links-item"
+        ".sccta__links-item",
       ) as HTMLElement[];
       const ctaButton = ctaSection.querySelector(".btn-talk") as HTMLElement;
       const ctaTl = gsap.timeline({
@@ -396,7 +393,7 @@ export default function About() {
           duration: 0.8,
           ease: "power3.out",
         },
-        "<+0.3"
+        "<+0.3",
       );
       ctaTl.to(
         ctaTitleSplit.lines,
@@ -408,7 +405,7 @@ export default function About() {
           duration: 0.9,
           ease: "none",
         },
-        "<-50%"
+        "<-50%",
       );
       ctaTl.to(
         ctaTitleSplit.lines,
@@ -418,7 +415,7 @@ export default function About() {
           duration: 0.3,
           ease: "power1.inOut",
         },
-        "<+0.3"
+        "<+0.3",
       );
       ctaTl.to(
         ctaButton,
@@ -427,12 +424,12 @@ export default function About() {
           y: 0,
           duration: 0.6,
         },
-        "<+0.3"
+        "<+0.3",
       );
     },
     {
       scope: aboutRef,
-    }
+    },
   );
 
   return (
@@ -444,19 +441,17 @@ export default function About() {
           <div className="schero__title">
             <h1 className="schero__title-text --gray">
               <strong>
-                <span className="--gray">About me,</span> a Frontend Developer
-                living in Vietnam
+                <span className="--gray">About me,</span> a Front End Developer
+                based in Vietnam
               </strong>
             </h1>
           </div>
           {/* Description */}
           <div className="schero__desc">
             <p className="para">
-              As a Frontend Developer with 3+ years of experience, I believe in
-              crafting websites that are more than just interfaces - they're
-              delightful digital experiences where brands and users connect
-              meaningfully. I specialize in building intuitive, user-centered
-              designs that tell compelling stories.
+              Tommy Nguyen. Front End Developer based in Ho Chi Minh City,
+              Vietnam. Experienced with React.js, TypeScript, Next.js, Node.js.
+              Transitioned from financial analysis into software development.
             </p>
           </div>
           {/* Content */}
@@ -476,22 +471,23 @@ export default function About() {
               {/* Headline */}
               <h4 className="headline">
                 <strong>
-                  I'm the Frontend Developer you need to convey your brand's
-                  message to your audience
+                  Front End Developer with a background in financial analysis
+                  and a focus on clean, maintainable code
                 </strong>
               </h4>
               {/* Description */}
               <div className="desc">
                 <p className="desc__para">
-                  With a collaborative mindset and a dedication to frontend
-                  development, I work closely with clients to understand their
-                  technical requirements and business goals, crafting responsive
-                  and performant web solutions that deliver engaging user
-                  experiences.
+                  Currently at Pitek (Next.js, TypeScript, Tailwind CSS,
+                  Firebase). Previously at Tanca (React.js, React Native,
+                  TypeScript). Prior to software, worked as an Equity Analyst at
+                  FPTS for three years covering research and investment reports.
                 </p>
                 <p className="desc__para">
-                  Outside of work, you can find me exploring the latest trends
-                  or working on personal projects.
+                  Pursuing a second degree in Information Technology at the
+                  University of Information Technology (UIT). Holds a Bachelor
+                  of Business Administration from the University of Economics
+                  HCMC.
                 </p>
               </div>
             </div>
@@ -506,72 +502,31 @@ export default function About() {
           <div className="scexperience-wrapper">
             <ul className="scexperience__list">
               <li className="scexperience__list-item">
-                <p className="year">2013 - 2015</p>
+                <p className="year">05/2025 – Present</p>
                 <div className="content">
-                  <h4 className="content__title">2 years</h4>
-                  <p className="content__desc">as a Product Desinger at Uber</p>
+                  <h4 className="content__title">Front End Developer</h4>
+                  <p className="content__desc">
+                    at Pitek · Next.js, TypeScript, Tailwind CSS, Firebase
+                  </p>
                 </div>
               </li>
               <li className="scexperience__list-item">
-                <p className="year">2013 - 2015</p>
+                <p className="year">10/2024 – 05/2025</p>
                 <div className="content">
-                  <h4 className="content__title">2 years</h4>
-                  <p className="content__desc">as a Product Desinger at Uber</p>
+                  <h4 className="content__title">Front End Developer</h4>
+                  <p className="content__desc">
+                    at Tanca · React.js, React Native, TypeScript
+                  </p>
                 </div>
               </li>
               <li className="scexperience__list-item">
-                <p className="year">2013 - 2015</p>
+                <p className="year">08/2021 – 03/2024</p>
                 <div className="content">
-                  <h4 className="content__title">2 years</h4>
-                  <p className="content__desc">as a Product Desinger at Uber</p>
+                  <h4 className="content__title">Equity Analyst</h4>
+                  <p className="content__desc">
+                    at FPTS · research, analysis & investment reports
+                  </p>
                 </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Clients */}
-      <section className="scclients --ptb" id="scclients">
-        <div className="container">
-          <div className="scclients-wrapper">
-            <h5 className="scclients__title">Clients</h5>
-            <ul className="scclients__list">
-              <li className="scclients__list-item">
-                <Link
-                  href={"https://etsolution.vn"}
-                  target="_blank"
-                  className="link"
-                >
-                  {/* Left */}
-                  <div className="link__content">
-                    <AnimatedTextHover>
-                      <p className="link__content-title --block">
-                        Etsolutions - Engineering & Technology Solutions
-                      </p>
-                    </AnimatedTextHover>
-                    <span className="link__content-time --block">
-                      May 5, 2023
-                    </span>
-                  </div>
-                  {/* Right */}
-                  <div className="link__navigate">
-                    <div className="link__navigate-logo">
-                      <Image
-                        src="/images/etsolution-logo.png"
-                        alt="etsolution logo"
-                        width={100}
-                        height={50}
-                      />
-                    </div>
-                    <Button
-                      variant="link"
-                      size="lg"
-                      className="link__navigate-btn"
-                      icon={FiArrowUpRight}
-                    />
-                  </div>
-                </Link>
               </li>
             </ul>
           </div>
@@ -596,15 +551,20 @@ export default function About() {
               </li>
               <li className="sccta__links-item">
                 <Link href={ROUTES.BLOG} className="link">
-                  Insights
+                  Blogs
+                </Link>
+              </li>
+              <li className="sccta__links-item">
+                <Link href={SOCIAL_LINKS.GITHUB} className="link">
+                  GitHub
                 </Link>
               </li>
             </ul>
             <div className="sccta__title">
               <h1 className="sccta__title-text --gray">
                 <strong>
-                  Want to create something
-                  <span className="--gray"> awesome?</span>
+                  Open to opportunities
+                  <span className="--gray"> — let's talk.</span>
                 </strong>
               </h1>
             </div>

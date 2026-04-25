@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "./scss/index.scss";
 import MainLayout from "./layout/MainLayout";
+import "./scss/index.scss";
 
 export const metadata: Metadata = {
   title: "TOMMY NGUYEN 🧑🏻‍🎨 Visual Developer",
@@ -18,6 +18,7 @@ export default function RootLayout({
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>TOMMY NGUYEN 🧑🏻‍🎨 Visual Developer</title>
+        <link rel="icon" href="/images/favicon.ico" />
         <link
           rel="preload"
           href="/fonts/InterTight-Bold.woff2"

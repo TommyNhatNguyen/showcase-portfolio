@@ -1,15 +1,13 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
-import { ROUTES } from "../constants/links";
-import Button from "../components/Button/Button";
-import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import React, { useRef } from "react";
 import { SplitText } from "gsap/all";
-import AnimatedThumbnail from "../components/AnimatedThumbnail/AnimatedThumbnail";
+import Link from "next/link";
+import { useRef } from "react";
 import AnimatedTextHover from "../components/AnimatedTextHover";
+import AnimatedThumbnail from "../components/AnimatedThumbnail/AnimatedThumbnail";
+import Button from "../components/Button/Button";
+import { ROUTES } from "../constants/links";
 import { BREAKPOINTS } from "../constants/media";
 export default function Blog() {
   const blogRef = useRef<HTMLDivElement>(null);
@@ -20,7 +18,7 @@ export default function Blog() {
       // --------------------------------
       if (!blogRef.current) return;
       const heroSection = blogRef.current.querySelector(
-        "#schero"
+        "#schero",
       ) as HTMLElement;
       const heroTitle = heroSection.querySelector(".schero__title");
       const heroDesc = heroSection.querySelector(".schero__desc");
@@ -52,7 +50,7 @@ export default function Blog() {
             duration: 0.9,
             ease: "none",
           },
-          "<-10%"
+          "<-10%",
         );
         tl.to(
           heroTitleSplit.lines,
@@ -62,7 +60,7 @@ export default function Blog() {
             duration: 0.3,
             ease: "power1.inOut",
           },
-          "<+0.3"
+          "<+0.3",
         );
       });
       mm.add(BREAKPOINTS.mobile, () => {
@@ -87,7 +85,7 @@ export default function Blog() {
             duration: 0.9,
             ease: "none",
           },
-          "<-10%"
+          "<-10%",
         );
         tl.to(
           heroTitle,
@@ -97,7 +95,7 @@ export default function Blog() {
             duration: 0.3,
             ease: "power1.inOut",
           },
-          "<+0.3"
+          "<+0.3",
         );
       });
 
@@ -105,14 +103,14 @@ export default function Blog() {
       // INSIGHTS
       // --------------------------------
       const insightsSection = blogRef.current.querySelector(
-        "#sclatestinsights"
+        "#sclatestinsights",
       ) as HTMLElement;
       const insightsTitle = insightsSection.querySelector(
-        ".sclatestinsights__title .sclatestinsights__title-text"
+        ".sclatestinsights__title .sclatestinsights__title-text",
       ) as HTMLElement;
       const insightsTitleSplit = SplitText.create(insightsTitle);
       const insightsList = insightsSection.querySelector(
-        ".sclatestinsights__list"
+        ".sclatestinsights__list",
       );
       const insightsTl = gsap.timeline({
         scrollTrigger: {
@@ -143,7 +141,7 @@ export default function Blog() {
             duration: 0.9,
             ease: "none",
           },
-          "<-50%"
+          "<-50%",
         );
       insightsTl.to(
         insightsList,
@@ -152,23 +150,23 @@ export default function Blog() {
           y: 0,
           duration: 0.3,
         },
-        "<+0.45"
+        "<+0.45",
       );
       // --------------------------------
       // ALL INSIGHTS
       // --------------------------------
       const allInsightsSection = blogRef.current.querySelector(
-        "#scallinsights"
+        "#scallinsights",
       ) as HTMLElement;
       const allInsightsTitle = allInsightsSection.querySelector(
-        ".scallinsights__title .scallinsights__title-text"
+        ".scallinsights__title .scallinsights__title-text",
       ) as HTMLElement;
       const allInsightsTitleSplit = SplitText.create(allInsightsTitle);
       const allInsightsListItems = gsap.utils.toArray(
-        ".scallinsights__list-item"
+        ".scallinsights__list-item",
       ) as HTMLElement[];
       const allInsightsButton = allInsightsSection.querySelector(
-        ".scallinsights__btn"
+        ".scallinsights__btn",
       ) as HTMLElement;
       const allInsightsTl = gsap.timeline({
         scrollTrigger: {
@@ -186,7 +184,7 @@ export default function Blog() {
         {
           opacity: 0,
           y: 40,
-        }
+        },
       );
       allInsightsTl
         .to(allInsightsTitle.parentElement, {
@@ -206,7 +204,7 @@ export default function Blog() {
             duration: 0.9,
             ease: "none",
           },
-          "<-50%"
+          "<-50%",
         );
       allInsightsTl.to(
         [allInsightsListItems, allInsightsButton],
@@ -216,12 +214,12 @@ export default function Blog() {
           duration: 0.6,
           stagger: 0.15,
         },
-        "<+0.45"
+        "<+0.45",
       );
     },
     {
       scope: blogRef,
-    }
+    },
   );
   return (
     <main className="blog" id="blog" ref={blogRef}>
@@ -229,10 +227,10 @@ export default function Blog() {
       <section className="schero --ptb" id="schero">
         <div className="container">
           <div className="schero-wrapper">
-            <p className="schero__caption">Insights</p>
+            <p className="schero__caption">Blogs</p>
             <h1 className="schero__title --gray">
               A collection of my
-              <span className="--gray"> insights</span>
+              <span className="--gray"> blogs</span>
             </h1>
             <p className="schero__desc">
               Subscribe to my newsletter to learn more about design, our blog
@@ -362,7 +360,7 @@ export default function Blog() {
         <div className="container">
           <div className="scallinsights-wrapper">
             <div className="scallinsights__title">
-              <h2 className="scallinsights__title-text">All Insights</h2>
+              <h2 className="scallinsights__title-text">All Blogs</h2>
             </div>
             <ul className="scallinsights__list">
               <li className="scallinsights__list-item">

@@ -5,7 +5,7 @@ import { SplitText } from "gsap/all";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
+import { FiArrowRight, FiArrowUpRight, FiDownload } from "react-icons/fi";
 import AnimatedTextHover from "./components/AnimatedTextHover";
 import AnimatedThumbnail from "./components/AnimatedThumbnail/AnimatedThumbnail";
 import Button from "./components/Button/Button";
@@ -69,15 +69,14 @@ export default function Home() {
       // --------------------------------
       const blogSection = homeRef.current.querySelector(
         "#scblog",
-      ) as HTMLElement;
-      const blogTitle = blogSection.querySelector(
-        ".scblog__title .titlegroup__title",
-      );
-      const blogTitleSplit = SplitText.create(blogTitle);
-      const blogBtn = blogSection.querySelector(".scblog__btn");
-      const blogListItems = gsap.utils.toArray(
-        ".scblog__list-card",
-      ) as HTMLElement[];
+      ) as HTMLElement | null;
+      const blogTitle =
+        blogSection?.querySelector(".scblog__title .titlegroup__title") ?? null;
+      const blogTitleSplit = blogTitle ? SplitText.create(blogTitle) : null;
+      const blogBtn = blogSection?.querySelector(".scblog__btn") ?? null;
+      const blogListItems = blogSection
+        ? (gsap.utils.toArray(".scblog__list-card") as HTMLElement[])
+        : [];
 
       const tl = gsap.timeline({ paused: true });
       const aboutTl = gsap.timeline({
@@ -87,13 +86,15 @@ export default function Home() {
           end: "bottom bottom",
         },
       });
-      const blogTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: blogSection,
-          start: "top +=90%",
-          end: "bottom bottom",
-        },
-      });
+      const blogTl = blogSection
+        ? gsap.timeline({
+            scrollTrigger: {
+              trigger: blogSection,
+              start: "top +=90%",
+              end: "bottom bottom",
+            },
+          })
+        : null;
       const workTl = gsap.timeline({
         scrollTrigger: {
           trigger: worksSection,
@@ -473,64 +474,65 @@ export default function Home() {
         "<",
       );
 
-      gsap.to([blogBtn, blogListItems], {
-        opacity: 0,
-        y: 40,
-        duration: 0,
-      });
-      blogTl.to(blogTitle, {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-      });
-      blogTl.to(
-        blogTitleSplit.lines,
-        {
-          scrambleText: {
-            text: "{original}",
-            chars: "//ai",
+      if (blogSection && blogTl && blogTitleSplit) {
+        gsap.to([blogBtn, blogListItems], {
+          opacity: 0,
+          y: 40,
+          duration: 0,
+        });
+        blogTl.to(blogTitle, {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+        });
+        blogTl.to(
+          blogTitleSplit.lines,
+          {
+            scrambleText: {
+              text: "{original}",
+              chars: "//ai",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
           },
-          opacity: 1,
-          y: 0,
-          duration: 0.9,
-        },
-        "<-50%",
-      );
-      blogTl.to(
-        blogBtn,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-        },
-        "<",
-      );
-      blogTl.to(
-        blogListItems,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.9,
-          stagger: 0.3,
-        },
-        "<",
-      );
+          "<-50%",
+        );
+        blogTl.to(
+          blogBtn,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+          },
+          "<",
+        );
+        blogTl.to(
+          blogListItems,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            stagger: 0.3,
+          },
+          "<",
+        );
+      }
     },
     {
       scope: homeRef,
     },
   );
+
   return (
     <main className="home" id="home" ref={homeRef}>
       <section className="schero --ptb" id="schero">
         <div className="container">
           <div className="schero__title">
             <h1 className="schero__title-text --gray">
-              <strong> Front End Developer </strong>
+              <strong> Tommy Nguyen </strong>
               <br />
-              <span className="schero__title-gray">
-                turning ideas into polished, user-first web experiences
-              </span>
+              <span className="schero__title-gray">Front End Developer</span>
             </h1>
           </div>
 
@@ -539,11 +541,10 @@ export default function Home() {
 
             <div className="schero__desc-text">
               <p className="para">
-                I'm driven by the challenge of turning complex problems into
-                clean, elegant solutions. Specializing in Next.js, TypeScript,
-                and Node.js — with a hobbyist passion for C++ — I bring both
-                analytical depth and a user-first mindset, excited to contribute
-                fresh perspectives in a dynamic tech environment.
+                Tommy Nguyen — Front End Developer based in Ho Chi Minh City,
+                Vietnam. Currently at Pitek building web applications with
+                Next.js, TypeScript, Tailwind CSS, and Firebase. Former Equity
+                Analyst at FPTS. Studying Information Technology at UIT.
               </p>
             </div>
           </div>
@@ -577,6 +578,19 @@ export default function Home() {
                 <span className="btn__text">Github</span>
               </div>
             </Link>
+            <Button
+              href={
+                "https://drive.google.com/file/d/1fo3-LRv_8G9WCmSmMhSR3tPpGKTsc681/view?usp=sharing"
+              }
+              target="_blank"
+              variant="talk"
+              className="btn btn-talk --lg --rounded schero__cta-button"
+              icon={FiDownload}
+              iconPosition="right"
+              isRounded={false}
+            >
+              My Resume
+            </Button>
           </div>
         </div>
       </section>
@@ -596,17 +610,15 @@ export default function Home() {
               <div className="scabout__content-wrapper">
                 <HideTextWrapper>
                   <h2 className="scabout__content-title">
-                    Still learning, always building.
+                    Skills & Background
                   </h2>
                 </HideTextWrapper>
                 <HideTextWrapper>
                   <p className="scabout__content-desc para">
-                    I'm an aspiring web developer with a genuine passion for
-                    building clean, user-friendly interfaces. My main tools are
-                    React.js, TypeScript, Node.js, HTML, and CSS — and I'm
-                    always looking to grow. Outside of web dev, I dabble in C++
-                    to sharpen my programming fundamentals and keep myself
-                    curious.
+                    React.js · TypeScript · Next.js · Node.js · Python ·
+                    Firebase · Flutter. Background in equity analysis and
+                    financial research. Currently pursuing a second degree in
+                    Information Technology at UIT and a hobbyst in C++.
                   </p>
                 </HideTextWrapper>
               </div>
@@ -667,7 +679,7 @@ export default function Home() {
                         </Link>
                       </AnimatedTextHover>
                       <p className="desc">
-                        My work at PiGroup (Not Public) - Next.js, TypeScript,
+                        My work at Pitek (Not Public) - Next.js, TypeScript,
                         Tailwind CSS
                       </p>
                     </div>
