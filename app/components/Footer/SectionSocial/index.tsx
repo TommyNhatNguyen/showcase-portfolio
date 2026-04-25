@@ -1,9 +1,5 @@
-import { SOCIAL_LINKS } from "@/app/constants/links";
-import React from "react";
-import AnimatedTextHover from "../../AnimatedTextHover";
-import { ROUTES } from "@/app/constants/links";
+import { ROUTES, SOCIAL_LINKS } from "@/app/constants/links";
 import Link from "next/link";
-import Image from "next/image";
 import { FiArrowUpRight } from "react-icons/fi";
 import Button from "../../Button/Button";
 
@@ -35,6 +31,15 @@ const SectionSocial = (props: Props) => {
             <li className="sitemap__item">
               <Link href={ROUTES.BLOG} className="sitemap__item-link">
                 Insights
+              </Link>
+            </li>
+            <li className="sitemap__item">
+              <Link
+                href={SOCIAL_LINKS.GITHUB}
+                target="_blank"
+                className="sitemap__item-link"
+              >
+                GitHub
               </Link>
             </li>
           </ul>
@@ -99,7 +104,7 @@ const SectionSocial = (props: Props) => {
           <form action="/" className="form form-email">
             <div className="formgroup">
               <label className="formgroup__label" htmlFor="email">
-                Let's connect and talk about your project.
+                Drop your email — I'll get back to you.
               </label>
               <div className="formgroup__inputgroup">
                 <input

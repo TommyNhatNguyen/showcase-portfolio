@@ -1,10 +1,6 @@
 "use client";
-import React, { useState, useEffect, Suspense } from "react";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
-import Navigation from "../components/Navigation";
-import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import {
   CustomEase,
   ScrambleTextPlugin,
@@ -13,9 +9,13 @@ import {
   SplitText,
   TextPlugin,
 } from "gsap/all";
-import { usePathname } from "next/navigation";
-import LoadingPage from "../components/LoadingPage";
 import { GSDevTools } from "gsap/GSDevTools";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import Footer from "../components/Footer/Footer";
+import Header from "../components/Header/Header";
+import LoadingPage from "../components/LoadingPage";
+import Navigation from "../components/Navigation";
 type Props = {
   children: React.ReactNode;
 };

@@ -83,7 +83,7 @@ const Footer = () => {
           <div className="footer__cta-wrapper">
             <div className="footer__cta-title">
               <p className="para">
-                FEELS LIKE WE'RE ON THE SAME PAGE? LET'S CONNECT
+                OPEN TO OPPORTUNITIES — I'D LOVE TO HEAR FROM YOU
               </p>
               <div className="email-wrapper">
                 {/* <div className="arrow">

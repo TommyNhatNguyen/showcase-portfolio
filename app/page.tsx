@@ -1,16 +1,16 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
-import { CONTACT_LINKS, ROUTES, SOCIAL_LINKS } from "./constants/links";
-import Button from "./components/Button/Button";
-import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
-import AnimatedThumbnail from "./components/AnimatedThumbnail/AnimatedThumbnail";
-import HideTextWrapper from "./components/HideTextWrapper/HideTextWrapper";
+import Image from "next/image";
+import Link from "next/link";
+import { useRef } from "react";
+import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
 import AnimatedTextHover from "./components/AnimatedTextHover";
+import AnimatedThumbnail from "./components/AnimatedThumbnail/AnimatedThumbnail";
+import Button from "./components/Button/Button";
+import HideTextWrapper from "./components/HideTextWrapper/HideTextWrapper";
+import { ROUTES } from "./constants/links";
 import { BREAKPOINTS } from "./constants/media";
 
 export default function Home() {
@@ -22,7 +22,7 @@ export default function Home() {
       // --------------------------------
       if (!homeRef.current) return;
       const heroSection = homeRef.current.querySelector(
-        "#schero"
+        "#schero",
       ) as HTMLElement;
       const heroTitle = heroSection.querySelector(".schero__title-text");
       const heroDesc = heroSection.querySelector(".schero__desc-text");
@@ -32,7 +32,7 @@ export default function Home() {
       // ABOUT
       // --------------------------------
       const aboutSection = homeRef.current.querySelector(
-        "#scabout"
+        "#scabout",
       ) as HTMLElement;
       const aboutTitle = aboutSection.querySelector(".scabout__content-title");
       const aboutDesc = aboutSection.querySelector(".scabout__content-desc");
@@ -42,13 +42,13 @@ export default function Home() {
       // WORKS
       // --------------------------------
       const worksSection = homeRef.current.querySelector(
-        "#scwork"
+        "#scwork",
       ) as HTMLElement;
       const worksTitle = worksSection.querySelector(".scwork__title");
       const worksTitleSplit = SplitText.create(worksTitle);
       const worksBtn = worksSection.querySelector(".scwork__btnviewall");
       const workListItems = gsap.utils.toArray(
-        ".scwork__list-item"
+        ".scwork__list-item",
       ) as HTMLElement[];
       const workListFirstGroup = workListItems.slice(0, 3);
       const workListMidGroup = workListItems.slice(3, 4);
@@ -57,26 +57,26 @@ export default function Home() {
       // CLIENTS
       // --------------------------------
       const clientsSection = homeRef.current.querySelector(
-        "#scclient"
+        "#scclient",
       ) as HTMLElement;
       const clientsTitle = clientsSection.querySelector(".scclient__title");
       const clientsTitleSplit = SplitText.create(clientsTitle);
       const clientListItems = gsap.utils.toArray(
-        ".scclient__list-item"
+        ".scclient__list-item",
       ) as HTMLElement[];
       // --------------------------------
       // BLOG
       // --------------------------------
       const blogSection = homeRef.current.querySelector(
-        "#scblog"
+        "#scblog",
       ) as HTMLElement;
       const blogTitle = blogSection.querySelector(
-        ".scblog__title .titlegroup__title"
+        ".scblog__title .titlegroup__title",
       );
       const blogTitleSplit = SplitText.create(blogTitle);
       const blogBtn = blogSection.querySelector(".scblog__btn");
       const blogListItems = gsap.utils.toArray(
-        ".scblog__list-card"
+        ".scblog__list-card",
       ) as HTMLElement[];
 
       const tl = gsap.timeline({ paused: true });
@@ -136,7 +136,7 @@ export default function Home() {
             duration: 0.9,
             ease: "none",
           },
-          "<-10%"
+          "<-10%",
         );
         tl.to(
           heroTitleSplit.lines,
@@ -146,7 +146,7 @@ export default function Home() {
             duration: 0.3,
             ease: "power1.inOut",
           },
-          "<+0.3"
+          "<+0.3",
         );
         tl.to(
           heroCta,
@@ -156,7 +156,7 @@ export default function Home() {
             duration: 0.3,
             delay: 0.2,
           },
-          "<"
+          "<",
         );
         tl.from(
           heroDescLine,
@@ -165,7 +165,7 @@ export default function Home() {
             duration: 0.3,
             ease: "power3.inOut",
           },
-          "<"
+          "<",
         );
 
         aboutTl
@@ -176,7 +176,7 @@ export default function Home() {
               y: 0,
               duration: aboutTextDuration,
             },
-            "<+0.3"
+            "<+0.3",
           )
           .to(
             aboutDesc,
@@ -185,7 +185,7 @@ export default function Home() {
               y: 0,
               duration: aboutTextDuration * 2,
             },
-            "<"
+            "<",
           )
           .to(
             aboutButton,
@@ -194,7 +194,7 @@ export default function Home() {
               y: 0,
               duration: aboutTextDuration * 2.5,
             },
-            "<"
+            "<",
           )
           .to(
             [aboutTitleSplit.lines, aboutDescSplit.lines],
@@ -208,7 +208,7 @@ export default function Home() {
               duration: 0.9,
               ease: "none",
             },
-            "<-50%"
+            "<-50%",
           );
       });
       mm.add(BREAKPOINTS.mobile, () => {
@@ -233,7 +233,7 @@ export default function Home() {
             duration: 0.9,
             ease: "none",
           },
-          "<-10%"
+          "<-10%",
         );
         tl.to(
           heroTitle,
@@ -243,7 +243,7 @@ export default function Home() {
             duration: 0.3,
             ease: "power1.inOut",
           },
-          "<+0.3"
+          "<+0.3",
         );
         tl.to(
           heroCta,
@@ -253,7 +253,7 @@ export default function Home() {
             duration: 0.3,
             delay: 0.2,
           },
-          "<"
+          "<",
         );
 
         aboutTl
@@ -264,7 +264,7 @@ export default function Home() {
               y: 0,
               duration: aboutTextDuration,
             },
-            "<+0.3"
+            "<+0.3",
           )
           .to(
             aboutDesc,
@@ -273,7 +273,7 @@ export default function Home() {
               y: 0,
               duration: aboutTextDuration * 2,
             },
-            "<"
+            "<",
           )
           .to(
             aboutButton,
@@ -282,7 +282,7 @@ export default function Home() {
               y: 0,
               duration: aboutTextDuration * 2.5,
             },
-            "<"
+            "<",
           )
           .to(
             [aboutTitle, aboutDesc],
@@ -296,7 +296,7 @@ export default function Home() {
               duration: 0.9,
               ease: "none",
             },
-            "<-50%"
+            "<-50%",
           );
       });
 
@@ -327,16 +327,16 @@ export default function Home() {
             duration: 0.9,
             ease: "none",
           },
-          "<-50%"
+          "<-50%",
         );
 
       workListFirstGroup.forEach((item) => {
         const content = item.querySelector(".cardwork__content");
         const contentTitle = content?.querySelector(
-          ".cardwork__content-desc .title"
+          ".cardwork__content-desc .title",
         );
         const contentDesc = content?.querySelector(
-          ".cardwork__content-desc .desc"
+          ".cardwork__content-desc .desc",
         );
         gsap.to(content, {
           scrollTrigger: {
@@ -366,10 +366,10 @@ export default function Home() {
       workListMidGroup.forEach((item) => {
         const content = item.querySelector(".cardwork__content");
         const contentTitle = content?.querySelector(
-          ".cardwork__content-desc .title"
+          ".cardwork__content-desc .title",
         );
         const contentDesc = content?.querySelector(
-          ".cardwork__content-desc .desc"
+          ".cardwork__content-desc .desc",
         );
         gsap.to(content, {
           scrollTrigger: {
@@ -399,10 +399,10 @@ export default function Home() {
       workListLastGroup.forEach((item) => {
         const content = item.querySelector(".cardwork__content");
         const contentTitle = content?.querySelector(
-          ".cardwork__content-desc .title"
+          ".cardwork__content-desc .title",
         );
         const contentDesc = content?.querySelector(
-          ".cardwork__content-desc .desc"
+          ".cardwork__content-desc .desc",
         );
         gsap.to(content, {
           scrollTrigger: {
@@ -460,7 +460,7 @@ export default function Home() {
           y: 0,
           duration: 0.9,
         },
-        "<-50%"
+        "<-50%",
       );
       clientTl.to(
         clientListItems,
@@ -470,7 +470,7 @@ export default function Home() {
           duration: 0.9,
           stagger: 0.3,
         },
-        "<"
+        "<",
       );
 
       gsap.to([blogBtn, blogListItems], {
@@ -494,7 +494,7 @@ export default function Home() {
           y: 0,
           duration: 0.9,
         },
-        "<-50%"
+        "<-50%",
       );
       blogTl.to(
         blogBtn,
@@ -503,7 +503,7 @@ export default function Home() {
           y: 0,
           duration: 0.6,
         },
-        "<"
+        "<",
       );
       blogTl.to(
         blogListItems,
@@ -513,12 +513,12 @@ export default function Home() {
           duration: 0.9,
           stagger: 0.3,
         },
-        "<"
+        "<",
       );
     },
     {
       scope: homeRef,
-    }
+    },
   );
   return (
     <main className="home" id="home" ref={homeRef}>
@@ -526,10 +526,10 @@ export default function Home() {
         <div className="container">
           <div className="schero__title">
             <h1 className="schero__title-text --gray">
-              <strong> A Frontend Developer </strong>
+              <strong> Front End Developer </strong>
               <br />
               <span className="schero__title-gray">
-                building engaging and user-friendly websites
+                turning ideas into polished, user-first web experiences
               </span>
             </h1>
           </div>
@@ -539,24 +539,44 @@ export default function Home() {
 
             <div className="schero__desc-text">
               <p className="para">
-                I'm Tommy Nguyen, a Frontend Developer living in Vietnam, and I
-                focus on building websites that are easy to use, enjoyable, and
-                engaging with users.
+                I'm driven by the challenge of turning complex problems into
+                clean, elegant solutions. Specializing in Next.js, TypeScript,
+                and Node.js — with a hobbyist passion for C++ — I bring both
+                analytical depth and a user-first mindset, excited to contribute
+                fresh perspectives in a dynamic tech environment.
               </p>
             </div>
           </div>
 
           <div className="schero__cta">
-            <Button
-              href={CONTACT_LINKS.EMAIL}
-              variant="talk"
-              size="lg"
-              className="schero__cta-button"
-              icon={FiArrowRight}
-              iconPosition="right"
+            <Link
+              href="https://github.com/TommyNhatNguyen"
+              target="_blank"
+              className="btn btn-talk --lg --rounded schero__cta-button"
             >
-              Let's Connect
-            </Button>
+              <div className="content-top">
+                <div className="btn__icon">
+                  <Image
+                    src="/images/github-logo.png"
+                    alt="GitHub"
+                    width={20}
+                    height={20}
+                  />
+                </div>
+                <span className="btn__text">Github</span>
+              </div>
+              <div className="content-bottom">
+                <div className="btn__icon">
+                  <Image
+                    src="/images/github-logo.png"
+                    alt="GitHub"
+                    width={20}
+                    height={20}
+                  />
+                </div>
+                <span className="btn__text">Github</span>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -576,17 +596,17 @@ export default function Home() {
               <div className="scabout__content-wrapper">
                 <HideTextWrapper>
                   <h2 className="scabout__content-title">
-                    Crafting websites that tell your story.
+                    Still learning, always building.
                   </h2>
                 </HideTextWrapper>
                 <HideTextWrapper>
                   <p className="scabout__content-desc para">
-                    I believe websites are more than just digital storefronts -
-                    they're magical meeting points where brands and users dance
-                    together! This two-way interaction creates a wonderful
-                    opportunity for businesses to truly understand their
-                    customers, while allowing customers to embrace and become
-                    part of the brand's story.
+                    I'm an aspiring web developer with a genuine passion for
+                    building clean, user-friendly interfaces. My main tools are
+                    React.js, TypeScript, Node.js, HTML, and CSS — and I'm
+                    always looking to grow. Outside of web dev, I dabble in C++
+                    to sharpen my programming fundamentals and keep myself
+                    curious.
                   </p>
                 </HideTextWrapper>
               </div>
@@ -612,22 +632,114 @@ export default function Home() {
           <div className="scwork-wrapper">
             <HideTextWrapper>
               <h2 className="scwork__title">
-                <strong>My latest works</strong>
+                <strong>Projects</strong>
               </h2>
             </HideTextWrapper>
 
             <ul className="scwork__list">
               <li className="scwork__list-item cardwork">
                 <Link
-                  href={`https://etsolution.vn/home`}
+                  href={`#`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                  className="cardwork__thumbnail"
+                >
+                  <AnimatedThumbnail
+                    src="/images/picare-project.gif"
+                    alt="Picare CMS"
+                    width={1024}
+                    height={976}
+                  />
+                </Link>
+                <HideTextWrapper>
+                  <div className="cardwork__content">
+                    <div className="cardwork__content-desc">
+                      <AnimatedTextHover>
+                        <Link
+                          href={`#`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                          }}
+                          className="title"
+                        >
+                          PiCare Web Admin Panel (Current Work)
+                        </Link>
+                      </AnimatedTextHover>
+                      <p className="desc">
+                        My work at PiGroup (Not Public) - Next.js, TypeScript,
+                        Tailwind CSS
+                      </p>
+                    </div>
+
+                    <Button
+                      href={`#`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                      }}
+                      variant="link"
+                      size="lg"
+                      className="cardwork__content-btn"
+                      icon={FiArrowUpRight}
+                      isRounded={false}
+                    />
+                  </div>
+                </HideTextWrapper>
+              </li>
+              <li className="scwork__list-item cardwork">
+                <Link
+                  href={`https://dqharchitects.vn/vi/home`}
                   target="_blank"
                   className="cardwork__thumbnail"
                 >
                   <AnimatedThumbnail
-                    src="/images/project-1.jpg"
-                    alt="project 1"
-                    width={400}
-                    height={300}
+                    src="/images/project-1.png"
+                    alt="DQH Architecture"
+                    width={1024}
+                    height={976}
+                  />
+                </Link>
+                <HideTextWrapper>
+                  <div className="cardwork__content">
+                    <div className="cardwork__content-desc">
+                      <AnimatedTextHover>
+                        <Link
+                          href={`https://dqharchitects.vn/vi/home`}
+                          target="_blank"
+                          className="title"
+                        >
+                          DQH Architecture (Project)
+                        </Link>
+                      </AnimatedTextHover>
+                      <p className="desc">
+                        Creative Website & Strapi CMS - Next.js, TypeScript,
+                        SCSS
+                      </p>
+                    </div>
+
+                    <Button
+                      href={`https://dqharchitects.vn/vi/home`}
+                      target="_blank"
+                      variant="link"
+                      size="lg"
+                      className="cardwork__content-btn"
+                      icon={FiArrowUpRight}
+                      isRounded={false}
+                    />
+                  </div>
+                </HideTextWrapper>
+              </li>
+              <li className="scwork__list-item cardwork">
+                <Link
+                  href={`https://vintage-car-gules.vercel.app/`}
+                  target="_blank"
+                  className="cardwork__thumbnail"
+                >
+                  <AnimatedThumbnail
+                    src="/images/project-6.jpg"
+                    alt="Vintage Car (Concept)"
+                    width={1024}
+                    height={976}
                   />
                 </Link>
 
@@ -636,18 +748,20 @@ export default function Home() {
                     <div className="cardwork__content-desc">
                       <AnimatedTextHover>
                         <Link
-                          href={`https://etsolution.vn/home`}
+                          href={`https://vintage-car-gules.vercel.app/`}
                           target="_blank"
                           className="title"
                         >
-                          ETSolution
+                          Vintage Car (Concept)
                         </Link>
                       </AnimatedTextHover>
-                      <p className="desc">Website</p>
+                      <p className="desc">
+                        Animated Website - Next.js, TypeScript, GSAP
+                      </p>
                     </div>
 
                     <Button
-                      href={`https://etsolution.vn/home`}
+                      href={`https://vintage-car-gules.vercel.app/`}
                       target="_blank"
                       variant="link"
                       size="lg"
@@ -666,9 +780,9 @@ export default function Home() {
                 >
                   <AnimatedThumbnail
                     src="/images/project-2.jpg"
-                    alt="project 2"
-                    width={400}
-                    height={300}
+                    alt="RUMAÉ (Concept)"
+                    width={1024}
+                    height={976}
                   />
                 </Link>
                 <HideTextWrapper>
@@ -683,52 +797,13 @@ export default function Home() {
                           RUMAÉ (Concept)
                         </Link>
                       </AnimatedTextHover>
-                      <p className="desc">Website Development</p>
+                      <p className="desc">
+                        Website Animation - Next.js, TypeScript, GSAP
+                      </p>
                     </div>
 
                     <Button
                       href={`https://architecture-ver1.vercel.app/`}
-                      target="_blank"
-                      variant="link"
-                      size="lg"
-                      className="cardwork__content-btn"
-                      icon={FiArrowUpRight}
-                      isRounded={false}
-                    />
-                  </div>
-                </HideTextWrapper>
-              </li>
-              <li className="scwork__list-item cardwork">
-                <Link
-                  href={`https://architecture-ver2.vercel.app/`}
-                  target="_blank"
-                  className="cardwork__thumbnail"
-                >
-                  <AnimatedThumbnail
-                    src="/images/project-5.jpg"
-                    alt="project 3"
-                    width={400}
-                    height={300}
-                  />
-                </Link>
-
-                <HideTextWrapper>
-                  <div className="cardwork__content">
-                    <div className="cardwork__content-desc">
-                      <AnimatedTextHover>
-                        <Link
-                          href={`https://architecture-ver2.vercel.app/`}
-                          target="_blank"
-                          className="title"
-                        >
-                          AGRESSOV (Concept)
-                        </Link>
-                      </AnimatedTextHover>
-                      <p className="desc">Website Development</p>
-                    </div>
-
-                    <Button
-                      href={`https://architecture-ver2.vercel.app/`}
                       target="_blank"
                       variant="link"
                       size="lg"
@@ -765,52 +840,13 @@ export default function Home() {
                           Finance Flow (Concept)
                         </Link>
                       </AnimatedTextHover>
-                      <p className="desc">Website Development</p>
+                      <p className="desc">
+                        Landing Page - HTML, CSS, JavaScript
+                      </p>
                     </div>
 
                     <Button
                       href={`https://finance-flow-rho.vercel.app/`}
-                      target="_blank"
-                      variant="link"
-                      size="lg"
-                      className="cardwork__content-btn"
-                      icon={FiArrowUpRight}
-                      isRounded={false}
-                    />
-                  </div>
-                </HideTextWrapper>
-              </li>
-              <li className="scwork__list-item cardwork">
-                <Link
-                  href={`https://dqh-architecture.vercel.app/`}
-                  target="_blank"
-                  className="cardwork__thumbnail"
-                >
-                  <AnimatedThumbnail
-                    src="/images/project-3.jpg"
-                    alt="project 5"
-                    width={400}
-                    height={300}
-                  />
-                </Link>
-
-                <HideTextWrapper>
-                  <div className="cardwork__content">
-                    <div className="cardwork__content-desc">
-                      <AnimatedTextHover>
-                        <Link
-                          href={`https://dqh-architecture.vercel.app/`}
-                          target="_blank"
-                          className="title"
-                        >
-                          DQH Architecture (Concept)
-                        </Link>
-                      </AnimatedTextHover>
-                      <p className="desc">Website Development</p>
-                    </div>
-
-                    <Button
-                      href={`https://dqh-architecture.vercel.app/`}
                       target="_blank"
                       variant="link"
                       size="lg"
@@ -843,80 +879,149 @@ export default function Home() {
         <div className="container">
           <div className="scclient-wrapper">
             <HideTextWrapper>
-              <h2 className="scclient__title">Experiences</h2>
+              <h2 className="scclient__title">Experiences & Education</h2>
             </HideTextWrapper>
 
             <ul className="scclient__list">
+              {/* Pitek */}
               <li className="scclient__list-item">
-                <div className="logo">
+                <Link
+                  href="https://pitek.one/"
+                  target="_blank"
+                  className="logo"
+                >
                   <Image
-                    src="/images/logo-1.png"
-                    alt="client 1"
-                    width={100}
-                    height={50}
+                    src="/images/pitek-logo.webp"
+                    alt="Pitek Logo"
+                    width={200}
+                    height={200}
                   />
-                </div>
+                </Link>
 
                 <div className="content">
                   <span className="content__title --block">
-                    UIUX & Branding
+                    <span className="font-bold">Front End Developer</span>
+                    <br />
+                    Tech Stack: Next.js, TypeScript, Tailwind CSS, Firebase
                   </span>
-
-                  <span className="content__year --block">2022</span>
+                  <span className="content__year --block">
+                    05/2025 - Present
+                  </span>
                 </div>
               </li>
+              {/* Tanca */}
               <li className="scclient__list-item">
-                <div className="logo">
+                <Link href="https://tanca.io/" target="_blank" className="logo">
                   <Image
-                    src="/images/logo-1.png"
-                    alt="client 1"
-                    width={100}
-                    height={50}
+                    src="/images/tanca-logo.webp"
+                    alt="Tanca Logo"
+                    width={200}
+                    height={200}
                   />
-                </div>
+                </Link>
 
                 <div className="content">
                   <span className="content__title --block">
-                    UIUX & Branding
+                    <span className="font-bold">Front End Developer</span>
+                    <br />
+                    Tech Stack: React Native, React.js, TypeScript
                   </span>
-
-                  <span className="content__year --block">2022</span>
+                  <span className="content__year --block">
+                    10/2024 - 05/2025
+                  </span>
                 </div>
               </li>
+              {/* FPTS */}
               <li className="scclient__list-item">
-                <div className="logo">
+                <Link
+                  href="https://www.fpts.com.vn/"
+                  target="_blank"
+                  className="logo"
+                >
                   <Image
-                    src="/images/logo-1.png"
-                    alt="client 1"
-                    width={100}
-                    height={50}
+                    src="/images/fpts.png"
+                    alt="FPTS Logo"
+                    width={200}
+                    height={200}
                   />
-                </div>
+                </Link>
 
                 <div className="content">
                   <span className="content__title --block">
-                    UIUX & Branding
+                    <span className="font-bold">Equity Analyst</span>
+                    <br />
+                    Working on: Analysis and Research Report
                   </span>
 
-                  <span className="content__year --block">2022</span>
+                  <span className="content__year --block">
+                    08/2021 - 03/2024
+                  </span>
                 </div>
               </li>
+              {/* UIT - University of Information Technology */}
               <li className="scclient__list-item">
                 <div className="logo">
                   <Image
-                    src="/images/logo-1.png"
-                    alt="client 1"
-                    width={100}
-                    height={50}
+                    src="/images/uit-logo.png"
+                    alt="UIT Logo"
+                    width={200}
+                    height={200}
                   />
                 </div>
 
                 <div className="content">
                   <span className="content__title --block">
-                    UIUX & Branding
+                    <span className="font-bold">
+                      Second Major in Bachelor of Information Technology
+                    </span>
+                    <br />
+                    University of Information Technology
                   </span>
+                  <span className="content__year --block">2024 - Present</span>
+                </div>
+              </li>
+              {/* Informatics Center – University of Science */}
+              <li className="scclient__list-item">
+                <div className="logo">
+                  <Image
+                    src="/images/infomatics-center-logo.jpeg"
+                    alt="UIT Logo"
+                    width={200}
+                    height={200}
+                  />
+                </div>
 
-                  <span className="content__year --block">2022</span>
+                <div className="content">
+                  <span className="content__title --block">
+                    <span className="font-bold">
+                      Data Science and Machine Learning Certificate
+                    </span>
+                    <br />
+                    Informatics Center – University of Science
+                  </span>
+                  <span className="content__year --block">2022 - 2023</span>
+                </div>
+              </li>
+              {/* UEH */}
+              <li className="scclient__list-item">
+                <div className="logo">
+                  <Image
+                    src="/images/ueh-logo.png"
+                    alt="UEH Logo"
+                    width={200}
+                    height={200}
+                  />
+                </div>
+
+                <div className="content">
+                  <span className="content__title --block">
+                    <span className="font-bold">
+                      Bachelor of Business Administration
+                    </span>
+                    <br />
+                    University of Economics HCMC
+                  </span>
+                  <span className="content__year --block">2018 - 2021</span>
                 </div>
               </li>
             </ul>
@@ -924,12 +1029,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="scblog --ptb" id="scblog">
+      {/* <section className="scblog --ptb" id="scblog">
         <div className="container">
           <div className="scblog-wrapper">
             <div className="titlegroup scblog__title">
               <HideTextWrapper>
-                <h5 className="titlegroup__title">Latest Insights</h5>
+                <h5 className="titlegroup__title">My Blogs</h5>
               </HideTextWrapper>
 
               <Button
@@ -939,7 +1044,7 @@ export default function Home() {
                 icon={FiArrowRight}
                 isRounded={false}
               >
-                View All Insights
+                View All Blogs
               </Button>
             </div>
 
@@ -993,11 +1098,11 @@ export default function Home() {
               icon={FiArrowRight}
               isRounded={false}
             >
-              View All Insights
+              View All Blogs
             </Button>
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }

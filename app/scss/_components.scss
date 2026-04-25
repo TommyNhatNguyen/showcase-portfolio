@@ -9,6 +9,15 @@
   }
 }
 
+.font-bold {
+  font-family: var(--ff-bold);
+}
+
+.link {
+  // color: #007bff;
+  // text-decoration: underline;
+}
+
 .btn {
   cursor: pointer;
   height: var(--btn-height);

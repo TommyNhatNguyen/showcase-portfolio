@@ -1,13 +1,13 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
 import { useGSAP } from "@gsap/react";
-import { useRef, useState } from "react";
+import clsx from "clsx";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
-import clsx from "clsx";
+import Image from "next/image";
+import Link from "next/link";
+import { useRef, useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
-import { ROUTES, WORK_ITEMS } from "../constants/links";
+import { WORK_ITEMS } from "../constants/links";
 
 export default function Work() {
   const workRef = useRef<HTMLDivElement>(null);
@@ -21,18 +21,18 @@ export default function Work() {
     () => {
       if (!workRef.current) return;
       const heroSection = workRef.current.querySelector(
-        "#schero"
+        "#schero",
       ) as HTMLElement;
       const workSection = workRef.current.querySelector(
-        "#scwork"
+        "#scwork",
       ) as HTMLElement;
       const heroTitle = heroSection.querySelector(".schero__title-text");
       const heroTitleSplit = SplitText.create(heroTitle);
       const skillsItems = gsap.utils.toArray(
-        ".schero__skills-item"
+        ".schero__skills-item",
       ) as HTMLElement[];
       const workItems = gsap.utils.toArray(
-        ".scwork__list-item"
+        ".scwork__list-item",
       ) as HTMLElement[];
 
       const tl = gsap.timeline({});
@@ -59,7 +59,7 @@ export default function Work() {
           duration: 0.9,
           ease: "none",
         },
-        "<-10%"
+        "<-10%",
       );
 
       tl.to(
@@ -70,7 +70,7 @@ export default function Work() {
           duration: 0.3,
           ease: "power1.inOut",
         },
-        "<+0.3"
+        "<+0.3",
       );
 
       // Animate skills items
@@ -83,7 +83,7 @@ export default function Work() {
           stagger: 0.15,
           ease: "power2.out",
         },
-        "<+0.1"
+        "<+0.1",
       );
 
       // Animate work items
@@ -101,12 +101,12 @@ export default function Work() {
             end: "top center",
           },
         },
-        "<+0.3"
+        "<+0.3",
       );
     },
     {
       scope: workRef,
-    }
+    },
   );
 
   return (
@@ -123,16 +123,13 @@ export default function Work() {
             </div>
             <ul className="schero__skills">
               <li className="schero__skills-item">
-                <span>Web Development</span>
+                <span>Front-end Development</span>
               </li>
               <li className="schero__skills-item">
-                <span>Web Design</span>
+                <span>NextJS & Typescript</span>
               </li>
               <li className="schero__skills-item">
-                <span>UI/UX Design</span>
-              </li>
-              <li className="schero__skills-item">
-                <span>Branding</span>
+                <span>Web Developement</span>
               </li>
             </ul>
           </div>
@@ -167,7 +164,7 @@ export default function Work() {
                         </span> */}
                       </div>
                       <div className="content__desc">
-                        <p className="content__desc-text">{item.desc}</p>
+                        <div className="content__desc-text">{item.desc}</div>
                         <ul className="content__desc-tags">
                           <li>Web Development</li>
                         </ul>

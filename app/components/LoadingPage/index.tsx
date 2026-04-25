@@ -2,8 +2,8 @@
 import { BREAKPOINTS } from "@/app/constants/media";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { CustomEase, SplitText } from "gsap/all";
-import React, { useEffect, useRef, useState } from "react";
+import { CustomEase } from "gsap/all";
+import { useEffect, useRef } from "react";
 
 type Props = {};
 
@@ -14,11 +14,12 @@ const LoadingPage = ({}: Props) => {
     gsap.set(document.body, {
       visibility: "visible",
     });
+    gsap.ticker.lagSmoothing(false);
     if (!loaderRef.current) return;
-    const DURATION = 3;
+    const DURATION = 6;
     const EASE = CustomEase.create(
       "custom",
-      "M0,0 C0.127,0.008 0.174,0.003 0.205,0.057 0.295,0.217 0.233,0.366 0.334,0.448 0.407,0.507 0.841,0.435 0.877,0.592 0.908,0.729 0.899,1 1,1 "
+      "M0,0 C0.127,0.008 0.174,0.003 0.205,0.057 0.295,0.217 0.233,0.366 0.334,0.448 0.407,0.507 0.841,0.435 0.877,0.592 0.908,0.729 0.899,1 1,1 ",
     );
 
     const loadingContainer = document.querySelector(".loading");
@@ -27,19 +28,46 @@ const LoadingPage = ({}: Props) => {
     // Desktop
     mm.add(BREAKPOINTS.desktop, () => {
       const loadingIndicator = loadingContainer?.querySelector(
-        ".loading-indicator"
+        ".loading-indicator",
       ) as HTMLElement;
       const loadingCounter = loadingIndicator.querySelector(
-        ".loading-indicator__loading"
+        ".loading-indicator__loading",
       ) as HTMLElement;
       const loadingBackground = loadingContainer?.querySelector(
-        ".bg-opacity-loading"
+        ".bg-opacity-loading",
       ) as HTMLElement;
       gsap.from(loadingIndicator.children, {
         y: -60,
         opacity: 0,
         duration: 0.6,
         ease: "back(2)",
+      });
+      const loadingText = loadingIndicator.querySelector(
+        ".loading-indicator__text",
+      ) as HTMLElement;
+      gsap.to(loadingText, {
+        scrambleText: { text: "Front End Developer", chars: "//ai" },
+        duration: 0.8,
+        delay: 1.5,
+        ease: "none",
+      });
+      gsap.to(loadingText, {
+        scrambleText: {
+          text: "Next.js  /  TypeScript  /  Node.js  /  C++ Hobbyist",
+          chars: "//ai",
+        },
+        duration: 0.8,
+        delay: 3.0,
+        ease: "none",
+      });
+      gsap.to(loadingText, {
+        scrambleText: {
+          text: "Crafting fast, user-friendly web experiences",
+          chars: "//ai",
+        },
+        duration: 0.8,
+        delay: 4.5,
+        ease: "none",
       });
       gsap.from(loadingCounter, {
         textContent: `${0}%`,
@@ -81,13 +109,13 @@ const LoadingPage = ({}: Props) => {
     // Mobile
     mm.add(BREAKPOINTS.mobile, () => {
       const loadingIndicator = loadingContainerMobile?.querySelector(
-        ".loading-indicator"
+        ".loading-indicator",
       ) as HTMLElement;
       const loadingCounter = loadingIndicator.querySelector(
-        ".loading-indicator__loading"
+        ".loading-indicator__loading",
       ) as HTMLElement;
       const loadingBackground = loadingContainerMobile?.querySelector(
-        ".bg-opacity-loading"
+        ".bg-opacity-loading",
       ) as HTMLElement;
       gsap.from(loadingIndicator.children, {
         y: -60,
@@ -142,9 +170,7 @@ const LoadingPage = ({}: Props) => {
     <div className="loading-page">
       <div className="loading" ref={loaderRef}>
         <div className="loading-indicator">
-          <div className="loading-indicator__text">
-            Hi, I'm Tommy. Please wait a minute
-          </div>
+          <div className="loading-indicator__text">Hello, I'm Tommy Nguyen</div>
           <div className="loading-indicator__line line">
             <div className="loading-indicator__line-inner"></div>
           </div>
